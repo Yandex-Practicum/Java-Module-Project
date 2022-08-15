@@ -19,7 +19,7 @@ public class Main {
         ArrayList<Position> resultPositions = new Position().counter();
         ps.println("Добавленные товары:");
         int j = 0;
-         do {
+        do {
             resultPositions.get(j).printPosition();
             j++;
         } while (j < resultPositions.size());

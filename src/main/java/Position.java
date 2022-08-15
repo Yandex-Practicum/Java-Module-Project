@@ -1,6 +1,7 @@
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Position {
@@ -30,38 +31,33 @@ public class Position {
             default: System.out.println(this.positionName + ": " + String.format("%.2f",this.positionPrice) + " рублей"); break;
         }
     }
-    public ArrayList<Position> counter() throws InputMismatchException {
+    public ArrayList<Position> counter() throws InputMismatchException, NoSuchElementException {
         // ваш код начнется здесь
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
         ArrayList<Position> positions = new ArrayList();
-        int i = 0;
-        double price = -1;
-        String close = "";
+        double price = 0;
+        String closed = "";
         String name = "";
-        String buff = "";
-        final Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         PrintStream ps = new PrintStream(System.out); //коммент для коммита
         do {
-            ps.println("Введите название товара и цену через Enter (дробные цены вводите через ,)");
+            ps.println("Введите название товара и цену через Enter (дробные цены вводите через .)");
             name = scanner.nextLine();
-            do {
+            while (price<=0) {
                 try {
-                    price = scanner.nextDouble();
-                } catch (InputMismatchException e) {
-                    System.out.println("Введите число!");
-                    price = -1;
-                } finally {
-                    buff = scanner.nextLine();
+                    price = Double.parseDouble(scanner.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Введите цену!");
                 }
-            } while (price<=0);
-
-            Position buf = new Position(name, price);
+            }
+            Position buf = new Position(name,price);
             positions.add(buf);
-            i++;
-            ps.println("Товар успешно добавлен");
-            ps.println("Добавить еще товар или завершить ввод?");
-            close = scanner.next();
-        } while (!(close.equalsIgnoreCase("завершить")));
-        return positions;
+            price = 0;
+            System.out.println("Товар добавлен!");
+            System.out.println("Добавить еще или завершить?");
+            closed = scanner.nextLine();
+            } while (!(closed.equalsIgnoreCase("завершить")));
+            return positions;
     }
+
 }
