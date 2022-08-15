@@ -45,8 +45,7 @@ public class Main {
         String close = "";
         String name = "";
         final Scanner scanner = new Scanner(System.in);
-        PrintStream ps = new PrintStream(System.out);
-
+        PrintStream ps = new PrintStream(System.out); //коммент для коммита
         do {
             ps.println("Введите название товара и цену через пробел (дробные цены вводите через ,)");
             name = scanner.next();
