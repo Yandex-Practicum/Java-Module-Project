@@ -34,6 +34,7 @@ public class Main {
     }
 
     private static List<Item> getInputItems(Scanner scanner) {
+        scanner.useDelimiter("\n");
         List<Item> items = new ArrayList<>();
         String command = "";
         while (!command.equalsIgnoreCase(FINISH_COMMAND)) {
