@@ -48,7 +48,7 @@ public class Main {
                 }
                 item.setPrice(price);
                 items.add(item);
-                System.out.println("товар добавлен:");
+                System.out.println("товар добавлен!");
                 System.out.println("для завершения: \"ЗАВЕРШИТЬ\"/ для продолжения: ANY KEY");
                 command = scanner.next();
             } catch (InputMismatchException e) {
