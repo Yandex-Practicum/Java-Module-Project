@@ -17,7 +17,6 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder spacesBetweenNameAndPrice = new StringBuilder();
-
         for(int i = 0; i <15-name.length(); i++){
             spacesBetweenNameAndPrice.append(".");
         }

@@ -4,16 +4,16 @@ public class Calculator {
     private int quantityOfGuests;
     private List<Item> items;
 
+    public Calculator(int quantityOfGuests, List<Item> items){
+        this.quantityOfGuests = quantityOfGuests;
+        this.items = items;
+    }
+
     public void setItems(List<Item> items) {
         this.items = items;
     }
     public void setQuantityOfGuests(int quantityOfGuests){
         this.quantityOfGuests = quantityOfGuests;
-    }
-
-    public Calculator(int quantityOfGuests, List<Item> items){
-        this.quantityOfGuests = quantityOfGuests;
-        this.items = items;
     }
 
     public void calculate() {
