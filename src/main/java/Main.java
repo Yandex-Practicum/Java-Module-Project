@@ -1,30 +1,47 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-        int guestCount = 0;
+        int guestCount;
         Scanner scanner = new Scanner(System.in);
 
-        while (!validNumberOfGuests(guestCount)) {
+        while (true) {
             System.out.println("На сколько человек надо разбить счет?");
-            guestCount = scanner.nextInt();
-            if (validNumberOfGuests(guestCount)) {
-                System.out.println("Отлично!");
-            } else {
-                System.out.println("Неправильное число гостей");
+            try {
+                guestCount = scanner.nextInt();
+                if (validNumberOfGuests(guestCount)) {
+                    System.out.println("Отлично! Давайте посчитаем. \nДля завершения программы нужно вместо товара ввести \"завершить\"");
+                    break;
+                } else {
+                    System.out.println("Вас должно быть больше одного, иначе зачем вам это приложение?");
+                }
+            } catch (Exception nfe) {
+                System.out.println("Убедитесь, что вы вводите целое число.");
+                scanner.next(); // очистка сканера, а не то попадем в бесконечную петлю
+                //continue;
             }
-
         }
 
+        // Заводим счетчик, на вход передаем количество гостей.
+        LetsCount count = new LetsCount(guestCount);
+
+        // Заводим продукты
+        count.inputProduct();
+
+        // Когда завели список покупок
+        System.out.println("Сейчас всё посчитаю. \nДобавленные товары: ");
+        count.finalReceipt();
+        System.out.println("ИТОГО: " + count.subTotal() + " " + count.rubCase(count.subTotal()));
+
+        double duePerGuest = count.duePerGuest(guestCount, count.subTotal());
+
+        System.out.println("Количество человек: " + guestCount + "\nНадо заплатить " +
+                String.format("%.2f", duePerGuest) + " " +
+                count.rubCase(duePerGuest) +
+                " с души.");
     }
 
-    public static boolean validNumberOfGuests(int i) {
-        if (i > 1) {
-            return true;
-        } else if (i <= 0) {
-            return false;
-        }
-        return false;
+    private static boolean validNumberOfGuests(int i) {
+        return i > 1;
     }
 }
