@@ -12,7 +12,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int quantityOfGuests = getInputQuantity(scanner);
         List<Item> items = getInputItems(scanner);
-
+        Calculator.calculate(quantityOfGuests, items);
     }
 
     private static int getInputQuantity(Scanner scanner) {
