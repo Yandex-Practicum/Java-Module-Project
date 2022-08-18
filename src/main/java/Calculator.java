@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    private int countPeople;
+    private final int countPeople;
     private double sum;
 
-    private List<Product> goods = new ArrayList<>();
+    private final List<Product> goods = new ArrayList<>();
 
     Calculator(int countPeople) {
 
@@ -45,7 +45,7 @@ public class Calculator {
                 }
 
             }
-            Double price = Double.parseDouble(input);
+            double price = Double.parseDouble(input);
             sum += price;
             Product product = new Product(name, price);
             goods.add(product);

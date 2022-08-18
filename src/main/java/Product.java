@@ -18,16 +18,11 @@ public class Product {
             return "рублей";
         }
 
-        switch (num % 10) {
-            case 1:
-                return "рубль";
-            case 2:
-            case 3:
-            case 4:
-                return "рубля";
-            default:
-                return "рублей";
-        }
+        return switch (num % 10) {
+            case 1 -> "рубль";
+            case 2, 3, 4 -> "рубля";
+            default -> "рублей";
+        };
     }
 
 }

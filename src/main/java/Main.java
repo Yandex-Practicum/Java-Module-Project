@@ -7,7 +7,7 @@ public class Main {
         final String DIGITS = "\\d+";
         System.out.println("Привет, сколько вас человек?");
 
-        int countPeople = 0;
+        int countPeople;
         Scanner sc = new Scanner(System.in).useLocale(Locale.US);
         while (true) {
 
