@@ -50,24 +50,23 @@ public class Main {
         String conclusion = "Cумма товаров %.2f %s\nНа одного человека %.2f %s";
         System.out.printf(conclusion,sumProducts,currency, result, currency2);
     }
-    public int countPeople(){
+    public int countPeople() {
         System.out.println("На скольких человек разделить счет?");
         int people;
-        while(true){
-            people = scanner.nextInt();
-
-            if (people==1){
-                System.out.println("Это некорректное значение для подсчёта! Нет смысла делить счет, если вы только один. Введите корректное значение =)");
-
-            } else if(people<1){
-                System.out.println("Это некорректное значение для подсчёта! Введите корректное значение =)");
+        while (true) {
+            if (scanner.hasNextInt()) {
+                people = scanner.nextInt();
+                if (people > 1) {
+                    System.out.println("Количество человек " + people);
+                    break;
+                } else {
+                    System.out.println("Это некорректное значение для подсчёта! Нет смысла делить счет, если вы только один. Введите корректное значение =)");
+                }
+            } else {
+                System.out.println("У нас ошибка! Попробуй ввести цифру=)");
             }
-            else {
-                break;
-
-            }
+            scanner.nextLine();
         }
-        System.out.println("Количество человек " + people);
         return people;
     }
     public double addProduct(){
