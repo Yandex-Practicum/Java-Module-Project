@@ -68,7 +68,18 @@ public class Calculate {
                 }
                 return price;
             } catch (Exception e) {
-                System.out.println("Введите корректную стоимость в формате 'рубли.копейки' [10.45, 11.40]\"");
+                System.out.println("Введите корректную стоимость в формате 'рубли.копейки' [10.45, 11.40]");
+            }
+        }
+    }
+
+    public int usersRightNumber() {
+        while (true){
+            Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+            try{
+                return scanner.nextInt();
+            } catch(Exception e){
+                System.out.println("Введите корректное кол-во гостей (целое число больше 0)");
             }
         }
     }

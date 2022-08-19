@@ -9,11 +9,12 @@ public class Main {
 
         System.out.println("Введите кол-во гостей");
         while(true){
-            int countUsers = scanner.nextInt();
+            int countUsers = calculate.usersRightNumber();
 
             if (countUsers < 1){
                 System.out.println("Введите корректное число: 1 или больше");
             } else if (countUsers == 1){
+                System.out.println("Нет смысла в пересчете");
                 break;
             } else{
                 addItem();
