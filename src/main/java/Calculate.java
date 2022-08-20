@@ -22,10 +22,22 @@ public class Calculate {
             counter++;
             System.out.println("Имя: ");
             String name = scanner.nextLine();
-            System.out.println("Стоимость в формате 'рубли.копейки': ");
-            String temp = scanner.nextLine();
-            double price = Double.parseDouble(temp);
-            maxLength = Math.max(maxLength, (name.length() + temp.indexOf('.') + 7));
+            double price = -1;
+            while (price <= 0.0) {
+                System.out.println("Стоимость в формате 'рубли.копейки': ");
+                String temp = scanner.nextLine();
+                try {
+                    price = Double.parseDouble(temp);
+                    if (price <= 0.0)
+                        System.out.println("Стоимость не бывает меньше 0, попробуй ещё раз");
+                    else
+                        maxLength = Math.max(maxLength, (name.length() + temp.indexOf('.') + 7));
+                } catch (NumberFormatException exception) {
+                    System.out.println("Кажется что-то пошло не так, это не похоже на число," +
+                            " давай попробуем ещё раз");
+                    price = -1;
+                }
+            }
             listOfProducts.add(new Product(name, price));
             fullSum += price;
             System.out.println("Добавить еще один товар или завершить?: ");

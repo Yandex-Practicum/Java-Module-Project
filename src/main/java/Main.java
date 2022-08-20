@@ -8,7 +8,12 @@ public class Main {
         System.out.print("Привет!");
         while (visitorsNumber <= 1) {
             System.out.println("На сколько человек нужно поделить счёт?");
-            visitorsNumber = scanner.nextInt();
+            String visitors = scanner.nextLine();
+            try {
+                visitorsNumber = Integer.parseInt(visitors);
+            } catch (NumberFormatException exception) {
+                visitorsNumber = 0;
+            }
             if (visitorsNumber < 1)
                 System.out.println("Что-то пошло не так, " +
                         "кажется на такое количество людей поделить счёт не выйдет");
