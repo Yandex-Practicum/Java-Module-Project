@@ -17,7 +17,7 @@ public class Main {
                 countPeople = Integer.parseInt(countPeople1);
                 if (countPeople <= 1) {
                     System.out.println("Недостаточно человек");
-                } else if (countPeople >= 2) {
+                } else {
 
                     //double sum = 0;
                     Calculator calculator  = new Calculator(countPeople);

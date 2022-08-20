@@ -56,7 +56,7 @@ public class Calculator {
 
             Product product = new Product(name, price);
             goods.add(product);
-            System.out.println("Товар добавлен, добавить еще товар?");
+            System.out.println("Товар добавлен, введи Завершить, чтобы закончить ввод");
             String check = sc.next();
             if (check.equalsIgnoreCase("Завершить")) {
 
