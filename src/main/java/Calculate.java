@@ -9,6 +9,7 @@ public class Calculate {
     private double fullSum = 0;
     private int maxLength = 0;
     private List<Product> listOfProducts = new LinkedList<>();
+
     public void getProducts(){
         //for testing
         //File file = new File("testing");
@@ -35,6 +36,10 @@ public class Calculate {
     }
 
     public void printBill(){
+        if (listOfProducts.isEmpty()){
+            System.out.println("Ошибка, заполните пожалуйста сначала список товаров");
+            getProducts();
+        }
         System.out.println("Добавленные товары:");
         int counter = 1;
         for (Product product:listOfProducts) {
@@ -46,18 +51,25 @@ public class Calculate {
         printSpaces(maxLength+5);
         System.out.println(String.format(Locale.US,"\nИтого: %.2f",fullSum));
     }
+
+    public void divideBill(int n){
+        if (listOfProducts.isEmpty()){
+            System.out.println("Ошибка, заполните пожалуйста сначала список товаров");
+            getProducts();
+            printBill();
+        }
+        double result = fullSum / n;
+        String temp = "С каждого по: %.2f " + rublesFormatter((int) Math.floor(result));
+        System.out.println(String.format(Locale.US, temp, result));
+    }
+
     private void printSpaces(int n){
         for (int i = 0; i<n;i++){
             System.out.print("_");
         }
     }
-    public void divideBill(int n){
-        double result = fullSum /n;
-        String temp = "С каждого по: %.2f "+rublesFormatter((int) Math.floor(result));
-        System.out.println(String.format(Locale.US,temp,result));
-    }
 
-    public String rublesFormatter(int ruble){
+    private String rublesFormatter(int ruble){
         if((ruble%100) >= 11 && (ruble%100) <= 19)
             return "рублей";
         else
