@@ -1,12 +1,14 @@
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Calculator {
 
     private final int countPeople;
     private double sum;
+    private double price;
 
     private final List<Product> goods = new ArrayList<>();
 
@@ -28,25 +30,30 @@ public class Calculator {
 
     public void start(Scanner sc) {
 
-        final String REGEX = "\\d+.\\d{2}";
-
         while (true) {
             System.out.println("Введите название товара");
 
             String name = sc.next();
-            String input;
+
             System.out.println("Введите цену товара");
+
             while (true) {
-                input = sc.next();
-                if (input.matches(REGEX)) {
+
+                Scanner scDouble = new Scanner(System.in).useLocale(Locale.US);
+
+                if (scDouble.hasNextDouble()){
+
+                    price = scDouble.nextDouble();
+                    sum += price;
                     break;
-                } else {
+
+                }else{
                     System.out.println("Неверный ввод, введите цену в формате 00.00");
                 }
 
+
             }
-            double price = Double.parseDouble(input);
-            sum += price;
+
             Product product = new Product(name, price);
             goods.add(product);
             System.out.println("Товар добавлен, добавить еще товар?");
