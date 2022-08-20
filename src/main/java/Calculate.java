@@ -1,5 +1,3 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -10,7 +8,7 @@ public class Calculate {
     private int maxLength = 0;
     private List<Product> listOfProducts = new LinkedList<>();
 
-    public void getProducts(){
+    public void getProducts() {
         //for testing
         //File file = new File("testing");
         //Scanner scanner = new Scanner(file);
@@ -19,41 +17,41 @@ public class Calculate {
         int counter = 1;
         System.out.println("Теперь давай добавим товары в список, ");
         System.out.println("Когда товары закончатся используй пожалуйста команду 'завершить'");
-        while (!command.equalsIgnoreCase("завершить")){
-            System.out.println("Товар номер: "+ counter);
+        while (!command.equalsIgnoreCase("завершить")) {
+            System.out.println("Товар номер: " + counter);
             counter++;
             System.out.println("Имя: ");
             String name = scanner.nextLine();
             System.out.println("Стоимость в формате 'рубли.копейки': ");
             String temp = scanner.nextLine();
             double price = Double.parseDouble(temp);
-            maxLength = Math.max(maxLength,(name.length()+temp.indexOf('.')+7));
-            listOfProducts.add(new Product(name,price));
+            maxLength = Math.max(maxLength, (name.length() + temp.indexOf('.') + 7));
+            listOfProducts.add(new Product(name, price));
             fullSum += price;
             System.out.println("Добавить еще один товар или завершить?: ");
             command = scanner.nextLine();
         }
     }
 
-    public void printBill(){
-        if (listOfProducts.isEmpty()){
+    public void printBill() {
+        if (listOfProducts.isEmpty()) {
             System.out.println("Ошибка, заполните пожалуйста сначала список товаров");
             getProducts();
         }
         System.out.println("Добавленные товары:");
         int counter = 1;
-        for (Product product:listOfProducts) {
-            System.out.print(counter+"."+product.getName());
-            printSpaces(maxLength - product.getLengthIntPart()-product.getName().length()+2);
-            System.out.println(String.format(Locale.US,"%.2f",product.getPrice()));
+        for (Product product : listOfProducts) {
+            System.out.print(counter + "." + product.getName());
+            printSpaces(maxLength - product.getLengthIntPart() - product.getName().length() + 2);
+            System.out.println(String.format(Locale.US, "%.2f", product.getPrice()));
             counter++;
         }
-        printSpaces(maxLength+5);
-        System.out.println(String.format(Locale.US,"\nИтого: %.2f",fullSum));
+        printSpaces(maxLength + 5);
+        System.out.println(String.format(Locale.US, "\nИтого: %.2f", fullSum));
     }
 
-    public void divideBill(int n){
-        if (listOfProducts.isEmpty()){
+    public void divideBill(int n) {
+        if (listOfProducts.isEmpty()) {
             System.out.println("Ошибка, заполните пожалуйста сначала список товаров");
             getProducts();
             printBill();
@@ -63,23 +61,25 @@ public class Calculate {
         System.out.println(String.format(Locale.US, temp, result));
     }
 
-    private void printSpaces(int n){
-        for (int i = 0; i<n;i++){
+    private void printSpaces(int n) {
+        for (int i = 0; i < n; i++) {
             System.out.print("_");
         }
     }
 
-    private String rublesFormatter(int ruble){
-        if((ruble%100) >= 11 && (ruble%100) <= 19)
+    private String rublesFormatter(int ruble) {
+        if ((ruble % 100) >= 11 && (ruble % 100) <= 19)
             return "рублей";
         else
-            switch(ruble%10)
-            {
-                case 1: return "рубль";
+            switch (ruble % 10) {
+                case 1:
+                    return "рубль";
                 case 2:
                 case 3:
-                case 4: return "рубля";
-                default: return "рублей";
+                case 4:
+                    return "рубля";
+                default:
+                    return "рублей";
             }
     }
 
