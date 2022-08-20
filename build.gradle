@@ -1,6 +1,6 @@
 apply plugin: 'java'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 14
 version = '1.0'
 
 repositories {
@@ -8,3 +8,4 @@ repositories {
 
 dependencies {
 }
+targetCompatibility = JavaVersion.VERSION_14
