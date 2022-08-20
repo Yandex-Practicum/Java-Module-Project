@@ -1,11 +1,8 @@
 import java.util.Scanner;
 class CountBuyers {
     int number;
-    CountBuyers (int number){
-        this.number = number;
-    }
 
-    public static int countBuyers(int number) {
+    public int countBuyers() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Здравствуйте!");
         System.out.println("На скольких человек необходимо разделить счёт?");
