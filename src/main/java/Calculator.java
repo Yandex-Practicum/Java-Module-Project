@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Calculator {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private List<String> goodsList = new ArrayList<String>();
+    private static Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+    private List<String> goodsList = new ArrayList<>();
     private float total = 0;
     private int personQuantity = 0;
     Calculator(){
@@ -37,6 +38,7 @@ public class Calculator {
             System.out.println("Введите стоимость товара. Стоимость товара должна быть неотрицательным числом:");
             try {
                 productPrice = scanner.nextFloat();
+                if (productPrice < 0) continue;
                 total += productPrice;
             }
             catch(InputMismatchException e){
@@ -52,7 +54,7 @@ public class Calculator {
             System.out.println(s);
         }
         String declination = checkDeclension();
-        String format = String.format("Каждый человек должен заплатить %.2f %s", (float)Math.floor(total/personQuantity), declination);
+        String format = String.format("Каждый человек должен заплатить %.2f %s", total/personQuantity, declination);
         System.out.println(format);
     }
 
