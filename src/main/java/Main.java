@@ -14,7 +14,7 @@ public class Main {
         int peopleCount = 0;
         System.out.println("На сколько человек делим счет?");
         while (true) {
-            if (scanner.hasNextInt()){ // вместо peopleCount = scanner.nextInt();
+            if (scanner.hasNextInt()){ //  вместо peopleCount = scanner.nextInt();
                 peopleCount = scanner.nextInt();
             } else {
                 scanner.next();
