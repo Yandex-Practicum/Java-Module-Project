@@ -5,15 +5,24 @@ class CountBuyers {
     public int countBuyers() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Здравствуйте!");
-        System.out.println("На скольких человек необходимо разделить счёт?");
-        number = scanner.nextInt();
-        while (number <= 1) {
-            System.out.println("Вы ввели некорректное значение. \nПопробуйте еще раз ");
-            number = scanner.nextInt();
-        }
-        System.out.println("Отлично, начинаем!");
+        System.out.println("На сколько человек необходимо разделить счёт?");
+        while(true){
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                if (number > 1) {
+                    System.out.println("Отлично! Давайте посчитаем.");
+                    break;
+                } else if (number == 1){
+                    break;
+                } else {
+                    System.out.println("Ноль и отрицательные числа недопустимы. Введите натуральное число.");
+                }
+            } else{
+                    System.out.println("Для ввода количества используйте вместо букв цифры. Попробуйте еще раз.");
+                }
+                scanner.nextLine();
+                }
         return number;
     }
-
 
 }
