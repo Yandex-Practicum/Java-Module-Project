@@ -16,13 +16,20 @@ public class Calculator {
             System.out.println("Введите название товара: ");
             allProduct += scanner.next() + "\n";
             System.out.println("Введите цену товара в формате \"'рубли.копейки' [10.45, 11.40]\": ");
-            while (true) {
-                double i = scanner.nextDouble();// бесконечный цикл проверки, цена может быть 0 если это комплимент от заведения.
-                if (i >= 0) {
-                    totalPrice += i;
-                    break;
+            while (true) { // бесконечный цикл проверки, цена может быть 0 если это комплимент от заведения.
+                try {
+                    double i = scanner.nextDouble();
+                    if (i >= 0) {
+                        totalPrice += i;
+                        break;
+                    }
+                    System.out.println("Вы ввели отрицательно число! Пожалуйста, попробуйте снова!");
                 }
-                System.out.println("Вы ввели отрицательно число! Пожалуйста, попробуйте снова!");
+                catch (Exception e) {
+                    System.out.println("Недопустимый символ, попробуйте снова!: ");
+                    scanner.next();
+                }
+
             }
             System.out.println("Товар успешно добавлен!\n" +
                     "Хотите добавить еще один товар?\n" +

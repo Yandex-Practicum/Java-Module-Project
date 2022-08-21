@@ -11,10 +11,14 @@ public class Main {
         calculator.doCalculate();
     }
     static int getPeopleCount() {
-        int peopleCount;
+        int peopleCount = 0;
         System.out.println("На сколько человек делим счет?");
         while (true) {
-            peopleCount = scanner.nextInt();
+            if (scanner.hasNextInt()){ // вместо peopleCount = scanner.nextInt();
+                peopleCount = scanner.nextInt();
+            } else {
+                scanner.next();
+            }
             if (peopleCount > 1) {
                 System.out.println("Делим счет на " + peopleCount + "х");
                 return peopleCount;
