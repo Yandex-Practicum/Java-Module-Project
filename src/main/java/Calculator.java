@@ -6,45 +6,6 @@ import java.util.Scanner;
 public class Calculator {
     static Scanner scanner = new Scanner(System.in).useLocale(Locale.ROOT);
 
-    public void result(){
-
-        double people = countPeople();
-        double sumProducts = addProduct();
-        double result = sumProducts/people;
-        String currency;
-        String currency2;
-
-        switch ((int) (floor(sumProducts)%10)) {
-
-            case 1:
-                currency = "рубль";
-                break;
-            case 2:
-            case 3:
-            case 4:
-                currency = "рубля";
-                break;
-            default:
-                currency = "рублей";
-                break;
-        }
-        switch ((int) (floor(result)%10)) {
-
-            case 1:
-                currency2 = "рубль";
-                break;
-            case 2:
-            case 3:
-            case 4:
-                currency2 = "рубля";
-                break;
-            default:
-                currency2 = "рублей";
-                break;
-        }
-        String conclusion = "Cумма товаров %.2f %s\nНа одного человека %.2f %s";
-        System.out.printf(conclusion,sumProducts,currency, result, currency2);
-    }
     public int countPeople() {
         System.out.println("На скольких человек разделить счет?");
         int people;
@@ -84,19 +45,47 @@ public class Calculator {
                 allProduct += product + "\n";
                 System.out.println("Введите стоймость товара в формате 'рубли.копейки'[10.45, 11.40]");
                 while (true){
-                    price = scanner.nextDouble();
-                    if(price < 0){
-                        System.out.println("Цена не может быть с минусом, введите заново!");
-                    }else {
-                        break;
+                    if (scanner.hasNextDouble()) {//сделал обработку стоймости, но есть проблема, сообщение об ошибке выводится 2 раза подряд. В обработке количества человек такой проблемы нет. Поскажите, пожалуйста, что с этим можно сделать ?
+                        price = scanner.nextDouble();
+                        if (price < 0) {
+                            System.out.println("Цена не может быть с минусом, введите заново!");
+                        } else {
+                            break;
+                        }
+                    }else{
+                        System.out.println("У нас ошибка! Попробуй ввести цифру=)");
+
                     }
+                    scanner.nextLine();
+
                 }
 
                 sumPrice = sumPrice + price;
 
             }
+
         }
         return sumPrice;
+
+    }
+    public String endOfCurrency(double value) {
+
+        String currency;
+        switch ((int) (floor(value) % 10)) {
+
+            case 1:
+                currency = "рубль";
+                break;
+            case 2:
+            case 3:
+            case 4:
+                currency = "рубля";
+                break;
+            default:
+                currency = "рублей";
+                break;
+        }
+        return currency;
     }
 }
 
