@@ -5,7 +5,6 @@ public class Main {
 <<<<<<< HEAD
 =======
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
         Calculator calculator = new Calculator();
         calculator.howManyUsers();
         calculator.enterProductAndPrice();
