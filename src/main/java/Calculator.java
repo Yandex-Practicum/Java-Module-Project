@@ -44,7 +44,7 @@ public class Calculator {
 
         }
     }
-    public String correctEnding (int totalPriceInt) {
+    public String correctEnding (int totalPriceInt) { //проверка для окончаний
         int preLastDigit = totalPriceInt % 100 / 10; //Решаем проблему с препоследней единицей в числе, например 11, 1011 и тд.
         if (preLastDigit == 1) {
             return "рублей";
