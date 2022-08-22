@@ -13,7 +13,11 @@ public class BillCalculator {
 
     public void inputParameters () {
         System.out.println ("Введите количество человек, на которых нужно поделить счет");
-        int i;
+        int i = 0;
+        while (!scanner.hasNextInt()) {
+            System.out.println("Введите целое число");
+            scanner.next();
+        }
         while (true) {
             i = scanner.nextInt();
             if (i < 2) {
@@ -33,7 +37,11 @@ public class BillCalculator {
             if (name.equalsIgnoreCase("завершить")) {
                 break;
             }
-            System.out.println ("Введите цену блюда");
+            System.out.println ("Введите цену блюда в формате \"рубли.копейки\"");
+            while (!scanner.hasNextDouble()) {
+                System.out.println("Некорректный ввод цены, введите цену блюда в формате \"рубли.копейки\"");
+                scanner.next();
+            }
             double price = scanner.nextDouble();
             dishesList = dishesList + name + "\n";
             billAmount = billAmount + price;
