@@ -1,6 +1,7 @@
 public class Product {
     private String name;
     private double price;
+    private final int PRICE_PRECISION = 2;
 
     Product(String name, double price) {
         this.name = name;
@@ -15,8 +16,9 @@ public class Product {
         return price;
     }
 
-    public int getLengthIntPart() {
-        return Double.toString(this.price).indexOf('.') + 1;
+    public int getLengthNameAndPrice() {
+        // возвращаем длину строки <имя+число>
+        return Double.toString(this.price).indexOf('.') + name.length() + PRICE_PRECISION;
     }
 
 }

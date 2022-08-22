@@ -7,6 +7,7 @@ public class Calculate {
     private double fullSum = 0;
     private int maxLength = 0;
     private List<Product> listOfProducts = new LinkedList<>();
+    private final int MIN_INDENT_BETWEEN_NAME_AND_PRICE = 3;
 
     public void getProducts() {
         //for testing
@@ -30,15 +31,17 @@ public class Calculate {
                     price = Double.parseDouble(temp);
                     if (price <= 0.0)
                         System.out.println("Стоимость не бывает меньше 0, попробуй ещё раз");
-                    else
-                        maxLength = Math.max(maxLength, (name.length() + temp.indexOf('.') + 7));
                 } catch (NumberFormatException exception) {
                     System.out.println("Кажется что-то пошло не так, это не похоже на число," +
                             " давай попробуем ещё раз");
                     price = -1;
                 }
             }
-            listOfProducts.add(new Product(name, price));
+            Product product = new Product(name, price);
+            listOfProducts.add(product);
+            // хотим знать макисмальную длину строки <имя+цена> для этого сравниваем
+            // параметры текущей строки с имеющимся максимумом
+            maxLength = Math.max(maxLength, product.getLengthNameAndPrice());
             fullSum += price;
             System.out.println("Добавить еще один товар или завершить?: ");
             command = scanner.nextLine();
@@ -54,11 +57,16 @@ public class Calculate {
         int counter = 1;
         for (Product product : listOfProducts) {
             System.out.print(counter + "." + product.getName());
-            printSpaces(maxLength - product.getLengthIntPart() - product.getName().length() + 2);
+            // хотим при выводе выравнивать все суммы по правому краю
+            //для этого выводим подчеркивания недостоющие до макимальной длины и добавляем отступ
+            //для самой длинной строки
+            int numberOfSpaces = maxLength - product.getLengthNameAndPrice()
+                    + MIN_INDENT_BETWEEN_NAME_AND_PRICE;
+            printSpaces(numberOfSpaces);
             System.out.println(String.format(Locale.US, "%.2f", product.getPrice()));
             counter++;
         }
-        printSpaces(maxLength + 5);
+        printSpaces(maxLength + MIN_INDENT_BETWEEN_NAME_AND_PRICE);
         System.out.println(String.format(Locale.US, "\nИтого: %.2f", fullSum));
     }
 
