@@ -1,27 +1,11 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        int countGuest = 0;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("На скольких человек необходимо рзделить счет?");
-        while(true) {
-            countGuest = scanner.nextInt();
-            if (countGuest <= 1) {
-                System.out.println("Ошибка. Введите корректное число гостей:");
-            }
-            if (countGuest > 1) {
-                break;
-            }
-        }
-        Calculator calculator = new Calculator();
-        calculator.addProducts();
-        System.out.println(calculator.products);
-        double priceForPerson = calculator.calcPriceForPerson(countGuest);
-        String rubleAddition = calculator.getRubleAddition(priceForPerson);
-        String conclusion = "Каждый должен заплатить по %.2f " + rubleAddition + ".";
-        System.out.println(String.format(conclusion, priceForPerson));
+        BillCalculator billCalculator = new BillCalculator();
+        billCalculator.startBillCalculator();
     }
 }
 
@@ -44,6 +28,7 @@ class Calculator {
             while (true) {
 
                 System.out.println("Введите стоимость товара в формате ('рубли.копейки' [10.45, 11.40]):");
+
                 String strPriceProduct = scanner.next();
                 try {
                     product.price = Double.parseDouble(strPriceProduct);
@@ -87,5 +72,46 @@ class Calculator {
                 return "рублей";
 
         }
+    }
+}
+class Guests {
+    int countGuest = 0;
+    Scanner scanner = new Scanner(System.in);
+
+    int defineCountGuests() {
+        while (true) {
+            System.out.println("На скольких человек необходимо рзделить счет?");
+            try {
+                countGuest = scanner.nextInt();
+            } catch (InputMismatchException er) {
+                System.out.println("Некорректное значение");
+                scanner.nextLine();
+                continue;
+            }
+
+            if (countGuest <= 1) {
+               System.out.println("Ошибка. Введите корректное число гостей:");
+               continue;
+            }
+            return countGuest;
+
+        }
+    }
+}
+
+class BillCalculator {
+    void startBillCalculator() {
+        Guests guests = new Guests();
+        int countGuests = guests.defineCountGuests();
+
+        Calculator calculator = new Calculator();
+        calculator.addProducts();
+
+        double priceForPerson = calculator.calcPriceForPerson(countGuests);
+        String rubleAddition = calculator.getRubleAddition(priceForPerson);
+        String conclusion = "Каждый должен заплатить по %.2f " + rubleAddition + ".";
+
+        System.out.println(calculator.products);
+        System.out.println(String.format(conclusion, priceForPerson));
     }
 }
