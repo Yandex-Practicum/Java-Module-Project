@@ -51,7 +51,7 @@ public class Calculator {
         }
         System.out.println("Добавленные товары:");
         System.out.println(productsTotal);
-        System.out.println(formatGuestBill(sum/guestsCount));
+        System.out.println(formatGuestBill(sum / guestsCount));
     }
 
     private double resolvePrice() {
@@ -80,10 +80,13 @@ public class Calculator {
 
     private String formatGuestBill(float amount) {
         int amountLastDigit = ((int) amount) % 10;
+        int amountTenth = ((int) amount) % 100;
         String currency;
-        if (amountLastDigit == 1){
+        if (amountTenth > 10 && amountTenth < 15) {
+            currency = "рублей";
+        } else if (amountLastDigit == 1) {
             currency = "рубль";
-        } else if (amountLastDigit < 5){
+        } else if (amountLastDigit < 5) {
             currency = "рубля";
         } else {
             currency = "рублей";
