@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class LetsCount {
-    static Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     int guestCount;
 
@@ -10,7 +10,7 @@ public class LetsCount {
         this.guestCount = guestCount;
     }
 
-    private static final HashMap<String, Double> productList = new HashMap<>();
+    private final HashMap<String, Double> productList = new HashMap<>();
 
     String productName;
     double price;
@@ -75,18 +75,40 @@ public class LetsCount {
         return d;
     }
 
-    // метод для определения падежа
+    // метод для определения падежа слова "рубль" в зависимости от числа,
+    // которое передается на входе
     public String rubCase(double duePerGuest) {
         int i = (int) Math.floor(duePerGuest);
-        switch (i % 10) {
-            case 1:
-                return "рубль";
-            case 2:
-            case 3:
-            case 4:
-                return "рубля";
-            default:
-                return "рублей";
+        if (i >= 100) { // для обработки остатков 11, 12, 13 и 14
+            switch (i % 100) {
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                    return "рублей";
+                default: // на случай, если остаток деления будет, например, 01, 24 и т.д.
+                    switch (i % 10) {
+                        case 1:
+                            return "рубль";
+                        case 2:
+                        case 3:
+                        case 4:
+                            return "рубля";
+                        default:
+                            return "рублей";
+                    }
+            }
+        } else { // Если итоговый чек меньше, чем на 100 руб.
+            switch (i % 10) {
+                case 1:
+                    return "рубль";
+                case 2:
+                case 3:
+                case 4:
+                    return "рубля";
+                default:
+                    return "рублей";
+            }
         }
     }
 }
