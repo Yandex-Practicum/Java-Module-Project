@@ -75,11 +75,11 @@ public class LetsCount {
         return d;
     }
 
-    // метод для определения падежа слова "рубль" в зависимости от числа,
+    // метод для определения формы слова "рубль" в зависимости от числа,
     // которое передается на входе
     public String rubCase(double duePerGuest) {
         int i = (int) Math.floor(duePerGuest);
-        if (i >= 100) { // для обработки остатков 11, 12, 13 и 14
+        if (i >= 100) { // Для чеков больше 100 руб., для обработки остатков 11, 12, 13 и 14.
             switch (i % 100) {
                 case 11:
                 case 12:
@@ -87,28 +87,25 @@ public class LetsCount {
                 case 14:
                     return "рублей";
                 default: // на случай, если остаток деления будет, например, 01, 24 и т.д.
-                    switch (i % 10) {
-                        case 1:
-                            return "рубль";
-                        case 2:
-                        case 3:
-                        case 4:
-                            return "рубля";
-                        default:
-                            return "рублей";
-                    }
+                    return rubCaseDefault(i);
             }
         } else { // Если итоговый чек меньше, чем на 100 руб.
-            switch (i % 10) {
-                case 1:
-                    return "рубль";
-                case 2:
-                case 3:
-                case 4:
-                    return "рубля";
-                default:
-                    return "рублей";
-            }
+            return rubCaseDefault(i);
+        }
+    }
+
+    // В отдельный метод вынесено определение формы слова "рубль" для случаев по умолчанию.
+    // Просто чтобы соблюсти принцип DRY.
+    private String rubCaseDefault(int i) {
+        switch (i % 10) {
+            case 1:
+                return "рубль";
+            case 2:
+            case 3:
+            case 4:
+                return "рубля";
+            default:
+                return "рублей";
         }
     }
 }
