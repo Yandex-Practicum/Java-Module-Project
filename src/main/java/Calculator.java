@@ -14,7 +14,7 @@ public class Calculator {
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US); //без принудительной смены locale программа не принимала "." в качестве разделителя.
         while (true) {
             System.out.println("Введите название товара: ");
-            allProduct += scanner.next() + "\n";
+            allProduct += scanner.next() + "\n"; //wtf? string concatenation '+=' in loop?
             System.out.println("Введите цену товара в формате \"'рубли.копейки' [10.45, 11.40]\": ");
             while (true) { // бесконечный цикл проверки, цена может быть 0 если это комплимент от заведения.
                 try {
@@ -49,7 +49,7 @@ public class Calculator {
         if (preLastDigit == 1) {
             return "рублей";
         }
-        switch (totalPriceInt % 10) {
+        switch (totalPriceInt % 10) { // test for commit
             case 1:
                 return "рубль";
             case 2:
