@@ -23,8 +23,8 @@ public class Main {
                     break;
                 }
             } catch (InputMismatchException er) {
-                System.out.println("Некоректное значение");
-                break;
+                System.out.println("Некоректное значение, попробуйте другое");
+                scanner.nextLine();
             }
         }
         return peopleCount;

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ProductCalculator {
@@ -11,6 +12,7 @@ public class ProductCalculator {
     ProductCalculator(int peopleCount) {
         this.peopleCount = peopleCount;
     }
+
     public void addProduct(Product product) {
         this.products.add(product);
         this.totalPriceOfAllProducts += product.getPrice();
@@ -64,7 +66,13 @@ public class ProductCalculator {
             productName = scanner.next();
 
             System.out.println("Введите стоимость товара стоимость в формате: \"'рубли.копейки' [10.45, 11.40]\"");
-            productPrice = scanner.nextFloat();
+            try {
+                productPrice = scanner.nextFloat();
+            } catch (InputMismatchException er) {
+                System.out.println("Цена товара некорректна, введите товар заново.");
+                scanner.nextLine();
+                continue;
+            }
 
             if (productPrice <= 0.0f) {
                 System.out.println("Цена товара некорректна, введите товар заново.");
