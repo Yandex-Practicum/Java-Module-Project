@@ -75,7 +75,7 @@ public class LetsCount {
         return d;
     }
 
-    // метод для определения формы слова "рубль" в зависимости от числа,
+    // Метод для определения формы слова "рубль" в зависимости от числа,
     // которое передается на входе
     public String rubCase(double duePerGuest) {
         int i = (int) Math.floor(duePerGuest);
@@ -89,6 +89,8 @@ public class LetsCount {
                 default: // на случай, если остаток деления будет, например, 01, 24 и т.д.
                     return rubCaseDefault(i);
             }
+        } else if (11 <= i && i <= 14) {
+            return "рублей";
         } else { // Если итоговый чек меньше, чем на 100 руб.
             return rubCaseDefault(i);
         }
