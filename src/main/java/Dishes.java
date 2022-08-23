@@ -1,4 +1,4 @@
-public class Dishes {
+public class Dishes { // without changes
     private String nameOfDish;
     private double amount;
 

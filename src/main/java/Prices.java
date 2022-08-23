@@ -1,4 +1,4 @@
-public class Prices {
+public class Prices { // without changes
     private double amount;
 
     public Prices(double amount) {
