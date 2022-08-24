@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    private final int numberOfPerson;
-    private String goods = "";
-    private double sum = 0;
+    private final int numberOfPerson; // количество человек, на которых нужно делить счёт
+    private String goods = ""; // список товаров в заказе
+    private double sum = 0; // сумма по счёту
 
     public Calculator(int numberOfPerson) {
         this.numberOfPerson = numberOfPerson;
