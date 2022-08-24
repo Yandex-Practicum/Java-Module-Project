@@ -69,7 +69,7 @@ public class Calculator { //класс для хранения и подсчёт
 
     public void printInfo(int persona) { //метод вывода информации
         System.out.println("Добавленные товары: \n" + listOfProducts);
-        System.out.printf("Стоимость товаров для каждого по отдельности: %.2f %s \n", (productPrice / persona), getRubleAddition(productPrice));
+        System.out.printf("Стоимость товаров для каждого по отдельности: %.2f %s \n", productPrice / persona, getRubleAddition(productPrice / persona));
         System.out.printf("Общая стоимость товаров: %.2f %s \n" , productPrice, getRubleAddition(productPrice));
     }
 }
