@@ -1,29 +1,29 @@
 import java.util.Scanner;
 
 public class Calculator {
-    String goods ="";// Строка, хранящая перечень всех товаров
-    double sum = 0.00;// Строка, хранящая сумму всех товаров
+    String addedGoods ="";// Строка, хранящая перечень всех товаров
+    double sumAllAddedGoods = 0.00;// Строка, хранящая сумму всех товаров
 
 
     public void getTheName(String position) {// Добавить товар
-        goods = goods+position+"\n";
+        addedGoods = addedGoods+position+"\n";
     }// функция добавления товара
     public void addition (double cost) {// Добавить стоимость
-        sum += cost;
+        sumAllAddedGoods += cost;
     }// функция прибавки цены товара
     public void addedGoods(){// функция вывода перечня товаров
         System.out.println("Добавленные товары:\n");
-        System.out.println(goods);
+        System.out.println(addedGoods);
     }
     public void totalSum (int persons){// функция вычисления, сколько должен каждый
-        double sum1 = 0.00;
+        double sumRound = 0.00;// Вводим переменную для округления суммы товаров
         String message = "Сумма которую должен заплатить каждый: %.2f ";
         String message0 = "";
         String message1 ="рубль";
         String message2 ="рубля";
         String message3 ="рублей";
-        sum1 = Math.floor(sum/persons);// Округление числа в меньшую сторону для определения окончания
-        double checkNumber = sum1%10;
+        sumRound = Math.floor(sumAllAddedGoods/persons);// Округление числа в меньшую сторону для определения окончания
+        double checkNumber = sumRound%10;
         if (checkNumber>=2&&checkNumber<=4) {
             message0 = message2; // окончание"рубля"
         }
@@ -33,6 +33,6 @@ public class Calculator {
         else {
             message0 = message3;
         }
-        System.out.println(String.format(message,sum/persons) + message0);
+        System.out.println(String.format(message,sumAllAddedGoods/persons) + message0);
         }
 }
