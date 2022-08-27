@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Calculator {
 
@@ -14,14 +15,13 @@ public class Calculator {
                 break;
             } else {
                 System.out.println("Введите цену в формате [руб,коп]");
-                double inputPrice = scanner.nextDouble();
+                double inputPrice = 0;
+                try {inputPrice = scanner.nextDouble();}
+                catch (InputMismatchException e) {
+                System.out.println("Неверное значение");
+            }
                 food = food + inputFood + "\n";
-
-                if (inputPrice <= 0){
-                    System.out.println("Неверная цена");
-                } else {
-                    price = price + inputPrice;
-                }
+                price = price + inputPrice;
             }
 
         }
@@ -32,3 +32,5 @@ public class Calculator {
     }
 
 }
+
+
