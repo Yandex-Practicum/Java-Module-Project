@@ -12,6 +12,8 @@ public class Main {
                 people = scanner.nextInt();
                 if (people >= 2) {
                     break;
+                } else {
+                    System.out.println("Неверное значение");
                 }
             }
             catch (InputMismatchException e) {

@@ -34,7 +34,11 @@ public class Calculator {
                 double price = 0.0;
                 Scanner scanner = new Scanner(System.in);
                 inputPrice = scanner.nextDouble();
-                return inputPrice;
+                if (inputPrice <= 0){
+                    System.out.println("Неверное значение");
+                } else {
+                    return inputPrice;
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Неверное значение");
             }
