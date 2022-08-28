@@ -14,14 +14,8 @@ public class Calculator {
             if (inputFood.equalsIgnoreCase("Завершить")) {
                 break;
             } else {
-                System.out.println("Введите цену в формате [руб,коп]");
-                double inputPrice = 0;
-                try {inputPrice = scanner.nextDouble();}
-                catch (InputMismatchException e) {
-                System.out.println("Неверное значение");
-            }
                 food = food + inputFood + "\n";
-                price = price + inputPrice;
+                price = price + price();
             }
 
         }
@@ -31,6 +25,21 @@ public class Calculator {
         System.out.println(String.format(message, (price / people)));
     }
 
+
+    static double price() {
+        while (true) {
+            System.out.println("Введите цену в формате [руб,коп]");
+            double inputPrice = 0;
+            try {
+                double price = 0.0;
+                Scanner scanner = new Scanner(System.in);
+                inputPrice = scanner.nextDouble();
+                return inputPrice;
+            } catch (InputMismatchException e) {
+                System.out.println("Неверное значение");
+            }
+        }
+    }
+
+
 }
-
-

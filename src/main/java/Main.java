@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
 
@@ -7,10 +8,13 @@ public class Main {
         while (true) {
             System.out.println("На сколько человек нужно разделить счет?");
             Scanner scanner = new Scanner(System.in);
-            people = scanner.nextInt();
-            if (people >= 2) {
-                break;
-            } else {
+            try {
+                people = scanner.nextInt();
+                if (people >= 2) {
+                    break;
+                }
+            }
+            catch (InputMismatchException e) {
                 System.out.println("Неверное значение");
             }
         }
