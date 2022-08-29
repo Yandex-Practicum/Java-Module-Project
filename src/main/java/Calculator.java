@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Calculator {
-//класс и метод подсчета общей стоимости товара
+    //класс и метод подсчета общей стоимости товара
     public void calculate(int guests) {
         String food = "Dobavlennie tovari: \n";
         Double price = 0.0;
@@ -20,22 +20,29 @@ public class Calculator {
             } else {
 
                 System.out.println("Vvedite cenu tovara [rub.cop]");
-                Double inputPrice = scanner.nextDouble();
-                if (inputPrice>0) {
+                Double inputPrice;
+                //программа принимала значение стоимости через точку,но при вводе запятой крашилась, в данном блоке это исправлено
+                try {
+                    inputPrice = scanner.nextDouble();
+                } catch (Exception e) {
+                    System.out.println("Vvedite znachenie zanovo i korrektno!");
+                    continue;
+                }
+                if (inputPrice > 0) {
 
                     food = food + inputFood + "\n";
                     price = price + inputPrice;
 //                System.out.println("Tovar " + inputFood + " Dobavlen uspeshno, ego cena sostavlaet: " + inputPrice);
                     System.out.println("Tovar " + inputFood + " Dobavlen uspeshno, ego cena sostavlaet: " + inputPrice + " " + getRubleAddition(inputPrice));
-                }
-                else {
+                } else {
 //случай когда цена товара меньше 0
                     System.out.println("Cena tovara ne mozhet bit menshe 0!");
                 }
             }
         }
     }
-//метод для написания рублей в правильном падеже
+
+    //метод для написания рублей в правильном падеже
     public String getRubleAddition(Double num) {
         int preLastDigit = (int) (num % 100 / 10);
         if (preLastDigit == 1) {
