@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Locale;
 public class Calculator {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         String productList = ("Добавленные товары:");
         double cost = 0;
         boolean rightness = false;
