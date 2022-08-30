@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Locale;
 public class Calculator {
         Scanner scanner = new Scanner(System.in);
         String productList = ("Добавленные товары:");
@@ -20,7 +21,7 @@ public class Calculator {
                             System.out.println("Некорректное значение");
                         } else {
                             cost = cost + price;
-                            String worth = String.format("%.2f", price);
+                            String worth = String.format(Locale.US,"%.2f", price);
                             productList = productList + '\n' + product + " " + worth;
                             String list = String.format("Продукт " + product + " %.2f успешно добавлен", price);
                             System.out.println(list);
