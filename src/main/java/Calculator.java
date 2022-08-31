@@ -20,19 +20,22 @@ public class Calculator {
             } else {
 
                 System.out.println("Vvedite cenu tovara [rub.cop]");
-                Double inputPrice;
-                //программа принимала значение стоимости через точку,но при вводе запятой крашилась, в данном блоке это исправлено
+                Double inputPrice = 0.0;
+                String inputString;
+                // программа принимала значение стоимости через точку,но при вводе запятой крашилась, теперь программа принимает как точку, так и запятую, при вводе
+                // некорректного значения цены выводится сообщение о том, что значение введено некорректно
                 try {
-                    inputPrice = scanner.nextDouble();
+                    inputString = scanner.next();
+                    inputString = inputString.replace(",", ".");
+                    inputPrice = Double.valueOf(inputString);
                 } catch (Exception e) {
-                    System.out.println("Vvedite znachenie zanovo i korrektno!");
+                    System.out.println("Vvedite znachenie stoimosti zanovo i korrektno v ukazanom formate!");
                     continue;
                 }
                 if (inputPrice > 0) {
 
                     food = food + inputFood + "\n";
                     price = price + inputPrice;
-//                System.out.println("Tovar " + inputFood + " Dobavlen uspeshno, ego cena sostavlaet: " + inputPrice);
                     System.out.println("Tovar " + inputFood + " Dobavlen uspeshno, ego cena sostavlaet: " + inputPrice + " " + getRubleAddition(inputPrice));
                 } else {
 //случай когда цена товара меньше 0
