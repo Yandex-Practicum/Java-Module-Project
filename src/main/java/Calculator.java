@@ -24,21 +24,23 @@ public class Calculator {
         for (Product product : products) {
             sum += product.price;
         }
-
         return sum;
     }
 
     public void eachPortion (int peoples) {
         double sum = sumOfProducts();
         double portion = sum / peoples;
+        String rubleCase;
         String result = String.format("%.2f", portion);
 
         if (portion % 10 == 1 && (portion > 19 || portion < 10)) {
-            System.out.println("Каждому надо заплатить " + result + " рубль");
+            rubleCase = " рубль";
         } else if ((portion % 10 >= 2 && portion % 10 <= 4) && ((portion > 19 || portion < 10))) {
-            System.out.println("Каждому надо заплатить " + result + " рубля");
+            rubleCase = " рубля";
         } else {
-            System.out.println("Каждому надо заплатить " + result + " рублей");
+            rubleCase = " рублей";
         }
+
+        System.out.println("Каждому надо заплатить " + result + rubleCase);
     }
 }

@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,12 +12,17 @@ public class Main {
 
         while (true) {
             System.out.println("Введите количество людей");
-            peoplesCount = scanner.nextInt();
-            if (peoplesCount > 1) {
-                System.out.println("Спасибо");
-                break;
-            } else {
-                System.out.println("Количество людей должно быть больше одного");
+            try {
+                peoplesCount = scanner.nextInt();
+                if (peoplesCount > 1) {
+                    System.out.println("Спасибо");
+                    break;
+                } else {
+                    System.out.println("Количество людей должно быть больше одного");
+                }
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Необходимо ввести число");
             }
         }
 
@@ -24,7 +30,7 @@ public class Main {
             String productName;
             double productPrice;
 
-            System.out.println("Если вы хотите добавить товар введите его название, если хотите закончить введите: Заверишть");
+            System.out.println("Если вы хотите добавить товар введите его название, если хотите закончить введите: Завершить");
             productName = scanner.next();
             if (productName.equalsIgnoreCase("завершить")) {
                 System.out.println("Добавленные товары");
@@ -34,11 +40,15 @@ public class Main {
             } else {
                 while(true) {
                     System.out.println("Введите стоимость товара в формате: рубли.копейки");
-                    productPrice = scanner.nextDouble();
-                    if (productPrice < 0.01) {
-                        System.out.println("Стоимость товара не может быть меньше 1 копейки");
-                    } else {
-                        break;
+                    try {
+                        productPrice = scanner.nextDouble();
+                        if (productPrice < 0.01) {
+                            System.out.println("Стоимость товара не может быть меньше 1 копейки");
+                        } else {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        scanner.nextLine();
                     }
                 }
                 calculator.addProduct(productName, productPrice);
@@ -47,3 +57,5 @@ public class Main {
         }
     }
 }
+
+
