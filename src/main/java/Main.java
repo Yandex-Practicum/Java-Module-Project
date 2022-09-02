@@ -1,8 +1,61 @@
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+        int peoplesCount;
+        Calculator calculator = new Calculator();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Добро пожаловать в Калькулятор счёта");
+
+        while (true) {
+            System.out.println("Введите количество людей");
+            try {
+                peoplesCount = scanner.nextInt();
+                if (peoplesCount > 1) {
+                    System.out.println("Спасибо");
+                    break;
+                } else {
+                    System.out.println("Количество людей должно быть больше одного");
+                }
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                System.out.println("Необходимо ввести число");
+            }
+        }
+
+        while (true) {
+            String productName;
+            double productPrice;
+
+            System.out.println("Если вы хотите добавить товар введите его название, если хотите закончить введите: Завершить");
+            productName = scanner.next();
+            if (productName.equalsIgnoreCase("завершить")) {
+                System.out.println("Добавленные товары");
+                calculator.printProducts();
+                calculator.eachPortion(peoplesCount);
+                break;
+            } else {
+                while(true) {
+                    System.out.println("Введите стоимость товара в формате: рубли.копейки");
+                    try {
+                        productPrice = scanner.nextDouble();
+                        if (productPrice < 0.01) {
+                            System.out.println("Стоимость товара не может быть меньше 1 копейки");
+                        } else {
+                            break;
+                        }
+                    } catch (InputMismatchException e) {
+                        scanner.nextLine();
+                    }
+                }
+                calculator.addProduct(productName, productPrice);
+                System.out.println("Товар успешно добавлен.");
+            }
+        }
     }
 }
+
+
