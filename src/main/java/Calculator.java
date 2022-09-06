@@ -7,7 +7,8 @@ public class Calculator {
     public void calculate(int peopleCount) {
         ArrayList<Order> orders = new ArrayList<>();
         double sum = 0;
-
+        String name;
+        double price;
         while (true) {
             System.out.println("Введите название товара и сумму, в формате рубли.копейки, " +
                     "для завершения добавления товаров введите \"Завершить\"");
@@ -18,8 +19,13 @@ public class Calculator {
                 System.out.println("Отрицательная сумма, введите корректную сумму");
                 continue;
             } else {
-                String name = input.replaceAll("[\\d.]", "").trim();
-                double price = Double.parseDouble(input.replaceAll("[^.\\d]", "").trim());
+                try {
+                    name = input.replaceAll("[\\d.]", "").trim();
+                    price = Double.parseDouble(input.replaceAll("[^.\\d]", "").trim());
+                } catch (NumberFormatException e) {
+                    System.out.println("Не введено наименование позиции или сумма.");
+                    continue;
+                }
                 orders.add(new Order(name, price));
             }
         }
