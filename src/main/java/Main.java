@@ -10,7 +10,7 @@ public class Main {
 
         while (!scanner.hasNextInt()) {
             scanner.next();
-            System.out.println("Ошибка, введите число. ");
+            System.out.println("Ошибка, введите число.");
 
         }
 

@@ -46,7 +46,7 @@ public class Calculator {
         int floorMoney = (int) Math.floor(money);
         int lastDigit = floorMoney % 10;
         if (lastDigit == 1) {
-            return "рубль";
+            return "рубль ";
         }
         else if (lastDigit == 2 || lastDigit == 3 || lastDigit == 4) {
             return "рубля";
