@@ -17,7 +17,7 @@ public class Main {
         while (true) {
             i = scanner.nextInt();
             if (i <= 1) {
-                System.out.println("Введите корректное количество гостей. ");
+                System.out.println("Введите корректное количество гостей.");
             }
 
             if (i > 1) {

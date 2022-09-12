@@ -26,7 +26,7 @@ public class Calculator {
                     break;
                 }
             }
-            System.out.println("Успех! \nХотите ли добавить еще продукт? ");
+            System.out.println("Успех! \nХотите ли добавить еще продукт?");
 
             String answer = scanner.next();
             if (answer.equalsIgnoreCase("завершить")) {
