@@ -11,9 +11,8 @@ public class Calculate {
             System.out.println("Для добавления товара введите название продукта\nДля завершения программы введите \"Завершить\"");
             Scanner scanner = new Scanner(System.in);
             String inputFood = scanner.next();
-
-
             double itog = 0;
+
             if (inputFood.equalsIgnoreCase("Завершить")) {
                 itog = (int) (price / person);
                 System.out.println("Покупка завершена, " + String.format("%.0f", person) + " персоны заплатят по " + itog + " " + Matsh.floover(itog));
@@ -21,10 +20,12 @@ public class Calculate {
 
             } else {
                 System.out.println("Введите стоимость продукта в формате \"'рубли.копейки' [10.45, 11.40]\"");
+                while (!scanner.hasNextInt()) {
+                    System.out.println("Некорректное значение, введите стоимость продукта в формате \"'рубли.копейки' [10.45, 11.40]\"");
+                    scanner.next();
+                }
                 float inputPrice = (float) scanner.nextDouble();
-
                 food = food + "\n" + inputFood;
-
                 price = price + inputPrice;
 
                 System.out.println("Вы успешно добавили продукт:" + food + "\nИтог: " + String.format("%.2f", price) + " " + Matsh.floover(itog));
@@ -32,12 +33,11 @@ public class Calculate {
         }
     }
 
-}
-class Matsh {
+static class Matsh {
 
-    public static String floover(double itog){
-        
-        int amount = (int) itog;
+    public static String floover(double price) {
+
+        int amount = (int) price;
 
         if (amount > 100)
             amount %= 100;
@@ -54,6 +54,7 @@ class Matsh {
                 return "Рубля";
             default:
                 return "Рублей";
+            }
         }
     }
 }
