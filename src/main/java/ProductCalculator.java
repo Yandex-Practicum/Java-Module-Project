@@ -1,11 +1,11 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class ProductCalculator {
     private static final Scanner scanner = new Scanner(System.in);
     private final ArrayList<Product> products = new ArrayList<>();
     private float totalPriceOfAllProducts = 0.00f;
     private final int peopleCount;
-
 
     ProductCalculator(int peopleCount) {
         this.peopleCount = peopleCount;
@@ -58,13 +58,18 @@ public class ProductCalculator {
         String productName;
         float productPrice;
 
-
         while (true) {
             System.out.print("Введите название товара: ");
             productName = scanner.next();
-
             System.out.println("Введите стоимость товара стоимость в формате: \"'рубли.копейки' [10.45, 11.40]\"");
-            productPrice = scanner.nextFloat();
+            try {
+                productPrice = scanner.nextFloat();
+            } catch (InputMismatchException e) {
+                System.out.println("Цена товара содержит запрещенные символы, введите товар заново.");
+                scanner.next();
+                continue;
+            }
+
             if (productPrice <= 0.0f) {
                 System.out.println("Цена товара некорректна, введите товар заново.");
                 continue;
@@ -76,7 +81,6 @@ public class ProductCalculator {
             System.out.printf("Вы успешно довавила товар \"%s\" \n", productName);
 
             System.out.printf("Предварительная стоимость всех товаров = %.2f %s\n", getTotalAmountOfProducts(), getCorrectEnding(getTotalAmountOfProducts()));
-
 
             System.out.println("\nВедите \"Завершить\", если добавили всё нужные товары");
             System.out.println("Добавить ещё товар?");

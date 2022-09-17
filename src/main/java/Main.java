@@ -8,6 +8,7 @@ public class Main {
         ProductCalculator productCalculator = new ProductCalculator(peopleCount);
         productCalculator.inputProducts();
     }
+
     public static int getCountOfPeople() {
         int peopleCount = 0;
         while (true) {
@@ -17,12 +18,13 @@ public class Main {
                     break;
                 }
             } catch (InputMismatchException er) {
-                System.out.println("Некоректное значение");
-                break;
+                System.out.println("Введено некоректное значение, повторите ввод количества человек.");
+                scanner.next();
             }
         }
         return peopleCount;
     }
+
     public static boolean isCorrectPeopleCount(int peopleCount){
         if(peopleCount<=0) {
             System.out.println("Количество человек меньше 1. Это некорректное значение для подсчёта. Введите новое значение.");
@@ -33,5 +35,5 @@ public class Main {
         }else {
             return true;
         }
-        }
     }
+}
