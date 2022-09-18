@@ -3,26 +3,18 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Chceck calculated for " + peopleNum() + " persons.");
-    }
-
-    public static int peopleNum(){
-
         Scanner scanner = new Scanner(System.in);
-        int num;
-
-        do {
-            System.out.println("How many people devides check? Input peoples number (2 and more).");
-            num = scanner.nextInt();
-            if (num < 2) {
-                System.out.println("Wrong input. Input peoples number (2 and more).");
-                num = scanner.nextInt();
-            } else {                                               //!добавить проверку на int
-                scanner.close();
-                return num;
+        System.out.println("Enter the number of people dividing the check (2 and more).");
+        int personNum = 0;
+        while (scanner.hasNext()) {
+            personNum = scanner.nextInt();
+            if (personNum < 2) {
+                System.out.println("Incorrect input. Enter the number of people 2 or more");
+            } else {
+                break;
             }
-        } while (scanner.hasNext());
+        }
+        System.out.println("Check calculated for " + personNum + " persons.");
         scanner.close();
-        return num;
     }
 }
