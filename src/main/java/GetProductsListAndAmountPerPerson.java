@@ -2,6 +2,10 @@ public class GetProductsListAndAmountPerPerson {
 
     //перехожу на русский из-за условий задачи
     public void execute(Calculator calculator, int guestsCount) {
+        if (calculator.totalSum == 0) {
+            System.out.println("Ничего не купили, все по домам");
+            return;
+        }
         System.out.println(calculator.products);
         double doubleRuble = calculator.totalSum / guestsCount;
         int integerRuble = ((int) doubleRuble) % 100;
