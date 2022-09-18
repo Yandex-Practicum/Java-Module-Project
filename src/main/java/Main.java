@@ -8,7 +8,8 @@ public class Main {
         int guestsCount;
         GetTheNumberOfGuests getNumber = new GetTheNumberOfGuests();
         GetProductsAndTheirPrices getProductsAndTheirPrices = new GetProductsAndTheirPrices();
-        GetProductsListAndAmountPerPerson getProductsListAndAmountPerPerson = new GetProductsListAndAmountPerPerson();
+        GetProductsListAndAmountPerPerson getProductsListAndAmountPerPerson =
+                new GetProductsListAndAmountPerPerson();
 
         System.out.println("How many people should the bill be divided into?");
         guestsCount =   getNumber.execute();
@@ -17,6 +18,8 @@ public class Main {
         Calculator calculator = getProductsAndTheirPrices.execute();
 
         getProductsListAndAmountPerPerson.execute(calculator,guestsCount);
+
+        scanner.close();
 
     }
 }
