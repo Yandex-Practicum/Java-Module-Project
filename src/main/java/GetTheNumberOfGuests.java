@@ -20,29 +20,8 @@ public class GetTheNumberOfGuests {
                 System.out.println("You typed wrong entry, please type number");
             }
 
-
         }
-
         return numberOutsidetheloop;
 
-//        int number = 0;
-//        if (Main.scanner.hasNextInt()) {
-//            number = Main.scanner.nextInt();
-//            if (number == 1) {
-//                System.out.println("You entered one guest, please type valid number");
-//                execute();
-//            }
-//            if (number < 1) {
-//                System.out.println("You entered less then one guest, please type valid number");
-//                execute();
-//            }
-//            return number;
-//
-//        } else {
-//            System.out.println("You typed wrong entry, please type number");
-//            execute();
-//        }
-//
-//        return number;
     }
 }

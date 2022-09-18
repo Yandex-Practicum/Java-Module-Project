@@ -12,12 +12,12 @@ public class Main {
                 new GetProductsListAndAmountPerPerson();
 
         System.out.println("How many people should the bill be divided into?");
-        guestsCount =   getNumber.execute();
+        guestsCount = getNumber.execute();
 
         System.out.println("Enter product's name , example \"Milk\"");
         Calculator calculator = getProductsAndTheirPrices.execute();
 
-        getProductsListAndAmountPerPerson.execute(calculator,guestsCount);
+        getProductsListAndAmountPerPerson.execute(calculator, guestsCount);
 
         scanner.close();
 
