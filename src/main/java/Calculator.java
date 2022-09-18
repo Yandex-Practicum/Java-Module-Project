@@ -39,18 +39,23 @@ public class Calculator {
         /*
         Запрашивает у пользователя список заказанных блюд.
          */
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-
         System.out.println("Теперь заполним список заказнных блюд.");
         while (true) {
             String foodName;
             double foodPrice;
 
+            if (!this.food.equals("")) {
+                System.out.println("Для завершения введите \"Завершить\".");
+            }
             System.out.println("Введите название блюда:");
             while (!sc.hasNext()) {
                 sc.next();
             }
             foodName = sc.next();
+
+            if (!this.food.equals("") && foodName.equalsIgnoreCase("завершить")) {
+                break;
+            }
 
             System.out.println("Введите стоимость товара в формате 'рубли.копейки':");
             while (true) {
@@ -70,15 +75,6 @@ public class Calculator {
             }
 
             this.addFood(foodName, foodPrice);
-
-            System.out.println("Хотите добавить следующий товар? Или введите \"Завершить\".");
-
-            while (!sc.hasNext()) {
-                sc.next();
-            }
-            if (sc.next().equalsIgnoreCase("завершить")) {
-                break;
-            }
         }
     }
 
