@@ -1,0 +1,43 @@
+public class GetProductsListAndAmountPerPerson {
+
+    //перехожу на русский из-за условий задачи
+    public void execute(Calculator calculator, int guestsCount) {
+        System.out.println(calculator.products);
+        double doubleRuble = calculator.totalSum / guestsCount;
+        int integerRuble = ((int) doubleRuble) % 100;
+        String resultStr = String.format("Каждый должен по счету %1.2f ", doubleRuble);
+        if (integerRuble < 21) {
+            switch (integerRuble) {
+                case 1:
+                    resultStr += "рубль";
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    resultStr += "рубля";
+                    break;
+                default:
+                    resultStr += "рублей";
+                    break;
+            }
+        } else {
+            integerRuble %= 10;
+            switch (integerRuble) {
+                case 1:
+                    resultStr += "рубль";
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    resultStr += "рубля";
+                    break;
+                default:
+                    resultStr += "рублей";
+                    break;
+            }
+        }
+
+
+        System.out.println(resultStr);
+    }
+}
