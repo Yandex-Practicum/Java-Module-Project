@@ -1,19 +1,19 @@
-import java.util.Scanner;
+
 
 public class GetTheNumberOfGuests {
 
     public int execute() {
         int numberOutsidetheloop = 1;
         while (Main.scanner.hasNext()) {
-            String str = Main.scanner.next();
+            String input = Main.scanner.next();
             try {
-                int number = Integer.parseInt(str);
-                if (number == 1)
+                int numberOfGuests = Integer.parseInt(input);
+                if (numberOfGuests == 1)
                     System.out.println("You entered one guest, please type valid number");
-                else if (number < 1)
+                else if (numberOfGuests < 1)
                     System.out.println("You entered less then one guest, please type valid number");
                 else {
-                    numberOutsidetheloop = number;
+                    numberOutsidetheloop = numberOfGuests;
                     break;
                 }
             } catch (Exception e) {
