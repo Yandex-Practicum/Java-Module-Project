@@ -1,9 +1,9 @@
 import java.util.Locale;
 
 public class GetProductsAndTheirPrices {
-   static Calculator calculator = new Calculator();
+    static Calculator calculator = new Calculator();
 
-    public static   Calculator execute() {
+    public static Calculator execute() {
         while (Main.scanner.hasNext()) {
             String product = Main.scanner.next();
             if (product.toLowerCase(Locale.ROOT).equals("завершить") || product.toLowerCase(Locale.ROOT).equals("exit")) {
@@ -13,7 +13,7 @@ public class GetProductsAndTheirPrices {
             }
             System.out.println("Enter product's price in rubles and pennies , example \"20.22\"");
             String tempPrice = Main.scanner.next();
-            if (tempPrice.toLowerCase(Locale.ROOT).equals("завершить") || product.toLowerCase(Locale.ROOT).equals("exit")) {
+            if (tempPrice.toLowerCase(Locale.ROOT).equals("завершить") || tempPrice.toLowerCase(Locale.ROOT).equals("exit")) {
                 removeLastProduct(product);
                 break;
             } else {
