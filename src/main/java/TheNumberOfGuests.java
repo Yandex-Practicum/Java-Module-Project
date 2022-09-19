@@ -3,7 +3,7 @@
 public class TheNumberOfGuests {
 
     public static int execute() {
-        int numberOutsidetheloop = 1;
+        int numberOutsideTheLoop = 1;
         while (Main.scanner.hasNext()) {
             String input = Main.scanner.next();
             try {
@@ -13,7 +13,7 @@ public class TheNumberOfGuests {
                 else if (numberOfGuests < 1)
                     System.out.println("You entered less then one guest, please type valid number");
                 else {
-                    numberOutsidetheloop = numberOfGuests;
+                    numberOutsideTheLoop = numberOfGuests;
                     break;
                 }
             } catch (Exception e) {
@@ -21,7 +21,7 @@ public class TheNumberOfGuests {
             }
 
         }
-        return numberOutsidetheloop;
+        return numberOutsideTheLoop;
 
     }
 }

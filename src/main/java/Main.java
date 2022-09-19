@@ -5,10 +5,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-        int guestsCount;
 
         System.out.println("How many people should the bill be divided into?");
-        guestsCount = TheNumberOfGuests.execute();
+        int guestsCount = TheNumberOfGuests.execute();
 
         System.out.println("Enter product's name , example \"Milk\"");
         Calculator calculator = ProductPriceCalculator.execute();
