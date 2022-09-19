@@ -1,9 +1,9 @@
 import java.util.Locale;
 
 public class GetProductsAndTheirPrices {
-    Calculator calculator = new Calculator();
+   static Calculator calculator = new Calculator();
 
-    public Calculator execute() {
+    public static   Calculator execute() {
         while (Main.scanner.hasNext()) {
             String product = Main.scanner.next();
             if (product.toLowerCase(Locale.ROOT).equals("завершить") || product.toLowerCase(Locale.ROOT).equals("exit")) {
@@ -44,7 +44,7 @@ public class GetProductsAndTheirPrices {
         return calculator;
     }
 
-    private void removeLastProduct(String product) {
+    private static void removeLastProduct(String product) {
         calculator.products = calculator.products.substring(0, calculator.products.length() - product.length() - 1);
     }
 }

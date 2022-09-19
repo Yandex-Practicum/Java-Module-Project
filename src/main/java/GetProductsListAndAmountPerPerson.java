@@ -1,7 +1,7 @@
 public class GetProductsListAndAmountPerPerson {
 
     //перехожу на русский из-за условий задачи
-    public void execute(Calculator calculator, int guestsCount) {
+    public static void execute(Calculator calculator, int guestsCount) {
         if (calculator.totalSum == 0) {
             System.out.println("Ничего не купили, все по домам");
             return;

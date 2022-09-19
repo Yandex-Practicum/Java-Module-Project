@@ -2,7 +2,7 @@
 
 public class GetTheNumberOfGuests {
 
-    public int execute() {
+    public static int execute() {
         int numberOutsidetheloop = 1;
         while (Main.scanner.hasNext()) {
             String input = Main.scanner.next();
