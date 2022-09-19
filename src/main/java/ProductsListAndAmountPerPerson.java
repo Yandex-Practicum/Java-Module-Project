@@ -1,4 +1,4 @@
-public class GetProductsListAndAmountPerPerson {
+public class ProductsListAndAmountPerPerson {
 
     //перехожу на русский из-за условий задачи
     public static void execute(Calculator calculator, int guestsCount) {

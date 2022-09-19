@@ -8,12 +8,12 @@ public class Main {
         int guestsCount;
 
         System.out.println("How many people should the bill be divided into?");
-        guestsCount = GetTheNumberOfGuests.execute();
+        guestsCount = TheNumberOfGuests.execute();
 
         System.out.println("Enter product's name , example \"Milk\"");
-        Calculator calculator = GetProductsAndTheirPrices.execute();
+        Calculator calculator = ProductPriceCalculator.execute();
 
-        GetProductsListAndAmountPerPerson.execute(calculator, guestsCount);
+        ProductsListAndAmountPerPerson.execute(calculator, guestsCount);
 
         scanner.close();
 

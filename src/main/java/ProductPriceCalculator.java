@@ -1,6 +1,6 @@
 import java.util.Locale;
 
-public class GetProductsAndTheirPrices {
+public class ProductPriceCalculator {
     static Calculator calculator = new Calculator();
 
     public static Calculator execute() {

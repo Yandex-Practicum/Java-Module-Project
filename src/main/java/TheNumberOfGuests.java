@@ -1,6 +1,6 @@
 
 
-public class GetTheNumberOfGuests {
+public class TheNumberOfGuests {
 
     public static int execute() {
         int numberOutsidetheloop = 1;
