@@ -20,7 +20,7 @@ public class GetProductsAndTheirPrices {
 
                 try {
                     double price = Double.parseDouble(tempPrice);
-                    calculator.products += tempPrice + "\n";
+
                     if (price < 0) {
                         System.out.println("Invalid input, the price cannot be negative");
                         removeLastProduct(product);
@@ -28,6 +28,7 @@ public class GetProductsAndTheirPrices {
                         System.out.println("Invalid input, the price cannot be zero");
                         removeLastProduct(product);
                     } else {
+                        calculator.products += tempPrice + "\n";
                         calculator.totalSum += price;
                         System.out.printf("Product %1s with price %2.2f was successfully added\n", product, Double.parseDouble(tempPrice));
                     }
