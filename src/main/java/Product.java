@@ -1,8 +1,8 @@
 public class Product {
     String name;
-    float cost;
+    double cost;
 
-    Product(String name, float cost) {
+    Product(String name, double cost) {
         this.name = name;
         this.cost = cost;
     }

@@ -1,6 +1,6 @@
 public class Calculator {
     int countPeople;
-    float currentTotalAmount = 0;
+    double currentTotalAmount = 0;
     String products = "";
 
     Calculator(int countPeople) {
@@ -12,7 +12,7 @@ public class Calculator {
         currentTotalAmount += product.cost;
     }
 
-    float getEachFriendAmount() {
+    double getEachFriendAmount() {
         return currentTotalAmount / countPeople;
     }
 }

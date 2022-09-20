@@ -36,10 +36,10 @@ public class Main {
             System.out.println("Введите название товара:");
             String product = inputScanner.next();
 
-            System.out.println("Введите цену товара:");
+            System.out.println("Введите цену товара в формате рубли.копейки:");
             while (true) {
-                if (inputScanner.hasNextFloat()) {
-                    float productCost = inputScanner.nextFloat();
+                if (inputScanner.hasNextDouble()) {
+                    double productCost = inputScanner.nextDouble();
                     if (productCost < 0) {
                         System.out.println("[Ошибка] Введите корректную цену товара: цена не может быть отрицательной.");
                     } else {
@@ -62,7 +62,7 @@ public class Main {
     }
 
     public static void printEachFriendAmount(Calculator calculator) {
-        float eachFriendAmount = calculator.getEachFriendAmount();
+        double eachFriendAmount = calculator.getEachFriendAmount();
         String rubles = "";
         switch ((int)eachFriendAmount % 10) {
             case 1:
