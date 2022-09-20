@@ -4,8 +4,10 @@ public class ProductPriceCalculator {
     static Calculator calculator = new Calculator();
 
     public static Calculator execute() {
-        while (Main.scanner.hasNext()) {
-            String product = Main.scanner.next();
+
+        while (true) {
+            Main.scanner.nextLine();
+            String product = Main.scanner.nextLine();
             if (product.toLowerCase(Locale.ROOT).equals("завершить") || product.toLowerCase(Locale.ROOT).equals("exit")) {
                 break;
             } else {
