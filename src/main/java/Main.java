@@ -5,15 +5,7 @@ public class Main {
 
 
     public static void main(String[] args) {
-//        while (true){
-//            String input = scanner.nextLine();
-//            if (input.equals("exit"))
-//                break;
-//            System.out.println("test");
-//            String secondInput = scanner.next();
-//
-//        }
-//
+
         System.out.println("How many people should the bill be divided into?");
         int guestsCount = TheNumberOfGuests.execute();
 
