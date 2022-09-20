@@ -1,8 +1,20 @@
+import java.util.Scanner;
+
 public class Main {
+    public static Scanner scanner = new Scanner(System.in);
+
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+
+        System.out.println("How many people should the bill be divided into?");
+        int guestsCount = TheNumberOfGuests.execute();
+
+        System.out.println("Enter product's name , example \"Milk\"");
+        Calculator calculator = ProductPriceCalculator.execute();
+
+        ProductsListAndAmountPerPerson.execute(calculator, guestsCount);
+
+        scanner.close();
+
     }
 }
