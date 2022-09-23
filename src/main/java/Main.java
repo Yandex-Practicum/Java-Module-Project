@@ -63,8 +63,19 @@ public class Main {
 
         System.out.println("Полный список товаров:");
         System.out.println(calculator.allProducts);
-        System.out.printf("Общая стоимость продуктов: %.2f%n", calculator.totalPrice);
-        System.out.printf("Каждый должен по %.2f%n", calculator.calculateShare(numberOfPersons));
+        System.out.printf("Общая стоимость товаров: %s%n", sumWithCurrency(calculator.totalPrice));
+        System.out.printf("Каждый должен по %s%n", sumWithCurrency(calculator.calculateShare(numberOfPersons)));
 
+    }
+
+    private static String sumWithCurrency(double sum) {
+        int digit = (int) sum % 10;
+        if ((sum > 5 && sum <= 20) || digit == 0 || digit > 4) {
+            return String.format("%.2f рублей", sum);
+        } else if (digit == 1) {
+            return String.format("%.2f рубль", sum);
+        } else {
+            return String.format("%.2f рубля", sum);
+        }
     }
 }
