@@ -2,12 +2,12 @@ public class Calculator {
 
     String allProduct = "";
     double allPrice;
-
+    //Сохранение названия товаров и общей стоимости заказа
     void addProduct(Product product){
         allProduct = allProduct + "!" + product.nameProduct;
         allPrice += product.price;
     }
-
+    //Вывод на консоль всех товаров
     void returnNameProduct(){
         int i = 0;
         StringBuilder nameProduct = new StringBuilder();
@@ -24,7 +24,7 @@ public class Calculator {
         }
         System.out.println(nameProduct);
     }
-
+    //Вывод на консоль сколько должен заплатить каждый из гостей
     void returnDebtForOne(int quantityPeople){
         double debtForOne = allPrice / quantityPeople;
         int ruble = (int)Math.floor(debtForOne);
