@@ -1,8 +1,18 @@
+import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+        Scanner scan = new Scanner(System.in);
+        System.out.println("На сколько человек вы хотели бы разделить чек?");
+        int numPeople = scan.nextInt();
+        while (1 < 4) {
+            if (numPeople > 1) {
+                break;
+            }
+            System.out.println("Ошибка. Невозможно разделить чек на данное колличество людей. Попробуйте снова.");
+            numPeople = scan.nextInt();
+        }
+        double check = calc.calculator()/numPeople;
+        System.out.println("Каждый человек должен заплатить: " + check);
     }
 }
