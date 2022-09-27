@@ -1,5 +1,4 @@
 import java.lang.NumberFormatException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
