@@ -1,24 +1,39 @@
+import java.util.Scanner;
 
 public class Calculator {
     double sum = 0;
-    String name1 = "";
-    public void nameOfProduct(String name,double cost) {
+    String name = "";
+    int quantity;
+    Scanner scanner = new Scanner(System.in);
+    public int quantityOfGuest(){
+        System.out.println("На скольких человек необходимо разделить счёт?");
+        while (true) {
+            if (scanner.hasNextInt()) {
+                quantity = scanner.nextInt();
+                if (quantity<=1){
+                    System.out.println("Введено отрицательное значение или 1.Повторите ввод.");
+                }else {
+                    return quantity;
+                }
+            } else {
+                System.out.println("Введено не корректное значение.Повторите ввод.");
+            }
+            scanner.nextLine();
+        }
+    }
+    public void cheque(String name, double cost) {
         if (cost < 1) {
-            System.out.println("Товар не добавлен.");
-            System.out.println("Товар не может быть бесплатным.Повторите ввод.");
+            System.out.println("Товар не добавлен.\nТовар не может быть бесплатным.Повторите ввод.");
         } else {
             sum += cost;
-            name1 = name1 + name + "\n";
+            this.name = this.name + name + "\n";
             System.out.println("Товар успешно добалвен.");
         }
     }
     public void finalAccount(int quantity){
-        System.out.println("Добавленные товары:");
-        System.out.println(name1);
+        System.out.println("Добавленные товары: \n" + name );
         sum = sum / quantity;
-        System.out.println("Каждый человек должен заплатить:");
-        System.out.print(String.format("%.2f",sum));
-
+        System.out.println("Каждый человек должен заплатить: \n" + String.format("%.2f",sum) + price());
     }
     public String price(){
         if ((int)(sum % 100 / 10) == 1){
