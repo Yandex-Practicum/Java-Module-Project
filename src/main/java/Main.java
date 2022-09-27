@@ -40,7 +40,7 @@ public class Main {
                     System.out.println("Обратите внимание! Бесплатный товар, но мы его добавим");
             } while(price < 0);
             Calc.calculate(name, price);
-            System.out.println(String.format("Добавлен товар \"%s\" по цене %.2f, каждому теперь нужно внести уже по %s\n",
+            System.out.println(jl;lString.format("Добавлен товар \"%s\" по цене %.2f, каждому теперь нужно внести уже по %s\n",
                     name, price, OutMoneySum(Calc.sum / n, 2)));
             System.out.println("Если больше не хотите добавлять товар наберите слово \"Завершить\" или \"Complete\"");
             System.out.println("Английское можно ввести в любом регистре, но русское именно так, как написано\n");
