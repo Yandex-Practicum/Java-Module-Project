@@ -28,15 +28,15 @@ public class Main {
         int amountOfUsers;
 
         while (true) {
-            amountOfUsersAsString = scanner.next();
+            amountOfUsersAsString = scanner.nextLine();
             try {
                 amountOfUsers = Integer.parseInt(amountOfUsersAsString);
                 if (amountOfUsers > 1) {
                     break;
                 }
-                System.out.println("UserLimitException: должно быть как минимум два человека, чтобы разделить счет!");
+                System.out.println("Должно быть как минимум два человека, чтобы разделить счет!\nПовторите ввод еще раз!");
             } catch (NumberFormatException exception) {
-                System.out.println("InputException: введена строка в качестве количества человек! Ожидалось целое число.");
+                System.out.println("Введен недопустимый параметр в качестве количества человек! Ожидалось целое число.\nПовторите ввод еще раз!");
             }
         }
 
@@ -48,15 +48,17 @@ public class Main {
 
         System.out.println("Введите товар и его стоимость через пробел:");
         while (!(productName = scanner.next()).equalsIgnoreCase("завершить")) {
-            productPriceAsString = scanner.next();
+            productPriceAsString = scanner.nextLine();
             try {
                 productPrice = Double.parseDouble(productPriceAsString);
+                if (productPrice < 0) {
+                    System.out.println("У товара не может быть отрицательная цена!\nТовар не добавлен. Повторите ввод.");
+                    continue;
+                }
                 calculator.addProduct(productName, productPrice);
-                System.out.println("Товар был успешно добавлен! Хотите добавить еще?");
-                System.out.println("Если да, то введите название товара и цену, иначе напишите слово \"завершить\":");
+                System.out.println("Товар был успешно добавлен! Хотите добавить еще?\nЕсли да, то введите название товара и цену, иначе напишите слово \"завершить\":");
             } catch (NumberFormatException exception) {
-                System.out.println("InputException: введена строка в качестве цены товара! Ожидалось вещественное число.");
-                System.out.println("Товар не был добавлен! Повторите корректный ввод заново.");
+                System.out.println("Не указана допустимая цена товара! Ожидалось вещественное число.\nТовар не был добавлен! Повторите корректный ввод заново.");
             }
         }
 
