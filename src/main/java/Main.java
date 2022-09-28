@@ -5,24 +5,25 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
         int guestsCount = count();
         float total = addProducts();
         float each = total/guestsCount;
         int intEach = (int) each;
         String formattedEach = String.format("%.2f", each);
         if(intEach%10 == 1){
-            System.out.println("С каждого по " + formattedEach + " рублю");
+            printed(formattedEach, "ю");
         }
         else if(intEach%10 > 1 && intEach%10 < 5){
-            System.out.println("С каждого по " + formattedEach + " рубля");
+            printed(formattedEach, "я");
         }
         else{
-            System.out.println("С каждого по " + formattedEach + " рублей");
+            printed(formattedEach, "ей");
         }
 
     }
-
+    public static void printed(String formattedEach, String stringEnd){
+        System.out.println("С каждого по " + formattedEach + " рубл" + stringEnd);
+    }
 
     public static float addProducts(){
         float total;
@@ -40,7 +41,7 @@ public class Main {
                 break;
             }
             System.out.println("Теперь введите цену товара");
-            double price= -1.7;
+            double price= -1; //любое отрицательное значение подойдет :)
             while (price < 0){
                 String input = scanner.next();
                 try{
@@ -53,13 +54,13 @@ public class Main {
                     System.out.println("Пожалуйта, введите цену в виде числа");
                 }
             }
-            String price2 = String.format("%.2f", price);
+            String priceFormatted = String.format("%.2f", price);
             Product newProd = new Product("Abc", 0);
             if(products.size() != 0){
-                newProd = new Product(productName, Float.parseFloat(price2));
+                newProd = new Product(productName, Float.parseFloat(priceFormatted));
             }
             else {
-                newProd = new Product(productName1, Float.parseFloat(price2));
+                newProd = new Product(productName1, Float.parseFloat(priceFormatted));
             }
 
             products.add(newProd);
@@ -86,7 +87,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Введите количество человек, на которых будет разделен счет :)");
-            int number = -1;
+            int number = -1; //и тут тоже подойдет любое отрицательное значение
             while(number < 0){
                 try{
                     String input = scanner.next();
