@@ -47,7 +47,6 @@ public class Main {
                     price = Double.parseDouble(input);
                     if(price < 0) {
                         System.out.println("Воу-воу, у вас там деньги дают за еду? Позовите меня! А пока вы это делаете, попрошу вас ввести еще раз!");
-                        break;
                     }
                 }
                 catch (Exception ParseException){
