@@ -19,17 +19,19 @@ public class Main {
         double nextPrice = in.nextDouble();
         sum+= nextPrice;
         int i = 0;
-        while (!nextPosition.equals("Завершить")) {
+        while (!nextPosition.equalsIgnoreCase("Завершить")) {
+            out.println("The dish has been added successfully\nDo you want to add one more");
             pos[i] = new Positions(nextPosition, nextPrice);
             out.println("Enter the name of the dish");
             nextPosition = in.next();
-            if(!nextPosition.equals("Завершить")) {
+            if(!nextPosition.equalsIgnoreCase("Завершить")) {
                 out.println("Enter the price of the dish in the format rub.kop");
                 nextPrice = in.nextDouble();
             }
             sum+=nextPrice;
             i+=1;
         }
-
+        for (int j=0; j<i; j++)
+        out.println();
     }
 }
