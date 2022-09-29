@@ -12,15 +12,13 @@ public class Main {
             persons = in.nextInt();
         }
         Positions[] pos = new Positions[100];
-        double sum = 0;
         out.println("Enter the name of the dish");
         String nextPosition = in.next();
-        out.println("Enter the price of the dish in the format rub.kop");
+        out.println("Enter the price of the dish in the format rub,kop");
         double nextPrice = in.nextDouble();
-        sum+= nextPrice;
         int i = 0;
         while (!nextPosition.equalsIgnoreCase("Завершить")) {
-            out.println("The dish has been added successfully\nDo you want to add one more");
+            out.println("The dish has been added successfully!\nDo you want to add one more?");
             pos[i] = new Positions(nextPosition, nextPrice);
             out.println("Enter the name of the dish");
             nextPosition = in.next();
@@ -28,10 +26,24 @@ public class Main {
                 out.println("Enter the price of the dish in the format rub.kop");
                 nextPrice = in.nextDouble();
             }
-            sum+=nextPrice;
             i+=1;
         }
+        out.println("Added dishes:");
         for (int j=0; j<i; j++)
-        out.println();
+        out.println(pos[j].name + " --- "+ pos[j].price + " rubles");
+        double sum = 0;
+        for (int j=0; j<i; j++)
+            sum+=pos[j].price;
+        out.println(("Everyone has to pay: ") + String.format("%.2f", sum/persons)+ " rubles");
+        out.println("Do you want to correct the list?");
+        String choice = in.next();
+        if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")){
+
+        }
+        else if (choice.equalsIgnoreCase("Нет") || choice.equalsIgnoreCase("No")){
+            out.println("Great! See you later");
+        }
+        else
+            out.println("Please, enter Yes/No");
     }
 }
