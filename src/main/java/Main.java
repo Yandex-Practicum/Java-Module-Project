@@ -15,7 +15,7 @@ public class Main {
             if (scanner.hasNextInt()) {
                 friends = scanner.nextInt();
             } else {
-                scanner.nextInt();
+                scanner.next();
             }
             if (friends > 1) {
                 System.out.println("Делим счет на " + friends + "х");
