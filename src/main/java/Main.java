@@ -11,6 +11,25 @@ public class Main {
             out.println("Please enter the correct value");
             persons = in.nextInt();
         }
+        Positions[] pos = new Positions[100];
+        double sum = 0;
+        out.println("Enter the name of the dish");
+        String nextPosition = in.next();
+        out.println("Enter the price of the dish in the format rub.kop");
+        double nextPrice = in.nextDouble();
+        sum+= nextPrice;
+        int i = 0;
+        while (!nextPosition.equals("Завершить")) {
+            pos[i] = new Positions(nextPosition, nextPrice);
+            out.println("Enter the name of the dish");
+            nextPosition = in.next();
+            if(!nextPosition.equals("Завершить")) {
+                out.println("Enter the price of the dish in the format rub.kop");
+                nextPrice = in.nextDouble();
+            }
+            sum+=nextPrice;
+            i+=1;
+        }
 
     }
 }
