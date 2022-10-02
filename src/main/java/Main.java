@@ -5,14 +5,28 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int peopleNumberBill = 0; // Количество людей в счете
-        while (peopleNumberBill <=1) {
-            System.out.println("На скольких человек разделить счет?");
-            peopleNumberBill = scanner.nextInt();
-            if (peopleNumberBill == 1) {
-                System.out.println("Количество человек, введённых пользователем равно 1. В этом случае нет смысла ничего считать и делить.");
-            } else if (peopleNumberBill < 1) {
-                System.out.println("Количество человек меньше 1. Это некорректное значение для подсчёта.");
+        int peopleNumberBill; // Количество людей в счете
+        System.out.println("На скольких человек разделить счет?");
+        // Проверка количество людей в счете
+        while (true) {
+            if (scanner.hasNextInt()) {
+                peopleNumberBill = scanner.nextInt();
+                if (peopleNumberBill == 1) {
+                    System.out.println("Количество человек, введённых пользователем равно 1. В этом случае нет смысла ничего считать и делить.");
+                    System.out.println("На скольких человек разделить счет?");
+                    scanner.nextLine();
+                } else if (peopleNumberBill <1) {
+                    System.out.println("Количество человек меньше 1. Это некорректное значение для подсчёта.");
+                    System.out.println("На скольких человек разделить счет?");
+                    scanner.nextLine();
+                } else if (peopleNumberBill >1) {
+                    break;
+                }
+            }
+            else {
+                System.out.println("Неверное значение, попробуйте снова.");
+                System.out.println("На скольких человек разделить счет?");
+                scanner.nextLine();
             }
         }
 
