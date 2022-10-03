@@ -3,14 +3,16 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-        int guestsCount = count();
+        int guestsCount = guestsCount();
         float total = addProducts();
         float each = total/guestsCount;
         int intEach = (int) each;
         String formattedEach = String.format("%.2f", each);
-        if(intEach%10 == 1){
+        if(intEach >= 10 && intEach <= 20) {
+            printed(formattedEach, "ей");
+        }
+        else if(intEach%10 == 1){
             printed(formattedEach, "ю");
         }
         else if(intEach%10 > 1 && intEach%10 < 5){
@@ -41,16 +43,19 @@ public class Main {
                 break;
             }
             System.out.println("Теперь введите цену товара");
-            double price= -1; //любое отрицательное значение подойдет :)
-            while (price < 0){
+            double price; //любое отрицательное значение подойдет :)
+            while (true){
                 String input = scanner.next();
                 try{
                     price = Double.parseDouble(input);
                     if(price < 0) {
                         System.out.println("Воу-воу, у вас там деньги дают за еду? Позовите меня! А пока вы это делаете, попрошу вас ввести еще раз!");
                     }
+                    else{
+                        break;
+                    }
                 }
-                catch (Exception ParseException){
+                catch (Exception ParseException) {
                     System.out.println("Пожалуйта, введите цену в виде числа");
                 }
             }
@@ -83,12 +88,12 @@ public class Main {
 
     }
 
-    public static int count() {
+    public static int guestsCount() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Введите количество человек, на которых будет разделен счет :)");
-            int number = -1; //и тут тоже подойдет любое отрицательное значение
-            while(number < 0){
+            int number; //и тут тоже подойдет любое отрицательное значение
+            while(true){
                 try{
                     String input = scanner.next();
                     number = Integer.parseInt(input);
