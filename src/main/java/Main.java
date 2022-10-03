@@ -22,7 +22,6 @@ public class Main {
                 if (visitor > 1) {
                         break;
                     }
-
         }
         //считываем кол-во товаров
         boolean enough = true;
