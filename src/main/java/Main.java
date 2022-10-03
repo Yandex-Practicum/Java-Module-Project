@@ -70,7 +70,6 @@ public class Main {
 
             System.out.println(String.format(message, pay, rubString));
         }
-
     }
     public static class Calculate{
         String receipt = "";
