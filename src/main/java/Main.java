@@ -3,14 +3,12 @@ import java.util.Scanner;
 public class Main {
     public static Scanner in = new Scanner(System.in);
     public static PrintStream out = System.out;
-
     public static void main(String[] args) {
         int persons = InputInt();
         Positions[] pos = new Positions[100];
 
         String nextPosition = AddName();
         double nextPrice = AddPrice();
-
         int i = 0;
         while (!(nextPosition.equalsIgnoreCase("Завершить") || nextPosition.equalsIgnoreCase("end"))) {
             out.println("The dish has been added successfully!\nDo you want to add one more?");
@@ -21,6 +19,15 @@ public class Main {
             }
             i += 1;
         }
+
+        for (int j = 0; j < i; j++)
+            out.println(j + 1 + ") " + pos[j].name + " --- " + pos[j].price + " rubles");
+        double sum = 0;
+        for (int j = 0; j < i; j++)
+            sum += pos[j].price;
+        out.println("Total sum: " + String.format("%.2f", sum) + " rubles");
+        out.println(("Everyone has to pay: ") + String.format("%.2f", sum / persons) + " rubles");
+
         out.println("Do you want to correct the list");
         String choice = in.next();
         if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")) {
