@@ -6,11 +6,30 @@ public class Main {
     public static void main(String[] args) {
 
         out.println("How many people should the bill be divided into?");
-        int persons = in.nextInt();
-        while (persons<=1){
-            out.println("Non-correct value for counting, the number of people must be more than one\nPlease enter the correct value");
-            persons = in.nextInt();
+        String enter = in.next();
+        int persons = 0, flag = 0, flag2 = 0;
+        while (flag == 0) {
+            for (int t = 0; t < enter.length(); t++) {
+                if (enter.charAt(t) < '0' || enter.charAt(t) > '9') {
+                    flag2 += 1;
+                }
+            }
+            if (flag2==0) {
+                int st = 1;
+                for (int r = enter.length()-1; r >= 0; r--) {
+                    persons += ((int) enter.charAt(r) - 48) * st;
+                    st *= 10;
+                }
+                if (persons >= 1)
+                    flag = 1;
+            }
+            if (flag == 0) {
+                out.println("Non-correct value for counting\nPlease enter the correct value");
+                enter = in.next();
+            }
+            flag2 = 0;
         }
+
         Positions[] pos = new Positions[100];
 
         out.println("Enter the name of the dish");
