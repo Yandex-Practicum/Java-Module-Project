@@ -4,14 +4,15 @@ public class Main {
     public static Scanner in = new Scanner(System.in);
     public static PrintStream out = System.out;
     public static void main(String[] args) {
+
         out.println("How many people should the bill be divided into?");
         int persons = in.nextInt();
         while (persons<=1){
-            out.println("Non-correct value for counting, the number of people must be more than one");
-            out.println("Please enter the correct value");
+            out.println("Non-correct value for counting, the number of people must be more than one\nPlease enter the correct value");
             persons = in.nextInt();
         }
         Positions[] pos = new Positions[100];
+
         out.println("Enter the name of the dish");
         String nextPosition = in.next();
         out.println("Enter the price of the dish in the format rub,kop");
@@ -28,6 +29,7 @@ public class Main {
             }
             i+=1;
         }
+
         out.println("Added dishes:");
         for (int j=0; j<i; j++)
         out.println(j+1 +") " + pos[j].name + " --- "+ pos[j].price + " rubles");
@@ -35,8 +37,8 @@ public class Main {
         for (int j=0; j<i; j++)
             sum+=pos[j].price;
         out.println("Total sum: " + String.format("%.2f", sum) + " rubles");
-        out.println(("Everyone has to pay: ") + String.format("%.2f", sum/persons)+ " rubles");
-        out.println("Do you want to correct the list?");
+        out.println(("Everyone has to pay: ") + String.format("%.2f", sum/persons)+ " rubles\nDo you want to correct the list?");
+
         String choice = in.next();
         if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")){
             int del = 1;
@@ -69,6 +71,4 @@ public class Main {
             out.println("Please, enter Yes/No");
     }
 }
-/*Надеюсь, что оригинальность приветствуется. Сделал немного не по заданию, но вроде получилось поинтереснее.
-Если надо, отдельно пришлю програму, которая ставит слово "рубль" в нужный падеж;)*/
 
