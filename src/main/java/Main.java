@@ -4,32 +4,7 @@ public class Main {
     public static Scanner in = new Scanner(System.in);
     public static PrintStream out = System.out;
     public static void main(String[] args) {
-
-        out.println("How many people should the bill be divided into?");
-        String enter = in.next();
-        int persons = 0, flag = 0, flag2 = 0;
-        while (flag == 0) {
-            for (int t = 0; t < enter.length(); t++) {
-                if (enter.charAt(t) < '0' || enter.charAt(t) > '9') {
-                    flag2 += 1;
-                }
-            }
-            if (flag2==0) {
-                int st = 1;
-                for (int r = enter.length()-1; r >= 0; r--) {
-                    persons += ((int) enter.charAt(r) - 48) * st;
-                    st *= 10;
-                }
-                if (persons >= 1)
-                    flag = 1;
-            }
-            if (flag == 0) {
-                out.println("Non-correct value for counting\nPlease enter the correct value");
-                enter = in.next();
-            }
-            flag2 = 0;
-        }
-
+        int persons = Input();
         Positions[] pos = new Positions[100];
 
         out.println("Enter the name of the dish");
@@ -88,6 +63,33 @@ public class Main {
         }
         else
             out.println("Please, enter Yes/No");
+    }
+    public static int Input (){
+        out.println("How many people should the bill be divided into?");
+        String enter = in.next();
+        int persons0 = 0, flag = 0, flag2 = 0;
+        while (flag == 0) {
+            for (int t = 0; t < enter.length(); t++) {
+                if (enter.charAt(t) < '0' || enter.charAt(t) > '9') {
+                    flag2 += 1;
+                }
+            }
+            if (flag2==0) {
+                int st = 1;
+                for (int r = enter.length()-1; r >= 0; r--) {
+                    persons0 += ((int) enter.charAt(r) - 48) * st;
+                    st *= 10;
+                }
+                if (persons0 >= 1)
+                    flag = 1;
+            }
+            if (flag == 0) {
+                out.println("Non-correct value for counting\nPlease enter the correct value");
+                enter = in.next();
+            }
+            flag2 = 0;
+        }
+        return persons0;
     }
 }
 
