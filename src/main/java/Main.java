@@ -69,7 +69,6 @@ public class Main {
             }
 
             String message = "Каждый должен заплатить %.2f %s";
-
             System.out.println(String.format(message, pay, rubString));
         }
     }
