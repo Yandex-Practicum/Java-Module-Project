@@ -30,6 +30,8 @@ public class Main {
         out.print(("Everyone has to pay: ") + String.format("%.2f", sum / persons));
         Ending((sum / persons));
 
+        //далее дополнительная фича
+
         out.println("Do you want to correct the list");
         String choice = in.next();
         int check = 0;
@@ -50,19 +52,21 @@ public class Main {
                         double sum1 = 0;
                         for (int j = 0; j < i; j++)
                             sum1 += pos[j].price;
-                        out.println("Total sum: " + String.format("%.2f", sum1) + " rubles");
-                        out.println(("Everyone has to pay: ") + String.format("%.2f", sum1 / persons) + " rubles");
-                        check = 1;
+                        out.println("Total sum: " + String.format("%.2f", sum1));
+                        Ending(sum1);
+                        out.println(("Everyone has to pay: ") + String.format("%.2f", sum1 / persons));
+                        Ending((sum1 / persons));
                     } else if (del < 0)
                         out.println("The number cannot be less than zero");
                 }
                 out.println("Great! See you later");
+                check = 1;
             } else if (choice.equalsIgnoreCase("Нет") || choice.equalsIgnoreCase("No")) {
                 out.println("Great! See you later");
                 check = 1;
             } else {
                 out.println("Please, enter Yes/No");
-
+                choice = in.next();
             }
         }
     }
