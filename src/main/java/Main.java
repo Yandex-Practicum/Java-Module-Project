@@ -25,37 +25,46 @@ public class Main {
         double sum = 0;
         for (int j = 0; j < i; j++)
             sum += pos[j].price;
-        out.println("Total sum: " + String.format("%.2f", sum) + " rubles");
-        out.println(("Everyone has to pay: ") + String.format("%.2f", sum / persons) + " rubles");
+        out.print("Total sum: " + String.format("%.2f", sum));
+        Ending(sum);
+        out.print(("Everyone has to pay: ") + String.format("%.2f", sum / persons));
+        Ending((sum / persons));
 
         out.println("Do you want to correct the list");
         String choice = in.next();
-        if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")) {
-            int del = 1;
-            while (del != 0) {
-                out.println("Enter the number of the dish you want to delete, If you have finished editing, enter 0");
-                del = in.nextInt();
-                if (del > 0) {
-                    for (int y = del - 1; y < i - 1; y++) {
-                        pos[y] = pos[y + 1];
-                    }
-                    pos[i] = null;
-                    i--;
-                    for (int j = 0; j < i; j++)
-                        out.println(j + 1 + ") " + pos[j].name + " --- " + pos[j].price + " rubles");
-                    double sum1 = 0;
-                    for (int j = 0; j < i; j++)
-                        sum1 += pos[j].price;
-                    out.println("Total sum: " + String.format("%.2f", sum1) + " rubles");
-                    out.println(("Everyone has to pay: ") + String.format("%.2f", sum1 / persons) + " rubles");
-                } else if (del < 0)
-                    out.println("The number cannot be less than zero");
+        int check = 0;
+        while (check == 0) {
+            if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")) {
+                int del = 1;
+                while (del != 0) {
+                    out.println("Enter the number of the dish you want to delete, If you have finished editing, enter 0");
+                    del = in.nextInt();
+                    if (del > 0) {
+                        for (int y = del - 1; y < i - 1; y++) {
+                            pos[y] = pos[y + 1];
+                        }
+                        pos[i] = null;
+                        i--;
+                        for (int j = 0; j < i; j++)
+                            out.println(j + 1 + ") " + pos[j].name + " --- " + pos[j].price + " rubles");
+                        double sum1 = 0;
+                        for (int j = 0; j < i; j++)
+                            sum1 += pos[j].price;
+                        out.println("Total sum: " + String.format("%.2f", sum1) + " rubles");
+                        out.println(("Everyone has to pay: ") + String.format("%.2f", sum1 / persons) + " rubles");
+                        check = 1;
+                    } else if (del < 0)
+                        out.println("The number cannot be less than zero");
+                }
+                out.println("Great! See you later");
+            } else if (choice.equalsIgnoreCase("Нет") || choice.equalsIgnoreCase("No")) {
+                out.println("Great! See you later");
+                check = 1;
+            } else {
+                out.println("Please, enter Yes/No");
+
             }
-            out.println("Great! See you later");
-        } else if (choice.equalsIgnoreCase("Нет") || choice.equalsIgnoreCase("No")) {
-            out.println("Great! See you later");
-        } else
-            out.println("Please, enter Yes/No");
+        }
     }
 
     public static int InputInt() {
@@ -108,6 +117,15 @@ public class Main {
     public static String AddName(){
         out.println("Enter the name of the dish");
         return in.next();
+    }
+    public static void Ending (double coast){
+        int price = (int) coast;
+        if (price%10 == 1 && price%100!=11)
+            out.println(" (рубль)");
+        else if (price%10<=4 && price%10>=2 && (price%100)/10!=2)
+            out.println(" (рубля)");
+        else
+            out.println(" (рублей)");
     }
 }
 
