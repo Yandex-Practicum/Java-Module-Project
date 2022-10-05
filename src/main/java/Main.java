@@ -9,19 +9,21 @@ public class Main {
         System.out.println("Привет Мир");
         Scanner scanner = new Scanner(System.in);
         //считываем кол-во гостей
-        int visitor = -1;
-
+        int visitor = 0;
         System.out.println ("Введите колличество гостей");
-        while (visitor != 0 ) {
-            visitor = scanner.nextInt();
-            if (visitor <=1) {
-                System.out.println("Некорректное кол-во гостей");
+        while (true) {
+            String str = scanner.next();
+            while (!isNumeric(str)) {
                 System.out.println("Введите колличество гостей");
+                str = scanner.next();
             }
-            else
-                if (visitor > 1) {
-                        break;
-                    }
+            visitor = Integer.parseInt(str);
+            if ((visitor <= 1) | (visitor == 0)) {
+                    System.out.println("Некорректное кол-во гостей");
+                    System.out.println("Введите колличество гостей");
+                } else if (visitor > 1) {
+                    break;
+            }
         }
         //считываем кол-во товаров
         boolean enough = true;
@@ -57,8 +59,8 @@ public class Main {
             float pay = (float) (menu_list.pay/visitor);
             String rubString = "";
             int rub = (int) (pay % 10);
-
-            if ((rub == 0 ) || (rub == 5) || (rub == 6) || (rub == 7 ) || (rub == 8 ) || (rub == 9)){
+            int rubTeen = (int) (pay % 100);
+            if ((rub == 0 ) || (rub == 5) || (rub == 6) || (rub == 7 ) || (rub == 8 ) || (rub == 9 ) || ((rubTeen >= 11) && (rubTeen <= 14))){
                 rubString = "рублей";
             } else if ((rub == 2) || (rub == 4) || (rub == 3) ){
                 rubString = "рубля";
