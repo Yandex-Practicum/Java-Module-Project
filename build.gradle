@@ -7,4 +7,5 @@ repositories {
 }
 
 dependencies {
+implementation 'com.google.android.gms:play-services-analytics-impl:17.0.0'
 }
