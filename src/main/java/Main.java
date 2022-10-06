@@ -11,34 +11,19 @@ public class Main {
 
         System.out.println("Добавленные товары:\n" + Product.name);
         System.out.printf("%.2f", costPerson);
-        System.out.print(rublesName(checkCostPerson));
-
-
+        rublesName(checkCostPerson);
     }
 
-    public static boolean rublesName(double checkCostPerson) {
-        if (checkCostPerson <= 20) {
-            if (checkCostPerson == 1) {
-                System.out.println(" рубль.");
-            } else if (checkCostPerson >= 2 && checkCostPerson <= 4) {
-                System.out.println(" рубля.");
-            } else if (checkCostPerson >= 5 && checkCostPerson <= 20) {
-                System.out.println(" рублей.");
-            } else if (checkCostPerson > 20) {
-                double checkCostPersonOver20 = checkCostPerson % 10;
-                if (checkCostPersonOver20 == 1) {
-                    System.out.println(" рубль.");
-                } else if (checkCostPersonOver20 >= 2 && checkCostPersonOver20 <= 4) {
-                    System.out.println(" рубля.");
-                } else if (checkCostPersonOver20 >= 5 && checkCostPersonOver20 <= 20) {
-                    System.out.println(" рублей.");
-                } else if (checkCostPersonOver20 > 20) {
-                }
-            } else {
-                return false;
-            }
+    public static void rublesName(double cost) {
+        if (cost % 10 == 1 && cost != 11 && cost % 100 != 11) {
+            System.out.println(" рубль.");
+        } else if (cost % 10 >= 2 && cost % 10 <= 4) {
+            System.out.println(" рубля.");
+        } else {
+            System.out.println(" рублей.");
         }
-        return false;
     }
-
 }
+
+
+
