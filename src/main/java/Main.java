@@ -9,6 +9,10 @@ public class Main {
 
         String nextPosition = AddName();
         double nextPrice = AddPrice();
+        while (nextPrice<0){
+            out.println("Non-correct value for counting");
+            nextPrice = AddPrice();
+        }
         int i = 0;
         while (!(nextPosition.equalsIgnoreCase("Завершить") || nextPosition.equalsIgnoreCase("end"))) {
             out.println("The dish has been added successfully!\nDo you want to add one more?");
@@ -16,6 +20,10 @@ public class Main {
             nextPosition = AddName();
             if (!(nextPosition.equalsIgnoreCase("Завершить") || nextPosition.equalsIgnoreCase("end"))) {
                 nextPrice = AddPrice();
+                while (nextPrice<0){
+                    out.println("Non-correct value for counting");
+                    nextPrice = AddPrice();
+                }
             }
             i += 1;
         }
@@ -39,9 +47,8 @@ public class Main {
             if (choice.equalsIgnoreCase("Да") || choice.equalsIgnoreCase("Yes")) {
                 int del = 1;
                 while (del != 0) {
-                    out.println("Enter the number of the dish you want to delete, If you have finished editing, enter 0");
-                    del = in.nextInt();
-                    if (del > 0) {
+                    del = (int) AddCorrections();
+                    if (del > 0 && del < i) {
                         for (int y = del - 1; y < i - 1; y++) {
                             pos[y] = pos[y + 1];
                         }
@@ -58,6 +65,8 @@ public class Main {
                         Ending((sum1 / persons));
                     } else if (del < 0)
                         out.println("The number cannot be less than zero");
+                    else if (del > i)
+                        out.println("Non-correct value");
                 }
                 out.println("Great! See you later");
                 check = 1;
@@ -108,6 +117,24 @@ public class Main {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+    public static boolean IsInt(String inp) {
+        int price;
+        try {
+            price = Integer.parseInt(inp);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    public static double AddCorrections(){
+        out.println("Enter the number of the dish you want to delete, If you have finished editing, enter 0");
+        String inp = in.next();
+        while (!IsInt(inp)){
+            out.println("Non-correct value for counting\nPlease enter the correct value");
+            inp = in.next();
+        }
+        return Integer.parseInt(inp);
     }
     public static double AddPrice(){
         out.println("Enter the price of the dish in the format rub,kop");
