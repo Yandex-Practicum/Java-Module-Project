@@ -1,13 +1,15 @@
 public class Calculator {
 
-    String productList = "";
-    double sum = 0;
+    static String productList = "";
+    static double sum = 0;
+    static int count = 0;
 
-    void getSum(double price) {
+    static void getSum(double price) {
         sum = sum + price;
     }
 
-    void getProductList(String product) {
-        productList = productList + "\n" + product;
+    static void getProductList(String product) {
+        count++;
+        productList = productList + "\n" + count + ". " + product;
     }
 }
