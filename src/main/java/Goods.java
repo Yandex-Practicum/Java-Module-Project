@@ -1,17 +1,18 @@
 public class Goods {
-    static String name;
-    static double price;
-    Goods (String nameOfGoods, double priceOfGoods) {
-        name = nameOfGoods;
-        price = priceOfGoods;
+    String name;
+    double price;
+    Goods (String name, double price) {
+        this.name = name;
+        this.price = price;
     }
-    public static double count (double summOfBasket) {
-        return summOfBasket + price;
+    /*public double count (double sumOfBasket) {
+        double sum = sumOfBasket;
+        return sum + this.price;
 
     }
-    public static String listing (String listOfGoods) {
-        String y = "";
-        y = listOfGoods +"/n"+ name;
+    public String listing (String listOfGoods) {
+        String y = listOfGoods;
+        y = listOfGoods +"/n"+ this.name;
         return y;
-    }
+    }*/
 }
