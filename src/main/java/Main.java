@@ -31,7 +31,7 @@ public class Main {
                     }
                 }
                 purchases = Summoning.Calculate(product, purchases);
-                System.out.println("Do you want to add next product? If no, write \"complete\".");
+                System.out.println("Do you want to add next product? If no, write \"complete\", else any phrase.");
                 scanner.nextLine();
                 String chek = scanner.nextLine();
             trigger = !chek.equalsIgnoreCase("complete");
@@ -40,8 +40,8 @@ public class Main {
 
         System.out.println("Purchased products:\n"+purchases.name);
         double bill = purchases.price/count;
-        String finalPhrase1 = "%.2f ruble";
-        String finalPhrase2 = "%.2f rubles";
+        String finalPhrase1 = "%.2f рубля";
+        String finalPhrase2 = "%.2f рублей";
         if (bill <2 && bill>=1){
             System.out.println(String.format(finalPhrase1, bill));
         } else{
