@@ -67,7 +67,7 @@ class Calculator {
                 sum += dInput;
                 System.out.println("Товар успешно добавлен!");
                 scanner.nextLine();
-                System.out.println("Хотите добавить ещё товар? Введите \"Завершить\", чтобы закончить ввод.");
+                System.out.println("Хотите добавить ещё товар? Введите любой символ. Иначе, введите \"Завершить\", чтобы закончить ввод.");
                 input = scanner.nextLine();
                 if (input.equalsIgnoreCase("завершить")) {
                     break;
