@@ -63,10 +63,6 @@ public class Calculator {
         //Берем числа после зяпятой
         String numberAfterPoint = String.valueOf(numberRound).substring(String.valueOf(numberRound).indexOf(".") + 1);
 
-        //Проверяем число для окончания "рубль"
-        /*if(Integer.parseInt(numberAfterPoint)%10 == 0) System.out.println("Каждый должен заплатить: " + numberRound + " рубль!" );
-        else System.out.println("Каждый должен заплатить: " + numberRound + " рубля!" );
-        */
         //Округление суммы
         int roundAmount = (int)Math.floor(numberRound);
         //Берем предпоследнюю цифру
