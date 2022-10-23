@@ -6,8 +6,8 @@ public class Calculator {
     человека и выводит данные на консоль
      */
 
-    private int numberOfVisitors;
-    private List<Product> listOfProducts;
+    private final int numberOfVisitors;
+    private final List<Product> listOfProducts;
 
     public Calculator(int numberOfVisitors) {
         this.numberOfVisitors = numberOfVisitors;
@@ -22,6 +22,7 @@ public class Calculator {
         return this.numberOfVisitors;
     }
 
+    // Добавляет объект класса Product в listOfProducts
     public void addProductToList(Product product) {
         listOfProducts.add(product);
     }
@@ -29,7 +30,7 @@ public class Calculator {
     @Override
     public String toString() {
         return "Количество посетителей: " + this.numberOfVisitors + "\n" +
-        "Список продуктов: " + this.listOfProducts.toString();
+        "Список продуктов: " + this.listOfProducts;
     }
 
     // Расчитывает стоимость по счету на каждого посетителя
@@ -63,7 +64,7 @@ public class Calculator {
 
         double valuePerPerson = this.calculate();
 
-        System.out.println("Итого: ");
+        System.out.println("Итого:");
         System.out.println("Колличество персон: " + this.getNumberOfVisitors());
         System.out.println("Стоимость по чеку на каждую персону составляет по: "
                 + String.format("%.2f", valuePerPerson) + " " + getRightWord(valuePerPerson));
