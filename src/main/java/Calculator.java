@@ -14,7 +14,7 @@ public class Calculator{
     public String getItemsAsStr(){
         String info = "Добавленные товары: \n";
         for (Item item: items){
-            info = info + item.toString() + "\n";
+            info += item.toString() + "\n";
         }
         return info;
     }

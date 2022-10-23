@@ -31,35 +31,58 @@ public class App {
     }
     private int getPeopleCount(){
         while(true){
-            System.out.println("Укажите колличество человек");
-            int peopleCount = sc.nextInt();
-            if (peopleCount <= 1) {
-                System.out.println("Колличество человек должно быть больше 1");
-                continue;
-            }
-            else {
-                return peopleCount;
-            }
+           try {
+               System.out.println("Укажите колличество человек");
+               String myString = sc.next();
+               int peopleCount = Integer.parseInt(myString);
+               if (peopleCount <= 1) {
+                   System.out.println("Колличество человек должно быть больше 1");
+                   continue;
+               }
+               else {
+                   return peopleCount;
+               }
+           } catch (NumberFormatException e) {
+               System.out.println("Неревный ввод");
+
+           }
 
         }
     }
     private  void readItems(){
-        while (true){
+        while (true) {
             System.out.println("Введите название продукта");
             String title = sc.next();
-            System.out.println("Введите цену продукта");
-            double price = sc.nextDouble();
-            Item item = new Item(title,price);
-            calculator.addItem(item);
-            System.out.println("Товар успешно добавлен");
-            System.out.println("Если это все продукты, то введите 'exit'");
-            String finish = sc.next();
-            if (finish.equalsIgnoreCase("exit") ) {
+                while (true) {
+                    try {
+                        System.out.println("Введите цену продукта");
+                        String myString1 = sc.next();
+                        double price = Double.parseDouble(myString1);
+                        if (price > 0) {
+                            Item item = new Item(title, price);
+                            calculator.addItem(item);
+                            System.out.println("Товар успешно добавлен");
+                            System.out.println("Если это все продукты, то введите 'exit', иначе введите любой символ");
+                            String finish = sc.next();
+                            if (finish.equalsIgnoreCase("exit")) {
+                                break;
+                            } else {
+                                continue;
+                            }
+                        } else {
+                            System.out.println("Неревный ввод");
+                            continue;
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Неревный ввод");
+
+                    }
+
+
+                }
                 break;
-            }
-            else {
-                continue;
-            }
+
+
 
         }
     }
