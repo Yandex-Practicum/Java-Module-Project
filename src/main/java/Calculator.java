@@ -18,6 +18,10 @@ public class Calculator {
         return this.listOfProducts;
     }
 
+    public int getNumberOfVisitors() {
+        return this.numberOfVisitors;
+    }
+
     public void addProductToList(Product product) {
         listOfProducts.add(product);
     }
@@ -60,6 +64,7 @@ public class Calculator {
         double valuePerPerson = this.calculate();
 
         System.out.println("Итого: ");
+        System.out.println("Колличество персон: " + this.getNumberOfVisitors());
         System.out.println("Стоимость по чеку на каждую персону составляет по: "
                 + String.format("%.2f", valuePerPerson) + " " + getRightWord(valuePerPerson));
     }

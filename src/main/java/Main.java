@@ -42,22 +42,12 @@ public class Main {
 
     // Проверяет, является ли введеное пользователем значение целочисленным числом - true, иначе - false
     private static boolean isNumeric(String string) {
-        try {
-            Integer.parseInt(string);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+        String numericPattern = "\\d+";
+        return Pattern.matches(numericPattern, string);
     }
 
     // Проверяет, является ли введеное пользователем значение цислом с дробной частью - true, иначе - false
     private static boolean isDoubleNumeric(String string) {
-//        try {
-//            Double.parseDouble(string);
-//            return true;
-//        } catch (NumberFormatException e) {
-//            return false;
-//        }
         String decimalPattern = "([0-9]*)\\.([0-9]*)";
         return Pattern.matches(decimalPattern, string);
     }
@@ -79,7 +69,7 @@ public class Main {
             } else {
                 nameOfProduct = response;
                 while (true) {
-                    System.out.println("Ведите, пожалуйста, стоимость товара в формате XX.YY (где ХХ - рубли, YY - копейки)...");
+                    System.out.println("Введите, пожалуйста, стоимость товара в формате XX.YY (где ХХ - рубли, YY - копейки)...");
                     response = scanner.next();
                     if (isDoubleNumeric(response)) {
                         value = Double.parseDouble(response);
