@@ -64,9 +64,39 @@ public class Calculator {
         String numberAfterPoint = String.valueOf(numberRound).substring(String.valueOf(numberRound).indexOf(".") + 1);
 
         //Проверяем число для окончания "рубль"
-        if(Integer.parseInt(numberAfterPoint)%10 == 0) System.out.println("Каждый должен заплатить: " + numberRound + " рубль!" );
+        /*if(Integer.parseInt(numberAfterPoint)%10 == 0) System.out.println("Каждый должен заплатить: " + numberRound + " рубль!" );
         else System.out.println("Каждый должен заплатить: " + numberRound + " рубля!" );
+        */
+        //Округление суммы
+        int roundAmount = (int)Math.floor(numberRound);
+        //Берем предпоследнюю цифру
+        String penultimateNum = String.valueOf(roundAmount).substring(String.valueOf(roundAmount).length() - 2, String.valueOf(roundAmount).length() - 1);
+        int penultimateNumInt = Integer.parseInt(penultimateNum);
 
+        if(penultimateNumInt==1) {
+            System.out.println("Каждый должен заплатить: " + numberRound + " рублей!");
+        }
+        else {
+            switch (roundAmount % 10) {
+                case 1:
+                    System.out.println("Каждый должен заплатить: " + numberRound + " рубль!");
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                    System.out.println("Каждый должен заплатить: " + numberRound + " рубля!");
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    System.out.println("Каждый должен заплатить: " + numberRound + " рублей!");
+                    break;
+
+            }
+        }
 
     }
 
