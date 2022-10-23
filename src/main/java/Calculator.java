@@ -14,11 +14,53 @@ public class Calculator {
         this.listOfProducts = new ArrayList<>();
     }
 
+    public List<Product> getListOfProducts() {
+        return this.listOfProducts;
+    }
+
     public void addProductToList(Product product) {
         listOfProducts.add(product);
     }
 
-    public double calculate() {
-        return 0.0;
+    @Override
+    public String toString() {
+        return "Количество посетителей: " + this.numberOfVisitors + "\n" +
+        "Список продуктов: " + this.listOfProducts.toString();
+    }
+
+    // Расчитывает стоимость по счету на каждого посетителя
+    private double calculate() {
+        double totalValue = 0;
+        for (Product product:listOfProducts) {
+            totalValue += product.getValue();
+        }
+        return totalValue / this.numberOfVisitors;
+    }
+
+    // Возвращает слово "Рубль" с правильным окончанием в зависимости от значения
+    private String getRightWord(double value) {
+        int num = (int) value;
+        if  (num == 1) {
+            return "рубль";
+        } else if (List.of(2, 3, 4).contains(num)) {
+            return "рубля";
+        } else {
+            return "рублей";
+        }
+    }
+
+    // Выводит итоговые результаты
+    public void printResults() {
+        System.out.println("Добавленные товары:");
+        for (Product product:listOfProducts) {
+            System.out.println(product.getName() + " " + String.format("%.2f", product.getValue()) +
+                    " " + getRightWord(product.getValue()));
+        }
+
+        double valuePerPerson = this.calculate();
+
+        System.out.println("Итого: ");
+        System.out.println("Стоимость по чеку на каждую персону составляет по: "
+                + String.format("%.2f", valuePerPerson) + " " + getRightWord(valuePerPerson));
     }
 }

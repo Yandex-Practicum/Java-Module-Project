@@ -20,4 +20,9 @@ public class Product {
     public double getValue() {
         return this.value;
     }
+
+    @Override
+    public String toString() {
+        return "Наименование: " + this.name + ", Стоимость: " + this.value;
+    }
 }
