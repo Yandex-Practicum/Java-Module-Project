@@ -7,6 +7,7 @@ public class Calculator {
     public void setBill(Product product) {
         finalPrice += product.getCost();
         bill = product.getNameOfProduct() + product.getCost();
+        countPerson = product.getCountPerson();
         }
 
 
@@ -15,4 +16,3 @@ public class Calculator {
         return "Итого: " + bill + "Денег с человека:" + priceOfPerson;
     }
 }
-
