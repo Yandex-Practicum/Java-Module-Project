@@ -27,13 +27,16 @@ public class Calculator {
     }
 
     public static String currencyFormat(double sum) {
-        int i = (int)sum;
-        if (i % 10 == 2  || i % 10 == 3  || i % 10 == 4) {
-            return String.format("%.2f",sum) + " рубля";
-        } else if (i % 10 == 1 || i == 1){
-            return String.format("%.2f",sum) + " рубль";
+        int remains = (int)sum % 10;
+        String format = String.format("%.2f",sum);
+        if ((int)sum >= 11 && (int)sum <= 19){
+            return format + " рублей";
+        } else if (remains >= 2 && remains <= 4) {
+            return format + " рубля";
+        } else if (remains == 1){
+            return format + " рубль";
         } else {
-            return String.format("%.2f",sum) + " рублей";
+            return format + " рублей";
         }
     }
 }
