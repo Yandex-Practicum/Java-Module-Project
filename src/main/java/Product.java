@@ -19,5 +19,15 @@ public class Product {
     private String nameOfProduct;
     private double cost;
 
+    public int getCountPerson() {
+        return countPerson;
+    }
+
+    public void setCountPerson(int countPerson) {
+        this.countPerson = countPerson;
+    }
+
+    private int countPerson;
+
 
 }
