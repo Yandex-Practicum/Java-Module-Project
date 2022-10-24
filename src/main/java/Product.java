@@ -1,20 +1,23 @@
 public class Product {
-    private String name;
-    private Double price;
 
-    public String getName() {
-        return name;
+    public String getNameOfProduct() {
+        return nameOfProduct;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameOfProduct(String nameOfProduct) {
+        this.nameOfProduct = nameOfProduct;
     }
 
-    public Double getPrice() {
-        return price;
+    public double getCost() {
+        return cost;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
+
+    private String nameOfProduct;
+    private double cost;
+
+
 }
