@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Persons {
 
     int countPersons = 1;
-    String exit_word;
 
     // метод запрашивает кол-во человек
     void enterPersons() {
@@ -12,34 +11,36 @@ public class Persons {
 
         while (countPersons < 2) {
 
-            System.out.println("Введите кол-во человек (целое число от 2 до 2147483647) или введите '"+exit_word+"' для выхода:");
+            System.out.printf("Введите кол-во человек (целое число от 2 до 2147483647) или введите '%s' для выхода:%n", Main.exit_word);
 
             String consoleData = scanner.next();
 
             // команда Завершить
-            if (consoleData.equalsIgnoreCase(exit_word)) {
-                System.out.println(exit_word);
+            if (consoleData.equalsIgnoreCase(Main.exit_word)) {
+                System.out.println(Main.exit_word);
                 break;
             }
 
             // проверяем ввод на int
             if (isInteger(consoleData)) {
                 // преобразуем ввод в int
-                countPersons = Integer.valueOf(consoleData);
+                countPersons = Integer.parseInt(consoleData);
                 if (countPersons < 2) {
                     // введено целое число, но не соответсвует параметрам
-                    System.out.println("Ошибка.");
+                    System.out.println("Ошибка");
                 } else {
                     // введено правильное число
+                    System.out.printf("Кол-во человек: %d%n", countPersons);
                     break;
                 }
             } else {
                 // Введены символы которые не преобразуются в int
-                System.out.println("Ошибка.");
+                System.out.println("Ошибка");
             }
         }
     }
 
+    // проверка на преобраование строки в int
     private static boolean isInteger(String s) throws NumberFormatException {
         try {
             Integer.parseInt(s);
@@ -49,7 +50,4 @@ public class Persons {
         }
     }
 
-    Persons(String exit_word) {
-        this.exit_word = exit_word;
-    }
 }

@@ -12,30 +12,29 @@
 public class Main {
 
     // Слово для выхода, можно изменить в одном месте
-    static String exit_word = "завершить";
+    public static final String exit_word = "завершить";
 
     public static void main(String[] args) {
 
         System.out.println("= КАЛЬКУЛЯТОР СЧЁТА =");
 
-        // создаем объект класса Persons, передаем ему слово для выхода
-        Persons persons = new Persons(exit_word);
+        // создаем объект класса Persons
+        Persons persons = new Persons();
         // Вызываем метод запроса кол-ва человек
         persons.enterPersons();
 
         if (persons.countPersons>1) {
-            System.out.println("Кол-во человек: " + persons.countPersons);
 
-            // создаем объект класса Calculator, передаем ему слово для выхода
-            Calculator calculator = new Calculator(exit_word);
+            // создаем объект класса Calculator
+            Calculator calculator = new Calculator();
             // вызываем метод запроса товаров с ценами
             calculator.addProducts();
 
             if (calculator.countProducts>0) {
-                // выводим результат
+                // выводим результат передавая калькулятору кол-во персон
                 calculator.printResult(persons.countPersons);
             } else {
-                System.out.println("Продукты не добавлены.");
+                System.out.println("Продукты не добавлены");
             }
         }
     }
