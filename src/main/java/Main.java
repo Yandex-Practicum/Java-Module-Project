@@ -7,7 +7,8 @@ public class Main {
         collectingInfo();
 
     }
-//Сбор информации о количестве человек
+
+    //Сбор информации о количестве человек
     private static void collectingInfo() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -30,8 +31,10 @@ public class Main {
             }
         }
     }
+
     //Добавление товаров в список
     private static void products() {
+
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите наименование товара:");
@@ -44,29 +47,38 @@ public class Main {
 
 
     }
+
     private static void listOfProducts() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Хотите добавить еще товар?");
         String add = scanner.next();
+        String yes = "да";
 
         while (true) {
-            if (add == "да") {
+
+            if (add.equalsIgnoreCase("да")) {
                 products();
+                break;
             }
-            if (add == "нет") {
+             if (add.equalsIgnoreCase("нет")) {
                 System.out.println("Завершить покупку?");
                 String complete = scanner.next();
                 while (true) {
-                    if (complete == "Завершить") {
+                    if (complete.equalsIgnoreCase("Завершить")) {
                         break;
                     }
-                    if (complete == "нет") {
+                    if (complete.equalsIgnoreCase("нет")){
+                        break;
+                    }
+                    else {
+                        System.out.println("введите еще раз");
 
                     }
                 }
             }
-            }
+
         }
     }
+}
 
 
