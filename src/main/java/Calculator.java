@@ -43,8 +43,7 @@ public class Calculator {
                     price = scanner.nextDouble();
                 }
                 total = total + price;
-                String s2 = "Товар " + product + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", price);
-                System.out.println(s2);
+                System.out.println("Товар " + product + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", price));
             }
         }
         System.out.println("Добавленные товары: " + "\n" + String.join("\n", products));
