@@ -1,8 +1,30 @@
+import java.util.Scanner;
+
 public class Main {
+    static Calculate calculate=new Calculate();
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+
+        calculate.calculate();
+        /*Scanner in = new Scanner(System.in);
+        int ab;
+        while (true)
+        {
+            System.out.println("Введите число");
+            if (in.hasNextInt())
+            {
+                ab = Integer.parseInt(in.nextLine());
+                System.out.println("Вы ввели: " + ab);
+                break;
+            }
+            else
+            {
+                System.out.println("Вы ввели не число");
+                in.nextLine();
+            }}*/
     }
-}
+
+    }
+
+
+
