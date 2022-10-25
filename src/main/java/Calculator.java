@@ -7,7 +7,7 @@ public class Calculator {
     public void setBill(Product product) {
         bill += (product.getNameOfProduct() + "\n" + product.getCost()) + "\n";
         finalPrice += product.getCost();
-        countPerson += product.getCountPerson();
+        countPerson = product.getCountPerson();
         }
 
 
