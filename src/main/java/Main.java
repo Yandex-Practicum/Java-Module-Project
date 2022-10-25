@@ -4,5 +4,8 @@ public class Main {
         // ваш код начнется здесь
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
         System.out.println("Привет Мир");
+        Calculator calculator = new Calculator();
+        calculator.addPersons();
+        calculator.addProducts();
     }
 }
