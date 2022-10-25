@@ -85,9 +85,5 @@ public class Main {
         }else if((Math.round(productPrice)%10) <= 4 &&  (Math.round(productPrice)%100 >= 2) && (Math.round(productPrice)%100)/10 != 2){
             return "rubles";
         } else return "rubles";
-
     }
-
-
-
 }
