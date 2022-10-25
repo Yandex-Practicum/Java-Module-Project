@@ -29,7 +29,6 @@ public class Calculator {
     public void addProducts() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> products = new ArrayList<>();
-        ArrayList<Double> sum = new ArrayList<>();
         while (true) {
             System.out.println("Отлично! Введите товар или напишите 'завершить'");
             String product = scanner.next();
@@ -39,7 +38,6 @@ public class Calculator {
                 System.out.println("Введите цену товара в формате РУБЛИ.КОПЕЙКИ Например: '[10.45]'");
                 double price = scanner.nextDouble();
                 products.add(product);
-                sum.add(price);
                 while (price <= 0) {
                     System.out.println("Ошибка! Введите корректное значение.");
                     price = scanner.nextDouble();
