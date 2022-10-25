@@ -44,13 +44,21 @@ public class Calculator {
 
     // Возвращает слово "Рубль" с правильным окончанием в зависимости от значения
     private String getRightWord(double value) {
-        int num = (int) value;
-        if  (num == 1) {
-            return "рубль";
-        } else if (List.of(2, 3, 4).contains(num)) {
-            return "рубля";
+        String[] vars = {"рубль", "рубля", "рублей"};
+        int valueToInt = (int) value;
+        if ((valueToInt / 10) % 10 == 1) {
+            return vars[2];
         } else {
-            return "рублей";
+            switch (valueToInt % 10) {
+                case 1:
+                    return vars[0];
+                case 2:
+                case 3:
+                case 4:
+                    return vars[1];
+                default:
+                    return vars[2];
+            }
         }
     }
 
