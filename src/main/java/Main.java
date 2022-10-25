@@ -40,12 +40,20 @@ public class Main {
 
         System.out.println("Purchased products:\n"+purchases.name);
         double bill = purchases.price/count;
-        String finalPhrase1 = "%.2f рубля";
-        String finalPhrase2 = "%.2f рублей";
-        if (bill <2 && bill>=1){
-            System.out.println(String.format(finalPhrase1, bill));
+        String finalPhrase1 = "%.2f рубль";
+        String finalPhrase2 = "%.2f рубля";
+        String finalPhrase3 = "%.2f рублей";
+        int ostatok = (int) (Math.floor(bill)%10.0);
+        if ((bill <=19 && bill>=11) || (ostatok>=5 && ostatok<=9)|| ostatok==0){
+            System.out.println(String.format(finalPhrase3, bill));
         } else{
-            System.out.println(String.format(finalPhrase2, bill));
+            if (ostatok == 1) {
+                System.out.println(String.format(finalPhrase1, bill));
+            } else{
+                System.out.println(String.format(finalPhrase2, bill));
+
+            }
+
         }
 
 
