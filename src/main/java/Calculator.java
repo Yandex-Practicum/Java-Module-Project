@@ -31,19 +31,19 @@ public class Calculator {
         ArrayList<String> products = new ArrayList<>();
         while (true) {
             System.out.println("Отлично! Введите товар или напишите 'завершить'");
-            String s = scanner.next();
-            if (s.equalsIgnoreCase("завершить")) {
+            String product = scanner.next();
+            if (product.equalsIgnoreCase("завершить")) {
                 break;
             } else {
                 System.out.println("Введите цену товара в формате РУБЛИ.КОПЕЙКИ Например: '[10.45]'");
-                double d = scanner.nextDouble();
-                products.add(s);
-                while (d <= 0) {
+                double price = scanner.nextDouble();
+                products.add(product);
+                while (price <= 0) {
                     System.out.println("Ошибка! Введите корректное значение.");
-                    d = scanner.nextDouble();
+                    price = scanner.nextDouble();
                 }
-                total = total + d;
-                String s2 = "Товар " + s + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", d);
+                total = total + price;
+                String s2 = "Товар " + product + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", price);
                 System.out.println(s2);
             }
         }
