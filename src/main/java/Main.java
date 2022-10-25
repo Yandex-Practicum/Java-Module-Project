@@ -7,7 +7,7 @@ public class Main {
         Calculator calculator = new Calculator();
 
         while (true) {
-            Product product = new Product();
+
             System.out.println("На скольких человек разделить счет?");
             int scanPerson = scanner.nextInt();
 
@@ -16,13 +16,14 @@ public class Main {
                 System.exit(0);
             } else if (scanPerson < 1) {
                 System.out.println("Ошибка. Введите корректное значение.");
-            } else if (scanPerson > 1) {
-                product.setCountPerson(scanPerson);
+            } else {
+                calculator.setCountPerson(scanPerson);
                 System.out.println("Количество человек: " + scanPerson);
 
             }
+        }
             while (true) {
-
+                Product product = new Product();
                 System.out.println("Введите название товара");
                 product.setNameOfProduct(scanner.next());
                 System.out.println("Введите стоимость товара в формате 00,00");
@@ -39,4 +40,3 @@ public class Main {
 
         }
     }
-}
