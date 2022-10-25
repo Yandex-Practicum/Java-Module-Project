@@ -5,6 +5,7 @@ public class Main {
         Calculator calculator = new Calculator();
         calculator.addPersons();
         calculator.addProducts();
+
     }
 }
 

@@ -26,6 +26,7 @@ public class Calculator {
         person = a;
     }
 
+
     public void addProducts() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> products = new ArrayList<>();
