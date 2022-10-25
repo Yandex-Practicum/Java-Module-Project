@@ -26,28 +26,26 @@ public class Calculator {
         person = a;
     }
 
-
     public void addProducts() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> products = new ArrayList<>();
         ArrayList<Double> sum = new ArrayList<>();
         while (true) {
             System.out.println("Отлично! Введите товар или напишите 'завершить'");
-            String s = scanner.next();
-            if (s.equalsIgnoreCase("завершить")) {
+            String product = scanner.next();
+            if (product.equalsIgnoreCase("завершить")) {
                 break;
             } else {
                 System.out.println("Введите цену товара в формате РУБЛИ.КОПЕЙКИ Например: '[10.45]'");
-                double d = scanner.nextDouble();
-                products.add(s);
-                sum.add(d);
-                while (d <= 0) {
+                double price = scanner.nextDouble();
+                products.add(product);
+                sum.add(price);
+                while (price <= 0) {
                     System.out.println("Ошибка! Введите корректное значение.");
-                    d = scanner.nextDouble();
+                    price = scanner.nextDouble();
                 }
-                total = total + d;
-                String s2 = "Товар " + s + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", d);
-                System.out.println(s2);
+                total = total + price;
+                System.out.println("Товар " + product + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", price));
             }
         }
         System.out.println("Добавленные товары: " + "\n" + String.join("\n", products));
