@@ -1,8 +1,72 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+        System.out.println("Здравствуйте!");
+        collectingInfo();
+
     }
-}
+//Сбор информации о количестве человек
+    private static void collectingInfo() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("На скольких человек разделить счет?");
+            int numbOfPeople = scanner.nextInt();
+            if (numbOfPeople == 1) {
+                //вызвать счет
+                System.out.println("Ваш счет.");
+                break;
+            }
+            if (numbOfPeople < 1) {
+                System.out.println("Некорректное количество гостей. Пожалуйста попробуйте ввести количество гостей еще раз.");
+
+            }
+            if (numbOfPeople > 1) {
+
+                products();
+                listOfProducts();
+                break;
+            }
+        }
+    }
+    //Добавление товаров в список
+    private static void products() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите наименование товара:");
+        String name = scanner.next();
+        System.out.println("Введите стоимость товара:");
+        String price = scanner.next();
+        System.out.println("Товар добавлен в список!");
+        Products products = new Products(name, price);
+        System.out.println(products.name);
+
+
+    }
+    private static void listOfProducts() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Хотите добавить еще товар?");
+        String add = scanner.next();
+
+        while (true) {
+            if (add == "да") {
+                products();
+            }
+            if (add == "нет") {
+                System.out.println("Завершить покупку?");
+                String complete = scanner.next();
+                while (true) {
+                    if (complete == "Завершить") {
+                        break;
+                    }
+                    if (complete == "нет") {
+
+                    }
+                }
+            }
+            }
+        }
+    }
+
+
