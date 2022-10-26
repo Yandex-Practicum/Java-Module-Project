@@ -43,6 +43,7 @@ public class Main {
         Products products = new Products(name, price);
         System.out.println("Ваш список продуктов:\n" + name + " стоимостью " + price + " рублей\n");
         listOfProducts();
+
     }
 
     private static void listOfProducts() {
