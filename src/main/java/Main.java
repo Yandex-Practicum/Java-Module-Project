@@ -5,24 +5,18 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
-
+        System.out.println("На скольких человек разделить счет?");
+        int scanPerson = scanner.nextInt();
+        calculator.setCountPerson(scanPerson);
         while (true) {
-
-            System.out.println("На скольких человек разделить счет?");
-            int scanPerson = scanner.nextInt();
 
             if (scanPerson == 1) {
                 System.out.println("Подсчет не нужен");
                 System.exit(0);
             } else if (scanPerson < 1) {
                 System.out.println("Ошибка. Введите корректное значение.");
+                System.exit(0);
             } else {
-                calculator.setCountPerson(scanPerson);
-                System.out.println("Количество человек: " + scanPerson);
-
-            }
-        }
-            while (true) {
                 Product product = new Product();
                 System.out.println("Введите название товара");
                 product.setNameOfProduct(scanner.next());
@@ -32,11 +26,10 @@ public class Main {
                 System.out.println("Завершить? Нажмите любой символ, чтобы продолжить");
                 if (scanner.next().equalsIgnoreCase("Завершить")) {
                     break;
-                }
-
             }
-            calculator.calculate();
-            System.exit(0);
-
         }
+        }
+            calculator.calculate();
+
     }
+}
