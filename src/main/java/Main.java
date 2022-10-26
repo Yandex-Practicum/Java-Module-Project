@@ -13,13 +13,18 @@ public class Main {
 
             do {
                 System.out.println("На скольких человек необходимо разделить счёт?");
-                numberOfPeople = scanner.nextInt();
-                if (numberOfPeople == 1) {
-                    System.out.println("Ничего делить не надо");
-                } else if (numberOfPeople <= 0) {
-                    System.out.println("Некорректное значение для подсчёта.");
+                numberOfPeople = 1;
+                try { numberOfPeople = scanner.nextInt();
+                    if (numberOfPeople == 1) {
+                        System.out.println("Ничего делить не надо");
+                    } else if (numberOfPeople <= 0) {
+                        System.out.println("Некорректное значение для подсчёта.");
+                    }
+                    add.getNumberOfPpl(numberOfPeople);//добавляем кол-во людей
+                } catch (InputMismatchException e) {
+                    System.out.println("Не допустимое значение!");
+                    scanner.next();
                 }
-                add.getNumberOfPpl(numberOfPeople);//добавляем кол-во людей
             } while (numberOfPeople < 2);
 
             while (true) {
