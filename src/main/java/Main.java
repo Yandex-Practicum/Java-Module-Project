@@ -26,7 +26,7 @@ public class Main {
             if (numbOfPeople > 1) {
 
                 products();
-                listOfProducts();
+
                 break;
             }
         }
@@ -34,8 +34,6 @@ public class Main {
 
     //Добавление товаров в список
     private static void products() {
-
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите наименование товара:");
         String name = scanner.next();
@@ -43,19 +41,15 @@ public class Main {
         String price = scanner.next();
         System.out.println("Товар добавлен в список!");
         Products products = new Products(name, price);
-        System.out.println(products.name);
-
-
+        System.out.println("Ваш список продуктов:\n" + name + " стоимостью " + price + " рублей\n");
+        listOfProducts();
     }
 
     private static void listOfProducts() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Хотите добавить еще товар?");
         String add = scanner.next();
-        String yes = "да";
-
         while (true) {
-
             if (add.equalsIgnoreCase("да")) {
                 products();
                 break;
@@ -79,6 +73,7 @@ public class Main {
 
         }
     }
+
 }
 
 
