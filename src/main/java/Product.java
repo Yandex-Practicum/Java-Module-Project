@@ -3,15 +3,7 @@ public class Product {
     private String nameOfProduct;
     private double cost;
 
-    public int getCountPerson() {
-        return countPerson;
-    }
 
-    public void setCountPerson(int countPerson) {
-        this.countPerson = countPerson;
-    }
-
-    private int countPerson;
     public String getNameOfProduct() {
         return nameOfProduct;
     }
@@ -27,4 +19,5 @@ public class Product {
     public void setCost(double cost) {
         this.cost = cost;
     }
+
 }
