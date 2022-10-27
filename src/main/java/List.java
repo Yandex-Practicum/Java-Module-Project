@@ -13,8 +13,8 @@ public class List {
            String name = scanner.next();
             listProduct = listProduct.concat(name + ";\n");
             System.out.println("Введите цену товара");
-            double price = scanner.nextDouble();
-            totalPrice =totalPrice + price;
+            double price = checkFailPrice();
+            totalPrice += price;
             System.out.println("Товар успешно добавлен!\nЕсли хотите добавить еще товар введите любой символ.\nДля завершения создания списка напините \"Завершить\".");
             String result = scanner.next();
             if(result.equalsIgnoreCase("Завершить")){
@@ -24,23 +24,44 @@ public class List {
         }
 
 
-        }
+    }
     public static String whichRub(double num){
         int sum = (int)num;
-        if(sum % 10 == 1 && sum != 11 && sum % 100 != 11){
-            return "рубль";
-        }
-        else if(sum % 10 >= 2 && sum % 10 <= 4 ){
-            return "рубля";
-        }
-        else{
+        sum = sum % 100;
+        if(10<sum && sum<15){
             return "рублeй";
         }
+        int sum1 = sum % 10;
+        switch(sum1){
+            case 1: return "рубль";
+            case 2:
+            case 3:
+            case 4: return "рубля";
+
+        }
+        return "рублeй";
     }
     public static void makeList() {
         double priceForOne = totalPrice / People.persons;
         String end = "Добавленные товары:\n%s%.2f %s должен заплатить каждый человек.";
         System.out.println(String.format(end, listProduct, priceForOne,whichRub(priceForOne)));
+    }
+    public static double checkFailPrice() {
+        while(true) {
+            Scanner scanner = new Scanner(System.in);
+            boolean hasDouble = scanner.hasNextDouble();
+            if(hasDouble) {
+                double trueDouble = scanner.nextDouble();
+                if (trueDouble > 0) {
+                    return trueDouble;
+                } else {
+                    System.out.println("Ошибка! Введите корректную цену.");
+                }
+            }
+            else {
+                System.out.println("Ошибка! Введите корректную цену.");
+            }
+        }
     }
 }
 
