@@ -2,8 +2,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Calculator {
+
     int person = 0;
     double total;
+    String listProducts;
 
     public void addPersons() {
         int a;
@@ -29,35 +31,52 @@ public class Calculator {
     public void addProducts() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<String> products = new ArrayList<>();
+        double price;
         while (true) {
-            System.out.println("Отлично! Введите товар или напишите 'завершить'");
+            System.out.println("Введите название товара или \"Завершить\" если список товаров готов:");
             String product = scanner.next();
-            if (product.equalsIgnoreCase("завершить")) {
+            if (product.equalsIgnoreCase("Завершить")) {
                 break;
             } else {
-                System.out.println("Введите цену товара в формате РУБЛИ.КОПЕЙКИ Например: '[10.45]'");
-                double price = scanner.nextDouble();
                 products.add(product);
-                while (price <= 0) {
-                    System.out.println("Ошибка! Введите корректное значение.");
-                    price = scanner.nextDouble();
-                }
-                total = total + price;
-                System.out.println("Товар " + product + " успешно добавлен!" + " " + "Стоимостью " + String.format("%.2f", price));
             }
+            System.out.println("Введите цену товара в формате Х.ХХ:");
+            while (true) {
+                try {
+                    price = Double.parseDouble(scanner.next());
+                    if (price <= 0) {
+                        System.out.println("Неверный ввод. Введите цену заново:");
+                    } else {
+                        total = total + price;
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Неверный ввод. Введите цену заново:");
+                }
+            }
+            System.out.println("Товар " + product + " успешно добавлен!");
         }
         System.out.println("Добавленные товары: " + "\n" + String.join("\n", products));
-        System.out.println("Средний чек на человека: " + String.format("%.2f", total / person) + " " + getRightWord(total / person));
+        System.out.println("Средний чек на человека: " + String.format("%.2f", total / person) + " " + getRightWord((int) (total / person)));
     }
 
-    public static String getRightWord(double coin) {
-        coin = (int) Math.floor(coin);
-        if (coin == 0) return "";
-        coin = Math.abs(coin) % 100;
-        int n1 = (int) (coin % 10);
-        if (coin > 10 && coin < 20) return "рублей";
-        if (n1 > 1 && n1 < 5) return "рубля";
-        if (n1 == 1) return "рубль";
-        return "рублей";
+
+    public String getRightWord(int num) {
+        int preLastDigit = num % 100 / 10;
+        if (preLastDigit == 1) {
+            return "рублей";
+        }
+
+        switch (num % 10) {
+            case 1:
+                return "рубль";
+            case 2:
+            case 3:
+            case 4:
+                return "рубля";
+            default:
+                return "рублей";
+        }
     }
 }
+
