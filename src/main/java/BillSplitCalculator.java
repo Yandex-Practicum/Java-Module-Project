@@ -70,7 +70,7 @@ public class BillSplitCalculator {
     }
 
     public String getCorrectRubleEnding(double money) {
-        int moneyAsInt = (int) money;
+        int moneyAsInt = (int)money;
 
         if (moneyAsInt % 100 >= 11 && moneyAsInt % 100 <= 14) {
             return "рублей";
