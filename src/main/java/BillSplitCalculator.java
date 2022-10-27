@@ -65,8 +65,8 @@ public class BillSplitCalculator {
         for (Product product : products) {
             System.out.println(String.format("%s - %.2f\n-------------------------", product.name, product.price));
         }
-        System.out.println(String.format("\nОбщая стоимость товаров - %.2f %s ", totalCost, getCorrectRubleEnding(totalCost)));
-        System.out.println(String.format("\nКаждый должен заплатить %.2f %s", totalCost / numberOfPersons, getCorrectRubleEnding(totalCost / numberOfPersons)));
+        System.out.println(String.format("Общая стоимость товаров - %.2f %s ", totalCost, getCorrectRubleEnding(totalCost)));
+        System.out.println(String.format("Каждый должен заплатить %.2f %s", totalCost / numberOfPersons, getCorrectRubleEnding(totalCost / numberOfPersons)));
     }
 
     public String getCorrectRubleEnding(double money) {
