@@ -17,7 +17,7 @@ public class Calculator {
 
     public String math() {
         String rubles = "руб";
-        if (priceOfPerson > 10 && priceOfPerson <10 ) {
+        if (priceOfPerson > 10 && priceOfPerson <20 ) {
             return rubles + "лей";
         } switch ((int) priceOfPerson % 10) {
             case 1: {
