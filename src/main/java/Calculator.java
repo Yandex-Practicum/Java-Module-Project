@@ -13,26 +13,30 @@ public class Calculator {
     public void setBill(Product product) {
         bill += (product.getNameOfProduct() + " " + product.getCost()) + "\n";
         finalPrice += product.getCost();
-
-        }
+    }
 
     public String math() {
-        String rubles = "";
-        if (priceOfPerson < 5 || priceOfPerson % 10 > 1) {
-            rubles = "рубля";
-        } else if (priceOfPerson % 10 == 0 || priceOfPerson >= 6) {
-            rubles = "рублей";
-        } else if (priceOfPerson % 10 == 1 || priceOfPerson == 1){
-            rubles = "рубль";
+        String rubles = "руб";
+        if (priceOfPerson > 10 && priceOfPerson <10 ) {
+            return rubles + "лей";
+        } switch ((int) priceOfPerson % 10) {
+            case 1: {
+                return rubles + "ль";
+            }
+            case 2:
+            case 3:
+            case 4: {
+                return rubles + "ля";
+            }
+            default: {
+                return rubles + "лей";
+            }
         }
-        return rubles;
     }
+
     public void calculate() {
         priceOfPerson = finalPrice / countPerson;
         System.out.println("Количество персон: " + countPerson + "\n" + "Общий чек: " +
                 "\n" + bill + "\n" + "Денег с человека:" + "\n" + String.format("%.2f", priceOfPerson) + " " + math());
     }
-
-
-
 }
