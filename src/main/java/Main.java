@@ -8,7 +8,6 @@ public class Main {
         People.People();
         List.listOfProduct();
         Calculator.calculator();
-
     }
 
 }

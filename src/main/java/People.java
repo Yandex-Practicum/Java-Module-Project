@@ -26,6 +26,8 @@ public class People {
         }
 
     }
+
+
     //для вывода кода в калькулятор
     private int numbOfPeople;
     People() {
