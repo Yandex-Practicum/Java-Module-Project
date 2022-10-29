@@ -39,6 +39,8 @@ public class List {
             }
         }
     }
+
+    //для вывода кода в калькулятор
     private double sumPrice;
     List() {
         Scanner scanner = new Scanner(System.in);

@@ -26,7 +26,7 @@ public class People {
         }
 
     }
-
+    //для вывода кода в калькулятор
     private int numbOfPeople;
     People() {
         Scanner scanner = new Scanner(System.in);
