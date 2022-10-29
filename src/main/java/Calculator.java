@@ -4,8 +4,7 @@ public class Calculator {
     public static void calculator(int delitel) {
 
         Scanner scannerProduct = new Scanner(System.in);
-        String allProduct = "";
-        Float allPrice = 0.0f;
+        Product productAll = new Product();
         while (true) {
             System.out.println("Введите название товара");
             String product = scannerProduct.next();
@@ -16,8 +15,8 @@ public class Calculator {
 
             System.out.println("Введите стоимость товара (рубли.копейки)");
             Float price = cost();
-            allProduct = allProduct + "\n" + product + ": " + price;
-            allPrice = allPrice + price;
+            productAll.allProduct = productAll.allProduct + "\n" + product ;
+            productAll.allPrice = productAll.allPrice + price;
             System.out.println("Товар добавлен, хотите добавить еще товар ?  \n Если нет, введите команду \"Завершить\"");
             String answer = scannerProduct.next();
             if (answer.equalsIgnoreCase(and)) {
@@ -25,11 +24,11 @@ public class Calculator {
             }
 
         }
-        float personPrice = allPrice / delitel;
+        float personPrice = productAll.allPrice / delitel;
         String personPriceString = String.format("%.2f", personPrice);
         int personPriceInteger = (int) personPrice;
         String rub = PrintRub.getStringRub(personPriceInteger);
-        System.out.println("Добавленные товары:" + "\n" + allProduct + "\n" + "Сумма к оплате для каждого человека - " + personPriceString + rub);
+        System.out.println("Добавленные товары:"  + productAll.allProduct + "\n" + "Сумма к оплате для каждого человека - " + personPriceString + " " + rub);
 
     }
 
@@ -45,7 +44,7 @@ public class Calculator {
                 System.out.println("Введено некорректное значение, попробуйте еще.");
                 price = cost();
             }
-            if (price > 0) {
+            if (price < 0) {
                 System.out.println("Введено некорректное значение, попробуйте еще.");
                 price = cost();
             }
