@@ -14,12 +14,21 @@ public class Product {
         String name = scanner.nextLine();
         productList += str + name + spacing;
         System.out.println("Введите стоимость товара");
-        double price = scanner.nextDouble();
-        totalPrice+=price;
-        System.out.println("Товар успешно добавлен");
-        anotherProduct();
-
+        while (true){
+            if (scanner.hasNextDouble()){
+                double price = scanner.nextDouble();
+                totalPrice+=price;
+                System.out.println("Товар успешно добавлен");
+                anotherProduct();
+                break;
+            }else {
+                System.out.println("Вы ввели некорректное значение. Пожалуйста, введите корректное значение стоимости");
+                scanner.nextLine();
+            }
+        }
     }
+
+
 
     //Спрашиваем у пользователя - хочет ли он добавить еще один товар?
     public void anotherProduct(){
@@ -28,14 +37,17 @@ public class Product {
         String fork = scanner.nextLine();
 
             /*Если пользователь вводит "Да", то повторно вызываем метод addProduct
-              Иначе зввершаем добавление товаров */
+              Иначе завершаем добавление продуктов и выводим список добавленных продуктов*/
         if (fork.equalsIgnoreCase("Да")){
             addProduct();
 
+        }else {
+            addedProducts(productList);
         }
 
     }
 
+    //Вывод добавленных продуктов
     public void addedProducts (String lists){
 
         System.out.println(lists);

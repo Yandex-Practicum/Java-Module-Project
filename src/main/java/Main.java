@@ -11,9 +11,6 @@ public class Main {
         Product product = new Product();
         product.addProduct();
 
-        //Вывод добавленных продуктов
-        product.addedProducts(product.productList);
-
         //Вывод суммы, которую должен заплатить каждый человек
         Calculator calculator = new Calculator();
         calculator.cheque(people.number, product.totalPrice);
