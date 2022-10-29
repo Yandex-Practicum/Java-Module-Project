@@ -1,8 +1,24 @@
-public class Main {
+import java.util.Scanner;
+
+public abstract class Main {
+
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("Введите количество гостей: ");
+            int numbersOfGuests = scanner.nextInt();
+            if (numbersOfGuests > 1){
+                System.out.println("сюда калькулятор");
+                break;
+            } else {
+                System.out.println("Введите количество гостей больше, чем 1: ");
+            }
+        }
+
+        ProductsList.productsLists();
     }
 }
+
+
+
