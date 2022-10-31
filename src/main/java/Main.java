@@ -5,11 +5,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        People.People();
+        People.countingPeople();
         List.listOfProduct();
-        Calculator.calculator();
+        Calculator cal=new Calculator();
+        cal.calculator();
     }
-
 }
-
-
