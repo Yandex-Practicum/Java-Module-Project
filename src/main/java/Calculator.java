@@ -18,24 +18,25 @@ public class Calculator {
         System.out.println(itemsToPrint);
         double priceForEach = totalPrice / numberOfGuests;
         String shortenedPrice = String.format("%.2f", priceForEach);
+        String resultMesTemplate = "Каждый гость должен заплатить " + shortenedPrice;
 
         if (Math.floor(priceForEach) < 1) {
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рубля.");
+            System.out.println(resultMesTemplate + " рубля.");
         }
         if (Math.floor(priceForEach) == 1) {
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рубль.");
+            System.out.println(resultMesTemplate + " рубль.");
         }
         else if(Math.floor(priceForEach)==2){
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рубля.");
+            System.out.println(resultMesTemplate + " рубля.");
         }
         else if(Math.floor(priceForEach)==3){
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рубля.");
+            System.out.println(resultMesTemplate + " рубля.");
         }
         else if(Math.floor(priceForEach)==4){
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рубля.");
+            System.out.println(resultMesTemplate + " рубля.");
         }
         else if (Math.floor(priceForEach)>4){
-            System.out.println("Каждый гость должен заплатить " + shortenedPrice + " рублей.");
+            System.out.println(resultMesTemplate + " рублей.");
         }
     }
 
