@@ -17,24 +17,31 @@ public class GoodCalculator {
 
     String rubleEnding(double rubleValue) {
         int rubleValueInt = (int) (Math.floor(rubleValue));
+        String result;
 
         if ((rubleValueInt % 100 > 10) && (rubleValueInt % 100 < 20)) {
-            return "рублей";
+            result = "рублей";
         }
         else {
             switch (rubleValueInt % 10) {
                 case 1:
-                    return "рубль";
+                    result = "рубль";
+                    break;
 
                 case 2:
                 case 3:
                 case 4:
-                    return "рубля";
+                    result = "рубля";
+                    break;
 
                 default:
-                    return "рублей";
+                    result = "рублей";
+                    break;
             }
         }
+
+        return result;
+
     }
 
 }
