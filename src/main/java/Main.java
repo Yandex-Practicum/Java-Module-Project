@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,15 +10,20 @@ public class Main {
         System.out.println("На скольких человек разделить счет?");
         int scanPerson;
 
-
         while (true) {
-            scanPerson = scanner.nextInt();
-            if (scanPerson == 1) {
-                System.out.println("Подсчет не нужен");
-                System.exit(0);
-            } else if (scanPerson < 1) {
-                System.out.println("Ошибка. Введите корректное значение.");
-            } else break;
+
+            if (scanner.hasNextInt()) {
+                scanPerson = scanner.nextInt();
+                if (scanPerson == 1) {
+                    System.out.println("Подсчет не нужен");
+                    System.exit(0);
+                } else if (scanPerson < 1) {
+                    System.out.println("Ошибка. Введите корректное значение.");
+                } else break;
+            } else {
+                System.out.println("Введите корректное значение");
+                scanner.nextLine();
+            }
         }
 
         calculator.setCountPerson(scanPerson);
@@ -27,11 +33,22 @@ public class Main {
             scanner.nextLine();
             product.setNameOfProduct(scanner.nextLine());
             System.out.println("Введите стоимость товара в формате 00,00");
-            product.setCost(scanner.nextDouble());
+            product.setCost(inputPrice());
             calculator.setBill(product);
             System.out.println("Завершить? Нажмите любой символ, чтобы продолжить");
         } while (!scanner.next().equalsIgnoreCase("Завершить"));
         calculator.calculate();
 
+    }
+
+    static double price = 0.0;
+    public static double inputPrice() {
+        try {
+            price = scanner.nextDouble();
+        } catch (InputMismatchException exception) {
+            System.out.println("Введите корректное значение");
+            scanner.nextLine();
+            inputPrice();
+        } return price;
     }
 }
