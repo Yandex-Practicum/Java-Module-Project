@@ -78,7 +78,6 @@ public class Main {
             money = rubString + kopeckString;
         }
 
-
         public void allItem() {		//* метод для получения списка всех блюд и общей суммы
             Purchases item = new Purchases();
             item.nameItem();
