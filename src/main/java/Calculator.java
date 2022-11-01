@@ -16,28 +16,33 @@ public class Calculator {
     //fun to calculate and print result of how many each guest should pay
     void printResult() {
         System.out.println(itemsToPrint);
+
         double priceForEach = totalPrice / numberOfGuests;
         String shortenedPrice = String.format("%.2f", priceForEach);
         String resultMesTemplate = "Каждый гость должен заплатить " + shortenedPrice;
 
-        if (Math.floor(priceForEach) < 1) {
-            System.out.println(resultMesTemplate + " рубля.");
-        }
-        if (Math.floor(priceForEach) == 1) {
-            System.out.println(resultMesTemplate + " рубль.");
-        }
-        else if(Math.floor(priceForEach)==2){
-            System.out.println(resultMesTemplate + " рубля.");
-        }
-        else if(Math.floor(priceForEach)==3){
-            System.out.println(resultMesTemplate + " рубля.");
-        }
-        else if(Math.floor(priceForEach)==4){
-            System.out.println(resultMesTemplate + " рубля.");
-        }
-        else if (Math.floor(priceForEach)>4){
+        int integerPrice = (int) Math.floor(priceForEach);
+        int numberBeforeLast = integerPrice % 100 / 10;
+
+        if (numberBeforeLast == 1) {
             System.out.println(resultMesTemplate + " рублей.");
+            return;
+        }
+
+        switch (integerPrice % 10) {
+            case 1:
+                System.out.println(resultMesTemplate + " рубль.");
+                break;
+            case 2:
+            case 3:
+            case 4:
+                System.out.println(resultMesTemplate + " рубля.");
+                break;
+            default:
+                System.out.println(resultMesTemplate + " рублей.");
+                break;
         }
     }
+
 
 }
