@@ -21,13 +21,14 @@ public class Calculator {
             while (true) {
                 System.out.println("Введите стоимость товара в формате рубли.копейки. Например: 10,45");
                 if (scanner.hasNextDouble()) {
-                price = scanner.nextDouble();
-                if (price > 0.00) {
-                    countProducts++;
-                    products = products + prodName + " ";
-                    sum += price;
-                    break;
-                }} else {
+                    price = scanner.nextDouble();
+                    if (price > 0.00) {
+                        countProducts++;
+                        products = products + prodName + " ";
+                        sum += price;
+                        break;
+                    }
+                } else {
                     System.out.println("Ошибка ввода стоимости");
                     scanner.next();
                 }
@@ -39,6 +40,7 @@ public class Calculator {
         System.out.print(products + "\n");
         System.out.println("Сумма на одного человека: " + String.format("%.2f", bill) + " " + rubles(bill));
     }
+
     public String rubles(double a) {
         int rub = (int) Math.floor(a);
         if (rub % 100 > 5 && rub <= 20) {
