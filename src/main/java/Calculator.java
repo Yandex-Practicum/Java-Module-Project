@@ -12,7 +12,7 @@ public class Calculator {
     public void consoleProducts() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.printf("Введите название товара или '%s' для выхода\n", exit); // эта строка юзается для первого и последующих запрсов ввода товаров
+            System.out.printf("Введите название товара или '%s' для выхода\n", exit);
             prodName = scanner.next();
             if (prodName.equalsIgnoreCase(exit)) {
                 System.out.println(exitMessage);
@@ -20,14 +20,16 @@ public class Calculator {
             }
             while (true) {
                 System.out.println("Введите стоимость товара в формате рубли.копейки. Например: 10,45");
+                if (scanner.hasNextDouble()) {
                 price = scanner.nextDouble();
                 if (price > 0.00) {
                     countProducts++;
                     products = products + prodName + " ";
                     sum += price;
                     break;
-                } else {
+                }} else {
                     System.out.println("Ошибка ввода стоимости");
+                    scanner.next();
                 }
             }
             System.out.println("Товар успешно добавлен.");
