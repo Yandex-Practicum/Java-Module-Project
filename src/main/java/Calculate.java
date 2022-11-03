@@ -25,7 +25,6 @@ public class Calculate {
         }
     }
     public void sumProducts() {
-
         while (true) {
             System.out.println("Введите название товара:");
             String name = scanner.next();
@@ -38,35 +37,37 @@ public class Calculate {
             } else {
                 totalName = totalName + name + "\n";
                 System.out.println("Введите стоимость товара (рубли,копейки):");
-                if (scanner.hasNextDouble()) {
-                    double price = scanner.nextDouble();
-                    totalPrice = totalPrice + price;
-                    System.out.println("Спасибо! Ваш товар добавлен в заказ!");
-                } else {
-                    System.out.println("Ожидается ввод числового значения, попробуйте снова!");
+                while (true) {
+                    if (scanner.hasNextDouble()) {
+                        double price = scanner.nextDouble();
+                        if (price > 0) {
+                        totalPrice = totalPrice + price;
+                        System.out.println("Спасибо! Ваш товар добавлен в заказ!");
+                        break;
+                        } else {
+                            System.out.println("Некорректное значение цены, попробуйте снова!");
+                        }
+                    } else {
+                        System.out.println("Ожидается ввод числового значения, попробуйте снова!");
+                        scanner.next();
+                    }
                 }
-
             }
         }
-
     }
+
     public void divTotalPrice() {
         int lastNum = (int) totalPrice % 10;
-
         if (totalPrice % 100 >= 11 && totalPrice % 100  <= 20) {
             rub =  "рублей";
-        } else if (lastNum > 1 && lastNum  < 5) {
+        } else if (lastNum > 1 && lastNum < 5) {
             rub = "рубля";
-        } else if (totalPrice % 10  == 1) {
+        } else if (totalPrice % 10 == 1) {
             rub = "рубль";
-        }
-        else {
+        } else {
             rub = "рублей";
         }
-
         double guestSum = totalPrice / (double)guest;
-        System.out.println("Каждый гость должен заплатить по " + String.format("%.2f", guestSum) + " " + rub + ".\nВсего доброго!");
-
+        System.out.println("Сумма заказа на каждого гостя составила " + String.format("%.2f", guestSum) + " " + rub + ".\nЖдём Вас у нас снова!");
     }
-
 }
