@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CostCalculator {
     private final int countOfPerson;
     private double costSum = 0.0;
-    private String products;
+    private String products = "";
 
     public CostCalculator(int countOfPerson) {
         this.countOfPerson = countOfPerson;
@@ -50,13 +50,7 @@ public class CostCalculator {
 
     private void addProductInCost(Product product) {
         Formatter formatter = new Formatter(Locale.US);
-
-        if (products == null) {
-            products = formatter.format("\"%s\" [%.2f]", product.name, product.cost).toString();
-        } else {
-            products += formatter.format("\n%s [%.2f]", product.name, product.cost).toString();
-        }
-
+        products += formatter.format("\n%s [%.2f]", product.name, product.cost).toString();
         costSum += product.cost;
 
         String formatString = String.format("Товар \"%s\" стоимостью %.2f руб. добавлен в чек.", product.name, product.cost);
@@ -80,18 +74,14 @@ public class CostCalculator {
     }
 
     private void printCost() {
-        if (products.isEmpty()) {
-            System.out.println("Чек пуст.");
-        } else {
-            System.out.println("Добавленные товары: ");
-            System.out.println(products);
+        System.out.println("Добавленные товары: ");
+        System.out.println(products);
 
-            double sumPerPerson = costSum / countOfPerson;
+        double sumPerPerson = costSum / countOfPerson;
 
-            Formatter formatter = new Formatter(Locale.US);
-            String formatString = formatter.format("Сумма на человека: %.2f %s", sumPerPerson, getRublesPlural(sumPerPerson)).toString();
-            System.out.println(formatString);
-        }
+        Formatter formatter = new Formatter(Locale.US);
+        String formatString = formatter.format("Сумма на человека: %.2f %s", sumPerPerson, getRublesPlural(sumPerPerson)).toString();
+        System.out.println(formatString);
     }
 
     private String getRublesPlural(double sum) {
