@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Product> products = new ArrayList<>();
+    static ArrayList<Product> products = new ArrayList<Product>();
     static Guest guests;
     static ProdCalc prodCalc;
 
@@ -39,17 +39,21 @@ public class Main {
             if (food.equalsIgnoreCase("завершить")) {
                 break;
             } else {
-                System.out.println("Стоимость товара в формате 'рубли.копейки' (XX.XX): ");
-                price = scanner.nextDouble();
-                while (price <= 0) {
-                    System.out.println("Введите корректное значение");
+                do {
+                    System.out.println("Стоимость товара в формате 'рубли.копейки' (XX,XX)");
+                    while (!scanner.hasNextDouble()) {
+                        System.out.println("Введите корректное значение!");
+                        scanner.next();
+                    }
+                    price = scanner.nextDouble();
                 }
-                products.add(new Product(food, price));
-                System.out.println("Добавлено");
-
+                while (price <= 0);
             }
+            products.add(new Product(food, price));
+            System.out.println("Добавлено");
         }
     }
+
 
     public static double runSum() {
         for (int i = 0; i < products.size(); i++) {
@@ -66,10 +70,13 @@ public class Main {
         String template = "Каждый должен заплатить %.2f %s";
         System.out.println("Добавленные товары: ");
 
+
         for (int i = 0; i < products.size(); i++) {
             System.out.println(products.get(i));
         }
+        System.out.println("Общая сумма: " + prodCalc.summaryCoast);
         System.out.println(String.format(template, prodCalc.moneyForPerson, getRightWord(prodCalc.moneyForPerson)));
+
     }
 
     private static String getRightWord(double n) {
@@ -82,9 +89,3 @@ public class Main {
         return "рублей";
     }
 }
-
-
-
-
-
-
