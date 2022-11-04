@@ -26,7 +26,7 @@ public class Calculate {
     }
     public void sumProducts() {
         while (true) {
-            System.out.println("Введите название товара:");
+            System.out.println("Введите название товара:\nЧтобы закончить ввод, введите 'Завершить'");
             String name = scanner.next();
             String cancel = "Завершить";
             boolean check = cancel.equalsIgnoreCase(name);
@@ -57,17 +57,17 @@ public class Calculate {
     }
 
     public void divTotalPrice() {
-        int lastNum = (int) totalPrice % 10;
+        double guestSum = totalPrice / (double)guest;
+        int lastNum = (int) guestSum % 10;
         if (totalPrice % 100 >= 11 && totalPrice % 100  <= 20) {
             rub =  "рублей";
         } else if (lastNum > 1 && lastNum < 5) {
             rub = "рубля";
-        } else if (totalPrice % 10 == 1) {
+        } else if (lastNum % 10 == 1) {
             rub = "рубль";
         } else {
             rub = "рублей";
         }
-        double guestSum = totalPrice / (double)guest;
         System.out.println("Сумма заказа на каждого гостя составила " + String.format("%.2f", guestSum) + " " + rub + ".\nЖдём Вас у нас снова!");
     }
 }
