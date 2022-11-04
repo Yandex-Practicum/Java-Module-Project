@@ -1,8 +1,9 @@
 public class Main {
-
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+        Calculate calculate = new Calculate();
+        calculate.addGuests();
+        calculate.sumProducts();
+        calculate.divTotalPrice();
+
     }
 }
