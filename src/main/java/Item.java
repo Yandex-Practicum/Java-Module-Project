@@ -8,36 +8,34 @@ public class Item {
     static String values = "";
     static double sum = 0;
 
-    Item (double price, String name) {
-        this.price = price;
-        this.name = name;
-    }
-
     static void calculate() {
         while (true) {
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Если вы хотите добавить блюдо, введите наименование блюда");
-            System.out.println("Если вы не хотите добавлять блюдо, введите Завершить");
+            System.out.println("\nЕсли вы хотите добавить блюдо в калькулятор, введите наименование блюда:");
+            System.out.println("Если вы не хотите добавлять блюдо в калькулятор, введите «Завершить»:");
 
             name = scanner.nextLine();
 
             if (name.equalsIgnoreCase("завершить")) {
-                System.out.println("Выход из калькулятора");
+                System.out.println("Выход из калькулятора (вы ввели «Завершить»).");
                 break;
             } else {
-                System.out.println("Введите цену");
+                System.out.println("Введите цену блюда:");
+
                 price = scanner.nextDouble();
 
-                values += name + " " + price + "\n";
+                values += name + " " + price + ";\n";
                 sum += price;
 
-                System.out.println("Блюдо " + name + " стоимостью " + price + " рублей успешно добавлено!");
+                System.out.println("Блюдо " + name + " стоимостью " + price + CaseEnding.setEnding(price) + " успешно добавлено!");
+                System.out.println("Текущая сумма блюд: " + sum + CaseEnding.setEnding(sum) + ".");
             }
         }
-        System.out.println("Добавленные товары:");
+
+        System.out.println("\nДобавленные блюда: ");
         System.out.println(values);
-        System.out.println("Общая сумма: " + sum + " рублей");
+        System.out.println("Общая сумма блюд: " + sum + CaseEnding.setEnding(sum) + ".");
     }
 }
