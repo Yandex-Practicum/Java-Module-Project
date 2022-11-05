@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Item {
 
     static String name;
-    static double price;
+    static double price = 0;
 
     static String values = "";
     static double sum = 0;
@@ -22,15 +22,27 @@ public class Item {
                 System.out.println("Выход из калькулятора (вы ввели «Завершить»).");
                 break;
             } else {
-                System.out.println("Введите цену блюда:");
+                System.out.println("Введите стоимость блюда в формате [рубли.копейки]:");
 
-                price = scanner.nextDouble();
+                String stringPrice = scanner.nextLine();
 
-                values += name + " " + price + ";\n";
-                sum += price;
+                try {
+                    price = Double.parseDouble(stringPrice);
+                } catch (NumberFormatException e) {
+                    System.out.println("Введите численное значение.");
+                    price = 0;
+                }
 
-                System.out.println("Блюдо " + name + " стоимостью " + price + CaseEnding.setEnding(price) + " успешно добавлено!");
-                System.out.println("Текущая сумма блюд: " + sum + CaseEnding.setEnding(sum) + ".");
+                if (price > 0) {
+                    values += name + " " + price + ";\n";
+                    sum += price;
+
+                    System.out.println("Блюдо " + name + " стоимостью " + price + CaseEnding.setEnding(price) + " успешно добавлено!");
+                    System.out.println("Текущая сумма блюд: " + sum + CaseEnding.setEnding(sum) + ".");
+                } else {
+                    System.out.println("Введите корректную стоимость блюда больше нуля.");
+
+                }
             }
         }
 
