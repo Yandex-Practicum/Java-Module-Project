@@ -8,7 +8,7 @@ public class Calculator {
     double costPerFriend;
 
 
-     double dishCostCalc (int members, double dishCost) {
+    double dishCostCalc (int members, double dishCost) {
         this.members = members;
         this.dishCost = dishCost;
         totalCost += this.dishCost;

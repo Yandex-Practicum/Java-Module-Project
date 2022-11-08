@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 public class Checks {
 
     String currencyAddition(double num) {
+
         // Вычисляем остаток
-        double adds = num % 10;
+        double adds = num % 100;
         // Преобразовываем тип в int для использования в switch
         int addsInvert = (int) (Math.floor(adds));
 

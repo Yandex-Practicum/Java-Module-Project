@@ -1,42 +1,60 @@
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args){
-        int members = 0;
+
+public class Main
+
+
+{
+    public static void main(String[] args) {
+        //Определяем переменные для приложения
+        int members;
         String dishName;
-        double dishCost =0;
-        String statement;
+        double dishCost;
         String totalDishList;
         double totalCost;
+        String statement;
 
-    // Задаем первый вопрос и проверяем на корректность ввода.
-      while (true) {
-          Scanner input = new Scanner(System.in);
-          System.out.println("Привет. Похоже после учебы вы отлично посидели с друзьями. Сколько вас было человек ?");
-          if (input.hasNextInt()) {
-              members = input.nextInt();
-              break;
-          }
-          System.out.println("Что-то не так. Попробуйте еще раз");
-      }
-      /* Считываем ввод блюд и их стомость. Создаем экземплаяры класса calculator.
-         Вычисляем сумму затрат и суммируем ввод в единую строку */
-        Calculator calculating= new Calculator();
-        Scanner input = new Scanner(System.in);
+        //Запускаем бесконечный цикл для проверки корректности воода количества участников
         while (true) {
-            System.out.println("Что вы с друзьями заказали ?");
-            dishName = input.next();
-            totalDishList = calculating.dishNameConcat(dishName);
-            System.out.println("Сколько стоило это блюдо ?");
-            dishCost = input.nextDouble();
-            totalCost = calculating.dishCostCalc(members,dishCost);
-            System.out.println("Это все ? Если Да - напишите \"Завершить\". Если Нет - напишите \"Нет\" ");
-            statement = input.next();
-            if (statement.equalsIgnoreCase("Завершить")) {
-                break;
+            System.out.println("Введите количество участников");
+            Scanner input = new Scanner(System.in);
+            if (input.hasNextInt()) {
+                members = input.nextInt();
+                if (members <= 0) {System.out.println("Количество участников отрицательно или равно нулю. Так не бывает. Попробуйте еще раз.");}
+                else if (members == 1) {System.out.println("Вы были один. Нет необходимости делить счет");}
+                else if (members >0) {break;}
             }
 
+            else {System.out.println("Вы ввели неверные данные. Попробуйте еще раз.");}
+
         }
+        //Создаем объект для подстчетов и конкатенации
+        Calculator calculating = new Calculator();
+
+        //Запускаем бесконечный цикл для сбора данных о блюдах и стоимости
+        while (true) {
+            Scanner dishesInput = new Scanner (System.in);
+            System.out.println("Что Вы с друзями заказали ?");
+
+            dishName = dishesInput.next();
+            totalDishList = calculating.dishNameConcat(dishName);
+            System.out.println("Сколько стоило это блюдо ?");
+
+            // Проверка корректности воода стоимости блюда
+            if (dishesInput.hasNextDouble()) {
+                dishCost = dishesInput.nextDouble();
+                totalCost = calculating.dishCostCalc(members,dishCost);
+                System.out.println("Это все ? Завершить/Нет");
+                statement = dishesInput.next();
+                if (statement.equalsIgnoreCase("Завершить")) {
+                    break;
+                }
+            }
+
+            else {System.out.println("Что-то не так со стоимостью блюда. Попробуйте еще раз.");}
+
+        }
+
         // Создаем объект для проверки окончания валюты
         Checks cur = new Checks();
         //Пользователь дал команду на завершение. Выводим результат.
@@ -46,7 +64,7 @@ public class Main {
 
 
 
-
     }
 
 }
+
