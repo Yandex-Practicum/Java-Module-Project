@@ -16,7 +16,7 @@ public class Main {
                 friends = input.nextByte();
                 if (friends <= 1) {
                     System.out.println("Нет смысла делить счёт. Попробуйте ещё раз.");
-                } else if (friends > 1) {
+                } else {
                     break;
                 }
             } else {
