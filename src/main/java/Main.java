@@ -5,15 +5,18 @@ public class Main {
     public static void main(String[] args) {
 
         byte friends;
-        String result = "";
-
+        String order;
+        String table = "";
+        float price;
+        float total = 0.0f;
+        String exit;
 
 
         while (true) {
-            System.out.println("Введите числовое количество участников:");
-            Scanner input = new Scanner(System.in);
-            if (input.hasNextByte()) {
-                friends = input.nextByte();
+            System.out.println("Введите число участников:");
+            Scanner who = new Scanner(System.in);
+            if (who.hasNextByte()) {
+                friends = who.nextByte();
                 if (friends <= 1) {
                     System.out.println("Нет смысла делить счёт. Попробуйте ещё раз.");
                 } else {
@@ -24,28 +27,30 @@ public class Main {
             }
         }
 
-        Dishes count = new Dishes();
+        while (true) {
+            System.out.println("Введите название блюда:");
+            Scanner input = new Scanner(System.in);
+            order = input.nextLine();
+            table += order + "\n";
+            System.out.println("Стоимость в формате 'руб.коп':");
 
-
-        //Окончания рублей (oh no...)
-
-        int num100 = (int) (Math.floor(count.total % 100));
-        if (num100 > 4 && num100 < 21) {
-            result = "Рублей";
-        } else {
-            int num10 = num100 % 10;
-            if (num10 == 1) {
-                result = "Рубль";
-            } else if (num10 > 1 && num10 < 5) {
-                result = "Рубля";
-            } else{
-                result = "Рублей";
+            if (input.hasNextFloat()) {
+                price = input.nextFloat();
+                total += price;
+                System.out.println("Товар успешно добавлен!\nПродолжить? Да/Нет");
+                exit = input.next();
+                if (exit.equalsIgnoreCase("Нет")) {
+                    break;
+                }
+            } else {
+                System.out.println("Неверно указана сумма, попробуйте снова.");
             }
         }
 
+        Ending name = new Ending();
 
-        System.out.println("Вы заказали:\n" + count.table);
-        System.out.println("Общая стоимость блюд: " + count.total);
-        System.out.println("Сумма к оплате каждым участником:" + String.format("%.2f", count.total/friends) + " " + result);
+        System.out.println("Вы заказали:\n" + table);
+        System.out.println("Общая стоимость блюд: " + String.format("%.2f", total) + name.end(total));
+        System.out.println("Сумма к оплате каждым участником:" + String.format("%.2f", total/friends) + " " + name.end(total/friends));
     }
 }
