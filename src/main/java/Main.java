@@ -19,7 +19,7 @@ public class Main {
                 friends = who.nextByte();
                 if (friends <= 1) {
                     System.out.println("Нет смысла делить счёт. Попробуйте ещё раз.");
-                } else {
+                } else if (friends > 1) {
                     break;
                 }
             } else {
