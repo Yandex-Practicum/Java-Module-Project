@@ -11,7 +11,6 @@ public class Main {
         float total = 0.0f;
         String exit;
 
-
         while (true) {
             System.out.println("Введите число участников:");
             Scanner who = new Scanner(System.in);
@@ -19,7 +18,7 @@ public class Main {
                 friends = who.nextByte();
                 if (friends <= 1) {
                     System.out.println("Нет смысла делить счёт. Попробуйте ещё раз.");
-                } else if (friends > 1) {
+                } else {
                     break;
                 }
             } else {
@@ -32,8 +31,7 @@ public class Main {
             Scanner input = new Scanner(System.in);
             order = input.nextLine();
             table += order + "\n";
-            System.out.println("Стоимость в формате 'руб.коп':");
-
+            System.out.println("Стоимость в формате 'руб,коп':");
             if (input.hasNextFloat()) {
                 price = input.nextFloat();
                 total += price;
@@ -50,7 +48,7 @@ public class Main {
         Ending name = new Ending();
 
         System.out.println("Вы заказали:\n" + table);
-        System.out.println("Общая стоимость блюд: " + String.format("%.2f", total) + name.end(total));
-        System.out.println("Сумма к оплате каждым участником:" + String.format("%.2f", total/friends) + " " + name.end(total/friends));
+        System.out.println("Общая стоимость блюд: " + String.format("%.2f", total) + " " + name.end(total));
+        System.out.println("Сумма к оплате каждым участником: " + String.format("%.2f", total/friends) + " " + name.end(total/friends));
     }
 }
