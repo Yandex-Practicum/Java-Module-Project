@@ -34,11 +34,15 @@ public class Main {
             System.out.println("Стоимость в формате 'руб,коп':");
             if (input.hasNextFloat()) {
                 price = input.nextFloat();
-                total += price;
-                System.out.println("Товар успешно добавлен!\nПродолжить? Да/Нет");
-                exit = input.next();
-                if (exit.equalsIgnoreCase("Нет")) {
-                    break;
+                if (price > 0) {
+                    total += price;
+                    System.out.println("Товар успешно добавлен!\nПродолжить? Да/Завершить");
+                    exit = input.next();
+                    if (exit.equalsIgnoreCase("Завершить")) {
+                        break;
+                    }
+                } else {
+                    System.out.println("Отрицательное значение.");
                 }
             } else {
                 System.out.println("Неверно указана сумма, попробуйте снова.");
@@ -47,7 +51,7 @@ public class Main {
 
         Ending name = new Ending();
 
-        System.out.println("Вы заказали:\n" + table);
+        System.out.println("Добавленные товары:\n" + table);
         System.out.println("Общая стоимость блюд: " + String.format("%.2f", total) + " " + name.end(total));
         System.out.println("Сумма к оплате каждым участником: " + String.format("%.2f", total/friends) + " " + name.end(total/friends));
     }
