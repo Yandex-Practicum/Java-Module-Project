@@ -13,20 +13,23 @@ public class People {
         while (true) {
             System.out.println("На сколько человек разделить счёт?");
 
-            if (scanner.hasNext()){
+            if (scanner.hasNextInt()){
                 numberOfPeople = scanner.nextShort();
-                if (numberOfPeople > 1) {
-                    System.out.println("Делим счёт на "+ numberOfPeople+ " гостей");//получили число участников
-                    break;
-                }
+                    if (numberOfPeople > 1) {
+                        System.out.println("Делим счёт на "+ numberOfPeople+ " гостей");//получили число участников
+                        break;
+                    }else{
+                    if (numberOfPeople <= 1) {
+                     System.out.println("Неправильный ввод. Попробуйте ввести число участников ещё раз.");
+                    }
+                    }
 
-                if (numberOfPeople <= 1) {
-                    System.out.println("Неправильный ввод. Попробуйте ввести число участников ещё раз.");
-                }
             }else{
                 System.out.println("Неправильный ввод. Попробуйте ввести число участников в числовом формате.");
                 scanner.nextLine();
+
             }
+
 
         }
 
