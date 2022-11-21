@@ -6,11 +6,17 @@ public class Main {
     public static void main(String[] args) {
         // ваш код начнется здесь
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("На скольких человек необходимо разделить счёт?");
 
         Scanner scanner = new Scanner(System.in);
-
         int peopleCounter;
+        double productPrice;
+        String productName;
+        Product product;
+        Calculator calculator;
+
+
+        //count people
+        System.out.println("На скольких человек необходимо разделить счёт?");
 
         while (true){
 
@@ -27,6 +33,35 @@ public class Main {
                 System.out.println("Пожалуйста введите корректное значение для подсчёта.");
                 scanner.next();
             }
+
+        }
+
+        calculator = new Calculator(peopleCounter);
+        //add product(s)
+        System.out.println("Пожалуйста введите название товара.");
+        while (true){
+
+            productName = scanner.next();
+
+            if (productName.equalsIgnoreCase("ЗАВЕРШИТЬ")){
+                break;
+            } else {
+                System.out.println("Пожалуйста введите стоимость товара в формате: 'рубли.копейки' [10.45, 11.40].");
+                while (true){
+                    if (scanner.hasNextDouble()){
+                        productPrice = scanner.nextDouble();
+                        break;
+                    } else {
+                        System.out.println("Пожалуйста введите корректную стоимость товара.");
+                        scanner.next();
+                    }
+                }
+            }
+
+            product = new Product(productPrice, productName);
+            calculator.addProduct(product);
+
+            System.out.println("Добавить ещё один товар?");
 
         }
 
