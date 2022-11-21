@@ -4,19 +4,34 @@ import java.util.Scanner;
 
 public class Main {
 
+
+
     public static void main(String[] args) {
         // ваш код начнется здесь
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
 
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         int peopleCounter;
-        double productPrice;
-        String productName;
-        Product product;
+
         Calculator calculator;
 
 
-        //count people
+        peopleCounter = countPeople(scanner);
+
+        calculator = new Calculator(peopleCounter);
+
+        addProducts(scanner, calculator);
+
+
+        //show division result
+
+
+    }
+
+    private static int countPeople(Scanner scanner){
+
+        int peopleCounter;
+
         System.out.println("На скольких человек необходимо разделить счёт?");
 
         while (true){
@@ -37,8 +52,15 @@ public class Main {
 
         }
 
-        calculator = new Calculator(peopleCounter);
-        //add product(s)
+        return peopleCounter;
+    }
+
+    private static void addProducts(Scanner scanner, Calculator calculator){
+
+        double productPrice;
+        String productName;
+        Product product;
+
         System.out.println("Пожалуйста введите название товара.");
         while (true){
 
@@ -65,7 +87,5 @@ public class Main {
             System.out.println("Добавить ещё один товар?");
 
         }
-
-
     }
 }
