@@ -70,7 +70,12 @@ public class Main {
                 while (true){
                     if (scanner.hasNextDouble()){
                         productPrice = scanner.nextDouble();
-                        break;
+                        if (productPrice >= 0){
+                            break;
+                        } else {
+                            System.out.println("Стоимость товара не может быть отрицательной. Пожалуйста введите корректную стоимость товара.");
+                        }
+
                     } else {
                         System.out.println("Пожалуйста введите корректную стоимость товара.");
                         scanner.next();
