@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +8,7 @@ public class Main {
         // ваш код начнется здесь
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
         int peopleCounter;
         double productPrice;
         String productName;
