@@ -7,14 +7,12 @@ public class Main {
 
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
 
-        Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
+        Locale.setDefault(Locale.US);
+
+        Scanner scanner = new Scanner(System.in);
         int peopleCounter;
-
         Calculator calculator;
-
 
         peopleCounter = countPeople(scanner);
 
@@ -22,9 +20,7 @@ public class Main {
 
         addProducts(scanner, calculator);
 
-
-        //show division result
-
+        showDivision(calculator);
 
     }
 
@@ -61,7 +57,9 @@ public class Main {
         String productName;
         Product product;
 
-        System.out.println("Пожалуйста введите название товара.");
+
+
+        System.out.println("\nПожалуйста введите название товара.");
         while (true){
 
             productName = scanner.next();
@@ -88,4 +86,10 @@ public class Main {
 
         }
     }
+
+    private static void showDivision(Calculator calculator){
+        calculator.showAddedProducts();
+        calculator.divide();
+    }
+
 }
