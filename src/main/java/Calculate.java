@@ -16,7 +16,6 @@ public class Calculate {
 
         while (true) {
             count = scanner.nextInt();
-
             if (count > 1) {
                 break;
             }
@@ -32,30 +31,35 @@ public class Calculate {
     // Добавление товаров в калькулятор
 
     public void addingProducts() {
-
-        while (true) {
+            while (true) {
             System.out.println("Введите название товара или введите команду \"Завершить\".");
-            String productName = scanner.next();
-            if (productName.equalsIgnoreCase("finish")) {
-                System.out.println("Добавленные товары: " + "\n" + allProducts);
-                break;
-            } else {
-                allProducts = allProducts + productName + "\n";
-                while (true) {
-                    System.out.println("Введите стоимость товара в формате \"рубли,копейки\".");
-                    productPrice = scanner.nextDouble();
-                    if (productPrice <= 0) {
-                        System.out.println("Некорректное значение.");
-                    } else {
-                        break;
+            try {
+                String productName = scanner.next();
+                if (productName.equalsIgnoreCase("finish")) {
+                    System.out.println("Добавленные товары: " + "\n" + allProducts);
+                    break;
+                } else {
+                    allProducts = allProducts + productName + "\n";
+                    while (true) {
+                        System.out.println("Введите стоимость товара в формате \"рубли,копейки\".");
+                        productPrice = scanner.nextDouble();
+                        if (productPrice <= 0) {
+                            System.out.println("Некорректное значение.");
+                        } else {
+                            break;
+                        }
                     }
+                    this.totalPrice = totalPrice + productPrice;
+                    System.out.println("Товар добавлен в чек.");
                 }
-                this.totalPrice = totalPrice + productPrice;
-                System.out.println("Товар добавлен в чек.");
+            }
+            catch(Exception e){
+                System.out.println("Некорректное название товара. Попробуйте снова.");
             }
         }
 
     }
+
 
 
     //Подсчет рублей для каждого гостя
