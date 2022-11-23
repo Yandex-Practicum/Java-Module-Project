@@ -30,14 +30,22 @@ public class Calculator {
     }
 
     private String getCurrencyWriting(double price){
-        int roundedPrice = (int)Math.floor(price);
-        if (roundedPrice == 1) {
-            return "рубль";
-        } else if (roundedPrice >= 2 &&
-                   roundedPrice <= 4) {
-            return "рубля";
-        } else {
+        double roundedPrice = Math.floor(price);
+        double remainder = roundedPrice % 100.00;
+        if (remainder >= 11 && remainder <= 14){
             return "рублей";
+        } else {
+            remainder = remainder % 10.00;
+            if (remainder >= 1 &&
+                    remainder < 2) {
+                return "рубль";
+            } else if (remainder >= 2 &&
+                    remainder <= 4) {
+                return "рубля";
+            } else {
+                return "рублей";
+            }
         }
+
     }
 }
