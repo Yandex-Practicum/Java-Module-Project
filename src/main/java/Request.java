@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Request {
     public static int askGuestCount() {
-        System.out.println("Здравствуйте! Введите число гостей: ");
+        System.out.println("Введите число гостей: ");
         int count;
         Scanner console = new Scanner(System.in);
         while (true) {

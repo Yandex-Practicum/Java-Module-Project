@@ -9,7 +9,7 @@ public class Calculator {
         String product = console.nextLine();
         float price = priceChecking();
         sum=sum+price;
-        String cheque = String.format("Добавленные товары:\n" + product + "    %.2f", price) + " руб.";
+        String cheque = String.format("*********************************************\nДобавленные товары:\n" + product + "    %.2f", price) + "  " + FormOfCurrency.defineTheForm((int)Math.floor(price));
         System.out.println("Товар успешно добавлен. Завершить? (Введите Завершить либо любой другой символ для продолжения)");
 
         while(true) {
@@ -23,7 +23,7 @@ public class Calculator {
                 product = console.nextLine();
                 price = priceChecking();
                 sum=sum+price;
-                cheque = String.format(cheque + "\n" + product + "    %.2f", price) + " руб.";
+                cheque = String.format(cheque + "\n" + product + "    %.2f", price) + "  " + FormOfCurrency.defineTheForm((int)Math.floor(price));
                 System.out.println("Товар успешно добавлен. Завершить? (Введите Завершить либо любой другой символ для продолжения)");
             }
         }

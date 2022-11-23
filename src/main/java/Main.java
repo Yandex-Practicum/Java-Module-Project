@@ -8,11 +8,12 @@ public class Main {
         System.out.println("Итак, количество гостей - " + guestCount+ " чел.");
 
         float sum = Calculator.calculate(); // Сбор позиций и цен чека, возврат суммы
-        String formSum = FormOfCurrency.defineTheForm((int)Math.floor(sum)); //определение окончания рубля
-        String formSumOne = FormOfCurrency.defineTheForm((int)Math.floor(sum/guestCount));
+        String newline = "*********************************************";
 
-        System.out.println(String.format("Общая сумма товаров - " + "%.2f", sum)+" " +formSum);
-        System.out.println(String.format("Сумма покупок на одного человека - " + "%.2f", (sum/guestCount))+ " " +formSumOne);
+        System.out.println(newline);
+        System.out.println(String.format("Общая сумма товаров - " + "%.2f", sum)+" " +FormOfCurrency.defineTheForm((int)Math.floor(sum)));
+        System.out.println(String.format("Сумма покупок на одного человека - " + "%.2f", (sum/guestCount))+ " " +FormOfCurrency.defineTheForm((int)Math.floor(sum/guestCount)));
+        System.out.println(newline);
     }
 
 
