@@ -3,19 +3,17 @@ import java.util.Scanner;
 
 public class Main {
 
-
+    static final String END_PRODUCTS_INPUT = "ЗАВЕРШИТЬ";
 
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
 
         Scanner scanner = new Scanner(System.in);
-        int peopleCounter;
-        Calculator calculator;
 
-        peopleCounter = countPeople(scanner);
+        int peopleCounter = countPeople(scanner);
 
-        calculator = new Calculator(peopleCounter);
+        Calculator calculator = new Calculator(peopleCounter);
 
         addProducts(scanner, calculator);
 
@@ -56,14 +54,12 @@ public class Main {
         String productName;
         Product product;
 
-
-
         System.out.println("\nПожалуйста введите название товара.");
         while (true){
 
             productName = scanner.next();
 
-            if (productName.equalsIgnoreCase("ЗАВЕРШИТЬ")){
+            if (productName.equalsIgnoreCase(END_PRODUCTS_INPUT)){
                 break;
             } else {
                 System.out.println("Пожалуйста введите стоимость товара в формате: 'рубли.копейки' [10.45, 11.40].");
