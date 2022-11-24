@@ -1,8 +1,9 @@
 public class Main {
-
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+
+        //main используем только для обращения к методам
+        Users.persons();
+        Calc.Calculator();
+        System.out.println("Спасибо за пользование нашим приложением!");
     }
 }
