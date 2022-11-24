@@ -20,7 +20,7 @@ public class Main {
                 if (people > 1) {
                     hasPeople = true;
                 } else {
-                    System.out.println("Введено неверное количество! попробуйте еще раз.");
+                    System.out.println("Введено неверное количество. попробуйте еще раз.");
                 }
             }else {
                 System.out.println("Введено неверное количество! попробуйте ввести количество гостей в виде числа.");

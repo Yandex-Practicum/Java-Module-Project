@@ -14,7 +14,7 @@ public class Calculator {
         }
         answer+="\n" + productName;
         sum += price;
-        System.out.println("товар успешно добавлен!\nХотите добавить ещё?");
+        System.out.println("Товар успешно добавлен!\nХотите добавить ещё?");
         switch(scanner.next()) {
             case "Да":
                 productsLists(scanner);
