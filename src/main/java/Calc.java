@@ -29,18 +29,12 @@ public class Calc {
         }
         //Вывод будет одинаковый вне зависимости от того, какие данные укажет пользователь
 
-
         double bill = count / Users.users;
 
         String resultMessage = ("Общая стоимость: %.2f RUB");
         System.out.println(String.format(resultMessage, count));
 
         System.out.println("Сумма на одного человека: " + String.format("%.2f", bill) + " " + rubles(bill));
-
-
-
-
-
     }
     //реализация проверки
     public static boolean checkPrice(String next) {
@@ -52,7 +46,6 @@ public class Calc {
             }
         }
         return isDigit;
-
 
     }
 
