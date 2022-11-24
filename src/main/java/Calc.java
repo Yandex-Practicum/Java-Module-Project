@@ -28,6 +28,7 @@ public class Calc {
             }
         }
         //Вывод будет одинаковый вне зависимости от того, какие данные укажет пользователь
+<<<<<<< HEAD
 
         double bill = count / Users.users;
 
@@ -35,6 +36,13 @@ public class Calc {
         System.out.println(String.format(resultMessage, count));
 
         System.out.println("Сумма на одного человека: " + String.format("%.2f", bill) + " " + rubles(bill));
+=======
+        // к сожалению я не смог разобраться как сделать вывод рублей связанных с падежом и цифрой
+        String resultMessage = ("Общая стоимость: %.2f RUB");
+        System.out.println(String.format(resultMessage, count));
+        String resultMessage1 = ("Каждый заплатит: %.2f RUB");
+        System.out.println(String.format(resultMessage1,count/Users.users));
+>>>>>>> origin/master
 
     }
     //реализация проверки
@@ -50,6 +58,7 @@ public class Calc {
 
 
     }
+<<<<<<< HEAD
     public static String rubles(double a) {
         int rub = (int) Math.floor(a);
         if (rub % 100 > 5 && rub <= 20) {
@@ -61,9 +70,14 @@ public class Calc {
         }
         return "рублей";
     }
+=======
+>>>>>>> origin/master
 }
 
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
