@@ -48,7 +48,6 @@ public class Calc {
         return isDigit;
 
     }
-
     public static String rubles(double a) {
         int rub = (int) Math.floor(a);
         if (rub % 100 > 5 && rub <= 20) {
