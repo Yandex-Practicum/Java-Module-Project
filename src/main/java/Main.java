@@ -1,8 +1,28 @@
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        // ваш код начнется здесь
-        // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-        System.out.println("Привет Мир");
+
+            int howManyPeople;
+            while (true) {
+                System.out.println("На сколько человек необходимо разделить счет?");
+                Scanner scFirst = new Scanner(System.in);
+                if(scFirst.hasNextInt()){
+                    howManyPeople = scFirst.nextInt();
+                    if(howManyPeople > 1){
+                        break;
+                    }
+                    if(howManyPeople <= 1) {
+                        System.out.println("Извините, но необходимо ввести число гостей, которое больше 1!");
+                    }
+                    } else {
+                    System.out.println("Извините, но необходжмо ввести целочисленное значение больше 1");
+                    }
+                }
+            Calculator.calc(howManyPeople);
+            }
+
     }
-}
+
+
