@@ -6,7 +6,7 @@ public class Main {
         // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
         //System.out.println("Привет Мир");
 
-        //static short numberOfPeople;
+        // static short numberOfPeople;
             String list="";
             Double result=0.00;
 

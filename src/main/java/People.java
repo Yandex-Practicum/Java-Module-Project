@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class People {
 
-    static Short numberOfPeople;//объявляем статическую переменную число участников для передачи в класс Main
+    static Short numberOfPeople;// объявляем статическую переменную число участников для передачи в класс Main
 
     public static void countPeople() {
         Scanner scanner=new Scanner(System.in);

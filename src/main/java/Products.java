@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Products {
 
 
-    String name;//объявляем статическую переменную списка позиций для передачи в класс Main
+    String name;// объявляем статическую переменную списка позиций для передачи в класс Main
     Double price;
     static int count = 1;
     static String nameOfgoods;
