@@ -23,14 +23,33 @@ public class Products {
         System.out.println("Укажите наименование Товара:");
         String nameOfgoods = scanner.next();
         System.out.println("Укажите стоимость Товара в формате 'рубли.копейки' (пример:10.45 или 11.40):");
-        String priceOfgood = scanner.next();
+
+        Double j;
+        int o;
+        while (true) {
+            try {
+                String priceOfgood = scanner.next();
+                j = Double.parseDouble(priceOfgood);
+                if(j<0){
+                    o=10/0;
+                }else {
+                    break;
+                }
+            } catch (Exception e) {
+                System.out.println("Неправильный ввод. Попробуйте ещё раз.");
+                scanner.nextLine();
+            }
+        }
+        //начало исправления
+        //String priceOfgood = scanner.next();
         //преобразуем строковую переменную priceOfgood в формат Double
-        Double j=Double.parseDouble(priceOfgood);
+        //Double j=Double.parseDouble(priceOfgood);
+        //конец исправления
         //записываем в  nameOfgoods наименование и цену товара
-        nameOfgoods=String.format( "Поз."+count+": "+nameOfgoods+" "+ "%.2f"+" руб.",j);
-        System.out.println("Товар добавлен в список "+ nameOfgoods);
+        nameOfgoods = String.format("Поз." + count + ": " + nameOfgoods + " " + "%.2f" + " руб.", j);
+        System.out.println("Товар добавлен в список " + nameOfgoods);
         count++;//количество позиций в списке
-        total+=j;//вычисляем общую стоимость всех введенных товаров
+        total += j;//вычисляем общую стоимость всех введенных товаров
         return nameOfgoods;//на выходе в name добавленный товар и его цена
     }
 
@@ -50,7 +69,5 @@ public class Products {
         }
         return;
     }
-
-
 
 }
