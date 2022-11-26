@@ -16,7 +16,7 @@ public class Products {
         this.price = price;
 
     }
-    //метод составления списка товаров
+    // метод составления списка товаров
     public static String inputOfProducts() {
 
         Scanner scanner = new Scanner(System.in);
