@@ -1,36 +1,36 @@
 import java.util.Scanner;
+
 public class Calculator {
-    public static void calc(int people){
+    static String exit = "Завершить"; // Вынес в статическую константу "Завершить"
+
+    public static void calc(int people) {
         String dish;
         String allDishes = "";
         float price;
         float sumOfOrder = 0.0f;
         String close;
-        while(true){
+        while (true) {
+            Scanner scSecond = new Scanner(System.in); // Оставил один сканнер
             System.out.println("Введите название блюда!");
-            Scanner scSecond = new Scanner(System.in);
             dish = scSecond.nextLine();
-            allDishes = allDishes + dish + "\n";
             System.out.println("Введите стоимость этого блюда в формате 'руб.коп'");
-            Scanner scThird = new Scanner(System.in);
-            if(scThird.hasNextFloat()){
-                price = scThird.nextFloat();
-                if(price > 0 ){
+            if (scSecond.hasNextFloat()) {
+                price = scSecond.nextFloat();
+                if (price > 0) {
                     sumOfOrder = sumOfOrder + price;
+                    allDishes = allDishes + dish + "\n";
                     String sufForOne = Finish.finish(price);
-                    System.out.println("Вы добавили " + dish + " за " + price + sufForOne );
+                    String anotherOne = "Вы добавили: %s за %.2f%s\n";
+                    System.out.printf(anotherOne, dish, price, sufForOne);
                     System.out.println("Хотите добавить блюдо? Введите любую букву или напишите:'Завершить', если блюд больше не осталось");
-                    Scanner scFourth = new Scanner(System.in);
-                    close = scFourth.next();
-                    if (close.equalsIgnoreCase("Завершить")){
+                    close = scSecond.next();
+                    if (close.equalsIgnoreCase(exit)) {
                         break;
                     }
-                }
-                else{
+                } else {
                     System.out.println("Сумма указана неверно");
                 }
-            }
-            else{
+            } else {
                 System.out.println("Сумма указана неверно, попробуйте внести блюдо снова");
             }
 
@@ -40,8 +40,7 @@ public class Calculator {
         String lastSuf = Finish.finish(forThePerson);
 
         System.out.println("Вы купили:\n" + allDishes + "За " + String.format("%.2f", sumOfOrder) + suf);
-        System.out.println("Каждый должен заплатить по: " + String.format("%.2f",forThePerson) + lastSuf);
-
+        System.out.println("Каждый должен заплатить по: " + String.format("%.2f", forThePerson) + lastSuf);
 
 
     }
