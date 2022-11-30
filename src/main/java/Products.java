@@ -25,26 +25,21 @@ public class Products {
         System.out.println("Укажите стоимость Товара в формате 'рубли.копейки' (пример:10.45 или 11.40):");
 
         Double j;
-        int o;
         while (true) {
             try {
                 String priceOfgood = scanner.next();
                 j = Double.parseDouble(priceOfgood);
                 if(j<0){
-                    o=10/0;
+                 System.out.println("Неправильный ввод. Попробуйте ещё раз.");
                 }else {
-                    break;
+                break;
                 }
             } catch (Exception e) {
                 System.out.println("Неправильный ввод. Попробуйте ещё раз.");
                 scanner.nextLine();
             }
         }
-        //начало исправления
-        //String priceOfgood = scanner.next();
-        //преобразуем строковую переменную priceOfgood в формат Double
-        //Double j=Double.parseDouble(priceOfgood);
-        //конец исправления
+
         //записываем в  nameOfgoods наименование и цену товара
         nameOfgoods = String.format("Поз." + count + ": " + nameOfgoods + " " + "%.2f" + " руб.", j);
         System.out.println("Товар добавлен в список " + nameOfgoods);
@@ -60,14 +55,7 @@ public class Products {
         System.out.println("Хотите добавить что нибудь ещё?"+" Если да, введите любой символ или слово :");
         System.out.println("Если добавить нечего введите 'завершить':");
         String add = scanner.next();
-        if(add.equalsIgnoreCase("завершить")) {
-            finishOfList=false;
-            //break;
-
-        }  else{
-            finishOfList=true;
+        finishOfList= !add.equalsIgnoreCase("завершить");
         }
-        return;
-    }
 
 }
