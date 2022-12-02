@@ -10,8 +10,9 @@ class Calculator {
     void calcul(added added) {
         totalPrice = totalPrice + added.prise;
         cart = cart + "\n" + added.product;
-        System.out.println(added.product + "в корзине");
+        System.out.println(added.product + " - в корзине");
         devideSum = totalPrice / numberPeople;
+
     }
 
     Calculator(int numberPeople) {

@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +14,7 @@ public class Main {
 
             if (numberPeople > 1) {
                 break;
-            } else if (numberPeople == 1) { //Если пользователь вводит 1
+            } else if (numberPeople <= 1) { //Если пользователь вводит 1
                 System.out.println("Это некорректное значение для подсчёта, повторите ввод");
             }
 
@@ -27,7 +28,7 @@ public class Main {
             System.out.println("Введите название продукта");
             String product = scanner.next();
 
-            System.out.println("Введитестоимость в формате: 'рубли.копейки' [10.45, 11.40");
+            System.out.println("Введитестоимость в формате: 'рубли.копейки' 10.45, 11.40");
             prise = scanner.nextDouble();
 
             Calculator.calcul(new added(product, prise));
@@ -38,10 +39,10 @@ public class Main {
             }
         }
 
-        rubleOptions rubleOptions = new rubleOptions();
-        added added = new added();
-
-        System.out.println(Calculator.cart + "\n" + "К оплате с человека  " + Calculator.devideSum + rubleOptions.rubles(added));
+        rubleOptions RubleOptions = new rubleOptions();
+        double value = Calculator.devideSum;
+        String result = String.format("%.2f",value);
+        System.out.println(Calculator.cart + "\n" + "К оплате с человека  " + result + RubleOptions.rubles(prise));
     }
         }
 
