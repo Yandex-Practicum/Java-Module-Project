@@ -33,7 +33,7 @@ public class Calculator {
                 }
         }
         System.out.println("Добавленные товары:\n" + summablyud);
-        return sum; // vozvrat summy
+        return sum;
     }
 
     public static String rubles(double a) {
