@@ -1,7 +1,6 @@
 public class Main {
 
     public static void main(String[] args) {
-<<<<<<< HEAD
         int people;
 
         while (true) {
@@ -26,8 +25,5 @@ public class Main {
         double a = Math.floor(onepersonbill);
         String rubles = Calculator.rubles(a);
         System.out.println("Цена для одного человека: " + String.format("%.2f ", onepersonbill) + rubles);
-=======
-        // ваш код начнется здесь
->>>>>>> 83a7216ba0ecbdf537d7137c2708aa3c274811eb
     }
 }
