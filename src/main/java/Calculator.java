@@ -2,10 +2,10 @@
 class Calculator {
 
 
-    static String cart = "Добавленные товары "; // название продукта в корзине
-    double totalPrice = 0; // Общая стоимость товара
+    static String cart = "Добавленные товары ";
+    double totalPrice = 0;
     double devideSum;
-    int numberPeople; // количество людей
+    int numberPeople;
 
     void calcul(added added) {
         totalPrice = totalPrice + added.prise;
