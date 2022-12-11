@@ -19,6 +19,6 @@ class Calculator {
         this.numberPeople = numberPeople;
     }
 }
-
+//
 
 

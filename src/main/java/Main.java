@@ -8,20 +8,19 @@ public class Main {
         int numberPeople;
 
         while (true) {
+
             System.out.println("На скольких человек необходимо разделить счёт");
             numberPeople = scanner.nextInt();
-
             if (numberPeople > 1) {
                 break;
             } else if (numberPeople <= 1) {
                 System.out.println("Это некорректное значение для подсчёта, повторите ввод");
             }
-
         }
+                System.out.println("Сейчас все сделаем");
 
-        System.out.println("Сейчас все сделаем");
+
         Calculator Calculator = new Calculator(numberPeople);
-
         double prise;
         while (true) {
             System.out.println("Введите название продукта");
