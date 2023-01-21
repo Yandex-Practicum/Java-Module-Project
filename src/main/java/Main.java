@@ -1,61 +1,50 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+//прописал два класса, вытащил в отдельные методы все что можно было, писал и тестировал у себя в VS code.
 public class Main {
+
     public static void main(String[] args) {
 
-        Product product = new Product();
-
+        double finalPrice = 0;
+        int peopleNum;
+        String productList = "";
         String productName;
-        double price;
-        int sum;
-        int personNum = 0;
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the number of people dividing the check (2 and more): ");
+        peopleNum = PeopleNum.getPersonNum();
 
-        while (scanner.hasNext()) {
-            personNum = scanner.nextInt();
-            if (personNum < 2) {
-                System.out.print("Incorrect input. Enter the number of people 2 or more: ");
-            } else {
-                break;
-            }
-        }
+        Scanner sc = new Scanner(System.in);
 
-        do {
-            System.out.print("Add a product name: ");
-            scanner.nextLine();
-            productName = scanner.nextLine();
-            product.name += productName + "\n";
-            System.out.print("Add a price of product in formate [10.11, 14.51]: ");
+        do{
+            System.out.print("Введите название продукта: ");
+            productName = sc.nextLine();
+            productList += productName + "\n";
+            finalPrice += getPrice();
+            System.out.println("Введи любой символ для продолжения наполнения списка, или введите команду Stop."); //Использую команду Stop потому что на кириллице у меня ничего не работает
+        }while(!"stop".equalsIgnoreCase(sc.nextLine().trim()));
 
-            while (!scanner.hasNextDouble()) { //^checking double type, done
-                System.out.println("That's not a price!");
-                scanner.next();
-            }
-
-            price = scanner.nextDouble();
-
-            while (price <= 0) { //^checking negative nums, done
-                System.out.println("Incorrect input, prise must be > 0. Try again");
-                price = scanner.nextDouble();
-            }
-
-            product.finalPrice += price;
-
-            System.out.println(productName + " is successfully added in product list");
-            System.out.println("Add another one? Enter any key for continue or enter command STOP to terminate: ");
-            scanner.nextLine();
-        } while (!"stop".equalsIgnoreCase(scanner.next().trim()));
-        scanner.close();
-
-        sum = (int) product.finalPrice; //^var for method getRubAddition()
-
-        System.out.println("Your product list is:\n" + product.name + "with check on: " + String.format("%.2f", product.finalPrice) + " "
-                + getRubAddition(sum) + "\nand for " + personNum + " persons is " + String.format("%.2f", product.finalPrice / personNum) + " " + getRubAddition(sum / personNum) + " per person");
-
+        System.out.println("Итоговый список " + productList + " с ценой " + String.format("%.2f", finalPrice) + " " + getRubAddition((int) finalPrice) + " на " +
+                peopleNum + " " + getGuestAddition(peopleNum) + "." + "\nИтоговый расчет чека на человека: " + String.format("%.2f", finalPrice / peopleNum) +
+                " " + getRubAddition((int) finalPrice / peopleNum));
     }
-    public static String getRubAddition(int num) {
+
+    public static double getPrice() { //& DONE😀 для double у меня принимается делитель целого от дробного запятая, а не точка, возможно в этом были проблемы
+        double price;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Укажите стоимость продукта в формате 'рубли.копейки' (например: 10.45 или 11.40).");
+        do {
+            try {
+                price = sc.nextDouble();
+                return price;
+            } catch (Exception ex) {
+                System.out.println("На ввод принимаются только числа в формате 'рубли.копейки' (например: 10.45 или 11.40).");
+                sc.next();
+            }
+        }while(true);
+    }
+
+    public static String getRubAddition(int num) { //& DONE😀
 
         int preLastDigit = num % 100 / 10;
 
@@ -73,11 +62,49 @@ public class Main {
             default:
                 return "рублей";
         }
+    }
 
+    public static String getGuestAddition(int num) { //& DONE😀
+
+        int preLastDigitGuest = num % 100 / 10;
+
+        if (preLastDigitGuest == 1) {
+            return "гостей";
+        }
+
+        switch (num % 10) {
+            case 1:
+                return "гость";
+            case 2:
+            case 3:
+            case 4:
+                return "гостя";
+            default:
+                return "гостей";
+        }
     }
 }
 
-class Product { //^Calcualter class
-    String name = "";
-    double finalPrice = 0.0;
+class PeopleNum {
+    public static int getPersonNum() {
+        int personNum;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите количество гостей (2 и более):\n");
+        while (true) {
+            try {
+                personNum = sc.nextInt();
+                break;
+            }
+            catch (InputMismatchException e){
+                System.out.println("Неправильный ввод. На ввод принимаются только целые числа\n");
+                sc.nextLine();
+            }
+        }
+        while(personNum < 2) {
+            System.out.print("Неправильный ввод. Количество людей должно быть больше 1\n");
+            personNum = sc.nextInt();
+        }
+        return personNum;
+    }
 }
