@@ -97,7 +97,6 @@ public class LetsCount {
     }
 
     // В отдельный метод вынесено определение формы слова "рубль" для случаев по умолчанию.
-    // Просто чтобы соблюсти принцип DRY.
     private String rubCaseDefault(int i) {
         switch (i % 10) {
             case 1:
