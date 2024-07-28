@@ -14,7 +14,16 @@ public class Main {
             String newName = scanner.next();
             while (true) {
                 System.out.println("- Введите скорость машины №" + (i + 1) + ":");
-                int newVelocity = scanner.nextInt();
+                int newVelocity;
+                while (true) {
+                    if (scanner.hasNextInt()) {
+                        newVelocity = scanner.nextInt();
+                        break;
+                    } else {
+                        System.out.println("Введите скорость в формате целого числа.");
+                        scanner.next();
+                    }
+                }
                 if ((newVelocity >= 0) && (newVelocity <= 250)) {
                     carArray[i] = new Car(newName, newVelocity);
                     race.newLeaderDefining(carArray[i]);
